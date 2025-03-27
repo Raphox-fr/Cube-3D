@@ -7,6 +7,7 @@ OBJDIR  = ./obj
 
 SRCS    = $(SRCDIR)/main.c \
           $(SRCDIR)/parsing.c \
+          $(SRCDIR)/error.c \
 		  $(GNLDIR)/get_next_line_utils.c \
 		  $(GNLDIR)/get_next_line.c \
 
