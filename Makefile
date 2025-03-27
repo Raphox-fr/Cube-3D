@@ -1,12 +1,19 @@
 NAME    = cube
 
-SRCDIR  = src
-OBJDIR  = obj
+SRCDIR  = ./src
+GNLDIR = ./gnl
+
+OBJDIR  = ./obj
 
 SRCS    = $(SRCDIR)/main.c \
-          $(SRCDIR)/parsing.c
+          $(SRCDIR)/parsing.c \
+		  $(GNLDIR)/get_next_line_utils.c \
+		  $(GNLDIR)/get_next_line.c \
+
+
 
 OBJS    = $(SRCS:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
+
 
 CC      = gcc
 
