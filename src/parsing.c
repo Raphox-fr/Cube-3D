@@ -6,13 +6,26 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 11:55:02 by rafaria           #+#    #+#             */
-/*   Updated: 2025/03/27 13:26:34 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/03/27 13:36:47 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../includes/cube.h"
 #include "../includes/get_next_line.h"
+
+
+
+
+int parsing(int argc, char **argv, char **envp)
+{
+	if (argc == 1)
+	printf("Error : No map selected, please choose a map.\n");
+    if (argc >= 3)
+	printf("Error : Only one map is accepted\n");    
+    printf ("%s", read_file(argv[1]));
+	return 0;
+}
 
 
 
@@ -35,15 +48,3 @@ char *read_file(char *filename)
 	close(fd);
 	return (content);
 }
-
-int parsing(int argc, char **argv, char **envp)
-{
-    if (argc == 1)
-        printf("Error : No map selected, please choose a map.\n");
-    if (argc >= 3)
-        printf("Error : Only one map is accepted\n");    
-    printf ("%s", read_file(argv[1]));
-        return 0;
-}
-
-

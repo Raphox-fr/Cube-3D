@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:39:02 by rafaria           #+#    #+#             */
-/*   Updated: 2025/03/27 11:58:05 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/03/27 13:36:28 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,17 @@
 # include <unistd.h>
 
 
+
+
+// PARSING |
+
 int parsing(int argc, char **argv, char **envp);
+
+char *read_file(char *filename);
+
+
+
+// DISPLAY
 
 
 
