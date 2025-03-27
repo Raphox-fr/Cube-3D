@@ -1,26 +1,34 @@
-NAME			=	cube
+NAME	=	cube
 
-SRCS			=	main.c
 
-OBJS			=	${SRCS:.c=.o}
+SRCDIR	=	src
 
-CC			=	gcc
+SRCS	=	$(SRCDIR)/main.c \
+			$(SRCDIR)/parsing.c
 
-CFLAGS		=	-Werror -Wall -Wextra
+OBJS	=	${SRCS:.c=.o}
 
-all			:	${NAME}
+CC		=	gcc
+
+# CFLAGS	=	-Werror -Wall -Wextra
+
+all		:	${NAME}
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-clean			:
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+clean:
 	rm -rf ${OBJS}
 
-fclean			:	clean
+fclean: clean
 	rm -rf ${NAME}
 
-re				:	fclean all
+re: fclean all
 
-.PHONY			:	all clean fclean re
+.PHONY: all clean fclean re
+
 
 # -Wall -Werror -Wextra -g3

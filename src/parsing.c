@@ -6,14 +6,15 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 11:55:02 by rafaria           #+#    #+#             */
-/*   Updated: 2025/03/27 11:55:38 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/03/27 12:05:45 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include "cube.h"
+#include "../cube.h"
 
 int parsing(int argc, char **argv, char **envp)
 {
-    return 0
+    printf("%s", "PARSING\n");
+    return 0;
 }
