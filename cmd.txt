@@ -1,0 +1,53 @@
+=== Guide Git Rapide ===
+
+[CLONER LE DÉPÔT]
+git clone [url_du_repo]
+→ Clone le dépôt distant sur ta machine.
+
+[METTRE À JOUR LE DÉPÔT]
+git pull
+→ Met à jour ta branche locale avec les dernières modifications du dépôt distant.
+
+[BRANCHES - COMMANDES DE BASE]
+
+Lister les branches locales :
+git branch
+
+Créer une nouvelle branche et se placer dessus :
+git checkout -b nom_de_la_branche
+
+Supprimer une branche locale :
+git branch -d nom_de_la_branche
+
+Changer de branche :
+git checkout nom_de_la_branche
+
+Astuce : si tu tapes "git checkout" puis appuies sur TAB,
+tu verras la liste des branches disponibles (et parfois les commits si tu veux revenir à un commit précis).
+
+[BRANCHES DU PROJET]
+
+master = branche principale
+alban_branch = branche de travail d’Alban
+raphael_branch = branche de travail de Raphaël
+
+ATTENTION : origin/alban_branch ou origin/raphael_branch
+→ Ce sont des branches distantes, pas celles sur lesquelles tu dois travailler directement.
+→ Tu dois être sur ta branche locale (alban_branch ou raphael_branch) pour faire un git pull/push.
+
+[MERGE DES BRANCHES]
+
+Pour fusionner deux branches, il vaut mieux être ensemble pour éviter les conflits.
+
+Mais voici la méthode :
+
+1. Se placer sur la branche dans laquelle tu veux fusionner (ex : master)
+git checkout master
+
+2. Fusionner une autre branche dans celle sur laquelle tu es :
+git merge nom_de_la_branche_a_merger
+
+Exemple :
+git checkout master
+git merge raphael_branch
+→ Tu viens d’intégrer les changements de raphael_branch dans master.
