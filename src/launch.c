@@ -78,19 +78,35 @@ void    ft_move(t_ray *ray)
         if (!ray->map[(int)ray->posX][(int)(ray->posY - ray->dirX * ray->moveSpeed)])
             ray->posY -= ray->dirX * ray->moveSpeed;
     }
-    if (ray->key[KEY_LEFT])
+    if (ray->key[KEY_LEFT]) 
     {
-        ray->oldDirX = ray->dirX;
+        oldDirX = ray->dirX;
         ray->dirX = ray->dirX * cos(ray->rotSpeed) - ray->dirY * sin(ray->rotSpeed);
-        ray->dirY = ray->oldDir;
+        ray->dirY = oldDirX * sin(ray->rotSpeed) + ray->dirY * cos(ray->rotSpeed);
+        oldPlaneX = ray->planeX;
+        ray->planeX = ray->planeX * cos(ray->rotSpeed) - ray->planeY * sin(ray->rotSpeed);
+        ray->planeY = oldPlaneX * sin(ray->rotSpeed) + ray->planeY * cos(ray->rotSpeed);
     }
-    if (ray->key[KEY_RIGHT])
+    if (ray->key[KEY_RIGHT]) 
     {
-        ray->oldDirX = ray->dirX;
+        oldDirX = ray->dirX;
         ray->dirX = ray->dirX * cos(-ray->rotSpeed) - ray->dirY * sin(-ray->rotSpeed);
-        ray->dirY = ray->oldDirY * sin(-ray->rotSpeed) + ray->dirY * cos(-ray->rotSpeed);
-        ray->oldPlaneX = ray->planeX;
+        ray->dirY = oldDirX * sin(-ray->rotSpeed) + ray->dirY * cos(-ray->rotSpeed);
+        oldPlaneX = ray->planeX;
         ray->planeX = ray->planeX * cos(-ray->rotSpeed) - ray->planeY * sin(-ray->rotSpeed);
-        ray->planeY = ray->oldPlaneX * sin(-ray->rotSpeed) + ray->planeY * cos(-ray->rotSpeed);
-    }
+        ray->planeY = oldPlaneX * sin(-ray->rotSpeed) + ray->planeY * cos(-ray->rotSpeed);
+    }    
 }
+
+/*
+fonction loop : raycast, draw, move + memset + mlx_put_image_to_window
+
+define global KEY + speed 
+
+FONCTIONS   mouvement key press
+            rotation key press
+
+fonction raycast(voir tuto)
+
+fonction draw ! attention bits->per pixel et de haut en bas, et texture avec tableau
+*/

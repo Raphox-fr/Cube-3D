@@ -6,7 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:39:02 by rafaria           #+#    #+#             */
-/*   Updated: 2025/03/28 16:21:44 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/03/28 17:01:36 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ typedef struct s_ray
     int width;
     int height;
     int **map;
-    int moveSpeed;
-    int rotSpeed;
+    int moveSpeed;//faire un define variable globale
+    int rotSpeed;//same 
     int key[300];
     double oldDirX;
     double oldPlaneX;
