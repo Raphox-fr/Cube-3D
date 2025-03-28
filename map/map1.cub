@@ -1,7 +1,7 @@
-NO      textures/matrix.xpm       A
-SO     textures/matrix.xpm          B
-WE      textures/matrix.xpm     C
-EA      textures/matrix.xpm     C
+NO      map/textures/matrix.xpm
+SO     map/textures/matrix.xpm
+WE      map/textures/matrix.xpm
+EA      map/textures/matrix.xpm
 
 
 F 0,0,0
