@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:05:07 by rafaria           #+#    #+#             */
-/*   Updated: 2025/03/28 19:08:00 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/03/28 19:40:35 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,13 @@ int check_map(t_struct *map, char *file_path)
 	int fd;
 	char *string_map;
 
-	map->file_path = file_path;
-	map->map_table = ft_split(read_file_into_string(map->file_path), '\n');
+	map->file_path = read_file_into_string(file_path);
+	map->map_table = ft_split(map->file_path, '\n');
 
 	if (find_every_txture_in_map(map, map->map_table, "str") == -1)
 	{
-		printf("Error : Not Every textures found in the map\n");
+		display_error("Not Every textures found in the map\n");
+		free_struct_map(map);
 		return (-1);
 	}
 
@@ -31,9 +32,12 @@ int check_map(t_struct *map, char *file_path)
 	printf("SO =%s\n", map->so_txture);
 	printf("WE =%s\n", map->we_txture);
 	printf("EA =%s\n", map->ea_txture);
+    // free_struct_map(map);git 
 	
-	return (0);   
+	return (0);
 }
+
+
 int find_every_txture_in_map(t_struct *map, char **map_table, char *str)
 {
 	int i;
@@ -107,52 +111,9 @@ int check_parsing_direction(t_struct *map, char *map_string, char *directions)
 				map->ea_txture =  ft_strdup(map_string);
 			return (1);		
 		}
-		// printf("%s", map->so_txture);
-		// printf("%s", map->we_txture);
-		// printf("%s", map->ea_txture);
 	}
 	
 }
-// char **get_type_texture_from_structure(t_struct *map, char *directions)
-// {
-// 	if (directions[0] == 'N' && directions[0] == 'O')
-// 		return (&map->no_txture);
-// 	if (directions[0] == 'S' && directions[0] == 'O')
-// 		return (&map->so_txture);
-// 	if (directions[0] == 'W' && directions[0] == 'E')
-// 		return (&map->we_txture);
-// 	if (directions[0] == 'E' && directions[0] == 'A')
-// 		return (&map->ea_txture);
-// 	return ("0");
-		  
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 char *read_file_into_string(char *file_path)
@@ -161,21 +122,44 @@ char *read_file_into_string(char *file_path)
 	char *buffer;
 	size_t size;
 	ssize_t bytes_readed;
-
+	
 	size = 10000;
 	fd = open(file_path, O_RDONLY);
 	if (fd < 0)
 		return (NULL);
 	buffer = malloc(sizeof(char) * size + 1);
-	
+	if (buffer == NULL)
+	{
+		close(fd);
+		display_error("Memory allocation failed\n");
+		return (NULL);
+	}
 	bytes_readed = read(fd, buffer, size);
 	if (bytes_readed < 0)
 	{
 		close(fd);
 		free(buffer);
+		display_error("Error reading file\n");
 		return (NULL);
 	}
 	buffer[bytes_readed] = '\0';
 	close(fd);
 	return (buffer);
 }
+
+
+// char **get_type_texture_from_structure(t_struct *map, char *directions)
+	// {
+	// 	if (directions[0] == 'N' && directions[0] == 'O')
+	// 		return (&map->no_txture);
+	// 	if (directions[0] == 'S' && directions[0] == 'O')
+	// 		return (&map->so_txture);
+	// 	if (directions[0] == 'W' && directions[0] == 'E')
+	// 		return (&map->we_txture);
+	// 	if (directions[0] == 'E' && directions[0] == 'A')
+	// 		return (&map->ea_txture);
+	// 	return ("0");
+			  
+	// }
+	
+	

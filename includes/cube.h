@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:39:02 by rafaria           #+#    #+#             */
-/*   Updated: 2025/03/28 19:05:55 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/03/28 19:34:49 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,14 @@ int			check_input(int argc, char **argv);
 int			check_map(t_struct *map, char *file_path);
 int			ft_strcmp(char *s1, char *s2);
 char		*read_file_into_string(char *file_path);
+void		free_struct_map(t_struct *map);
 
-int check_parsing_direction(t_struct *map, char *map_string, char *directions);
-int find_directions(t_struct *map, char **map_table, char *directions);
-int find_every_txture_in_map(t_struct *map, char **map_table, char *str);
+int			check_parsing_direction(t_struct *map, char *map_string,
+				char *directions);
+int			find_directions(t_struct *map, char **map_table, char *directions);
+int			find_every_txture_in_map(t_struct *map, char **map_table,
+				char *str);
+int			init_struct_map(t_struct *map);
 // DISPLAY
 
 // fonctions here

@@ -11,6 +11,7 @@ LIBFT_A = $(LIBFTDIR)/libft.a
 SRCS    = $(SRCDIR)/main.c \
           $(SRCDIR)/parsing.c \
           $(SRCDIR)/error.c \
+          $(SRCDIR)/init.c \
           $(SRCDIR)/check_map.c \
           $(SRCDIR)/flood_fill.c \
           $(SRCDIR)/tools.c \
