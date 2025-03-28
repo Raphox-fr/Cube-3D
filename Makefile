@@ -1,29 +1,32 @@
 NAME    = cube
+# CFLAGS  = -Wall -Wextra -Werror
+CC      = gcc
 
 SRCDIR  = ./src
 GNLDIR = ./gnl
-
+LIBFTDIR = ./libft
 OBJDIR  = ./obj
+LIBFT_A = $(LIBFTDIR)/libft.a
 
 SRCS    = $(SRCDIR)/main.c \
           $(SRCDIR)/parsing.c \
           $(SRCDIR)/error.c \
+          $(SRCDIR)/check_map.c \
+          $(SRCDIR)/flood_fill.c \
+          $(SRCDIR)/tools.c \
 		  $(GNLDIR)/get_next_line_utils.c \
 		  $(GNLDIR)/get_next_line.c \
 
 
-
 OBJS    = $(SRCS:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 
+all: $(LIBFT_A) $(NAME)
 
-CC      = gcc
-
-# CFLAGS  = -Wall -Wextra -Werror
-
-all: $(NAME)
+$(LIBFT_A):
+	@$(MAKE) -C $(LIBFTDIR)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT_A) -o $(NAME)
 
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
@@ -32,9 +35,11 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c
 
 clean:
 	rm -rf $(OBJDIR)
+	@$(MAKE) -C $(LIBFTDIR) clean
 
 fclean: clean
 	rm -f $(NAME)
+	@$(MAKE) -C $(LIBFTDIR) fclean
 
 re: fclean all
 

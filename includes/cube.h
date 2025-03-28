@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:39:02 by rafaria           #+#    #+#             */
-/*   Updated: 2025/03/27 18:54:45 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/03/28 19:05:55 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define CUBE_H
 // # include "mlx/mlx.h"
 
+# include "../includes/get_next_line.h"
+# include "../libft/libft.h"
 # include "stdbool.h"
 # include <dirent.h>
 # include <fcntl.h>
@@ -46,14 +48,15 @@
 
 typedef struct t_start
 {
+	char	*file_path;
 	char	**map;
-	char	**map_to_fill;
+	char	**map_table;
 
 	char	player;
-	char	*no;
-	char	*so;
-	char	*we;
-	char	*ea;
+	char	*no_txture;
+	char	*so_txture;
+	char	*we_txture;
+	char	*ea_txture;
 	int floor_color[3];   // 255,255,255 RGB
 	int ceiling_color[3]; // 255,255,255 RGB
 
@@ -68,6 +71,14 @@ char		*read_file(char *filename);
 int			check_name_map(char *str);
 void		ft_putchar_fd(char c, int fd);
 void		display_error(char *str_error);
+int			check_input(int argc, char **argv);
+int			check_map(t_struct *map, char *file_path);
+int			ft_strcmp(char *s1, char *s2);
+char		*read_file_into_string(char *file_path);
+
+int check_parsing_direction(t_struct *map, char *map_string, char *directions);
+int find_directions(t_struct *map, char **map_table, char *directions);
+int find_every_txture_in_map(t_struct *map, char **map_table, char *str);
 // DISPLAY
 
 // fonctions here

@@ -1,0 +1,181 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/28 12:05:07 by rafaria           #+#    #+#             */
+/*   Updated: 2025/03/28 19:08:00 by rafaria          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/cube.h"
+
+int check_map(t_struct *map, char *file_path)
+{
+	int i;
+	int fd;
+	char *string_map;
+
+	map->file_path = file_path;
+	map->map_table = ft_split(read_file_into_string(map->file_path), '\n');
+
+	if (find_every_txture_in_map(map, map->map_table, "str") == -1)
+	{
+		printf("Error : Not Every textures found in the map\n");
+		return (-1);
+	}
+
+	printf("NO =%s\n", map->no_txture);
+	printf("SO =%s\n", map->so_txture);
+	printf("WE =%s\n", map->we_txture);
+	printf("EA =%s\n", map->ea_txture);
+	
+	return (0);   
+}
+int find_every_txture_in_map(t_struct *map, char **map_table, char *str)
+{
+	int i;
+
+	i = 0;
+	int count;
+	count = 0;
+	
+	
+	if (find_directions(map, map_table, "NO") == 1)
+		count++;
+	if (find_directions(map, map_table, "SO") == 1)
+		count++;
+	if (find_directions(map, map_table, "WE") == 1)
+		count++;
+	if (find_directions(map, map_table, "EA") == 1)
+		count++;
+		
+	if (count == 4)
+		return (1);
+	return (-1);
+}
+
+int find_directions(t_struct *map, char **map_table, char *directions)
+{
+	int i;
+	i = 0;
+
+	while (map_table[i])
+	{
+		if (ft_strnstr(map_table[i], directions, ft_strlen_size_t(map_table[i])) != 0)
+		{
+			// printf("found %s\n", map_string);
+			if (check_parsing_direction(map, map_table[i], directions) == 1)
+			{	
+				return (1);		
+			}
+		}
+		i++;
+	}
+	return (-1);
+	
+	
+}
+
+int check_parsing_direction(t_struct *map, char *map_string, char *directions)
+{
+	int i;
+
+	i = 0;
+	if (map_string != NULL)
+	{
+		while(*map_string == ' ' || *map_string == '	')
+			map_string++;
+		// printf("ligne space debut sauter=%s\n", map_string);
+		if (*map_string == directions[0] && *(map_string + 1) == directions[1])
+		{
+			map_string = map_string + 3;
+			// printf("NO sauter=%s\n", map_string);
+			while((*map_string == ' ' || *map_string == '	') && *map_string != '\0')
+				map_string++;
+			// printf("NO sauter, et espace sauter=%s\n", map_string);
+			// printf("A ATTRIBUER=%s\n", map_string);
+			if (directions[0] == 'N' && directions[1] == 'O')
+				map->no_txture = ft_strdup(map_string);
+			if (directions[0] == 'S' && directions[1] == 'O')
+				map->so_txture = ft_strdup(map_string);
+			if (directions[0] == 'W' && directions[1] == 'E')
+				map->we_txture  = ft_strdup(map_string);
+			if (directions[0] == 'E' && directions[1] == 'A')
+				map->ea_txture =  ft_strdup(map_string);
+			return (1);		
+		}
+		// printf("%s", map->so_txture);
+		// printf("%s", map->we_txture);
+		// printf("%s", map->ea_txture);
+	}
+	
+}
+// char **get_type_texture_from_structure(t_struct *map, char *directions)
+// {
+// 	if (directions[0] == 'N' && directions[0] == 'O')
+// 		return (&map->no_txture);
+// 	if (directions[0] == 'S' && directions[0] == 'O')
+// 		return (&map->so_txture);
+// 	if (directions[0] == 'W' && directions[0] == 'E')
+// 		return (&map->we_txture);
+// 	if (directions[0] == 'E' && directions[0] == 'A')
+// 		return (&map->ea_txture);
+// 	return ("0");
+		  
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+char *read_file_into_string(char *file_path)
+{
+	int fd;
+	char *buffer;
+	size_t size;
+	ssize_t bytes_readed;
+
+	size = 10000;
+	fd = open(file_path, O_RDONLY);
+	if (fd < 0)
+		return (NULL);
+	buffer = malloc(sizeof(char) * size + 1);
+	
+	bytes_readed = read(fd, buffer, size);
+	if (bytes_readed < 0)
+	{
+		close(fd);
+		free(buffer);
+		return (NULL);
+	}
+	buffer[bytes_readed] = '\0';
+	close(fd);
+	return (buffer);
+}
