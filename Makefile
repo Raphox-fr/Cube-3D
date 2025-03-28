@@ -14,6 +14,8 @@ SRCS    = $(SRCDIR)/main.c \
           $(SRCDIR)/init.c \
           $(SRCDIR)/check_map.c \
           $(SRCDIR)/flood_fill.c \
+          $(SRCDIR)/textures.c \
+          $(SRCDIR)/xpm.c \
           $(SRCDIR)/tools.c \
 		  $(GNLDIR)/get_next_line_utils.c \
 		  $(GNLDIR)/get_next_line.c \

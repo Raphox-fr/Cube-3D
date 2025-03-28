@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:39:02 by rafaria           #+#    #+#             */
-/*   Updated: 2025/03/28 19:57:20 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/03/28 20:40:37 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int			ft_strcmp(char *s1, char *s2);
 char		*read_file_into_string(char *file_path);
 void		free_struct_map(t_struct *map);
 
-int			check_parsing_direction(t_struct *map, char *map_string,
+int			check_found_txture(t_struct *map, char *map_string,
 				char *directions);
 int			find_txture(t_struct *map, char **map_table, char *directions);
 int			find_every_txture_in_map(t_struct *map, char **map_table,
@@ -86,6 +86,8 @@ int			init_struct_map(t_struct *map);
 
 int			check_access_every_txture(t_struct *map);
 int			check_access_txture(char *path_txture);
+int			check_extension_xpm(char *file_path);
+int			check_last_part_txture_found(char *path_txture);
 
 // DISPLAY
 
