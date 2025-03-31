@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
+/*   By: raphox <raphox@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/25 12:03:33 by rafaria           #+#    #+#             */
-/*   Updated: 2025/03/28 19:14:45 by rafaria          ###   ########.fr       */
+/*   Created: 2023/11/07 14:24:33 by rafaria           #+#    #+#             */
+/*   Updated: 2023/11/16 16:04:28 by raphox           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+#include <stddef.h>
+#include <strings.h>
 
-#include "../includes/cube.h"
-
-int main(int argc, char **argv, char **envp)
+void	ft_bzero(void *s, size_t n)
 {
-    parsing(argc, argv,  envp);
-    return (0);
+	char	*p;
+	size_t	i;
+
+	p = s;
+	i = 0;
+	while (i < n)
+	{
+		p[i] = 0;
+		i++;
+	}
+	return ;
 }

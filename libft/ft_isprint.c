@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
+/*   By: raphox <raphox@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/25 12:03:33 by rafaria           #+#    #+#             */
-/*   Updated: 2025/03/28 19:14:45 by rafaria          ###   ########.fr       */
+/*   Created: 2023/11/06 18:59:53 by rafaria           #+#    #+#             */
+/*   Updated: 2023/11/16 12:06:00 by raphox           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
-#include "../includes/cube.h"
-
-int main(int argc, char **argv, char **envp)
+int	ft_isprint(int c)
 {
-    parsing(argc, argv,  envp);
-    return (0);
+	if (c <= 31 || c >= 127)
+	{
+		return (0);
+	}
+	return (1);
 }

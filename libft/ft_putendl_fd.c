@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/25 12:03:33 by rafaria           #+#    #+#             */
-/*   Updated: 2025/03/28 19:14:45 by rafaria          ###   ########.fr       */
+/*   Created: 2023/11/13 11:00:43 by rafaria           #+#    #+#             */
+/*   Updated: 2025/03/28 15:12:19 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+#include <unistd.h>
 
-#include "../includes/cube.h"
-
-int main(int argc, char **argv, char **envp)
+void	ft_putendl_fd(char *s, int fd)
 {
-    parsing(argc, argv,  envp);
-    return (0);
+	char	suka;
+	int		size;
+
+	suka = '\n';
+	size = ft_strlen(s);
+	write(fd, s, size);
+	write(fd, &suka, 1);
 }
+
+// int main()
+// {
+// 	char s[] = "bonjou comment ca va";
+// 	ft_putend_fd(s, 1);
+// }

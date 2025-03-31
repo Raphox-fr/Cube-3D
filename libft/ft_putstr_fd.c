@@ -1,26 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
+/*   By: raphox <raphox@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/18 15:15:46 by raphox            #+#    #+#             */
-/*   Updated: 2025/03/28 15:20:14 by rafaria          ###   ########.fr       */
+/*   Created: 2023/11/13 10:35:40 by rafaria           #+#    #+#             */
+/*   Updated: 2023/11/16 12:23:01 by raphox           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/get_next_line.h"
+#include "libft.h"
+#include <unistd.h>
 
-size_t	ft_strlen_size_t(char *s)
+void	ft_putstr_fd(char *s, int fd)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	if (!s)
-		return (0);
-	while (s[i] != '\0')
-		i++;
-	return (i);
+	if (s)
+	{
+		while (s[i])
+		{
+			write(fd, &s[i], 1);
+			i++;
+		}
+	}
+	return ;
 }
 
+// int main()
+// {
+// 	char s[] = "bonjou comment ca va";
+// 	ft_putstr_fd(s, 1);
+
+// }

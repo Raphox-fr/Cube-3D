@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raphox <raphox@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 15:17:35 by raphox            #+#    #+#             */
-/*   Updated: 2024/01/16 17:08:33 by raphox           ###   ########.fr       */
+/*   Updated: 2025/03/28 14:49:11 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../includes/get_next_line.h"
 
 char	*get_all_line(char *line, int fd)
 {
@@ -77,7 +77,7 @@ char	*get_leftover_line(char *line)
 		free(line);
 		return (NULL);
 	}
-	stock_leftover = malloc(sizeof(char) * (ft_strlen(line) - i + 1));
+	stock_leftover = malloc(sizeof(char) * (ft_strlen_size_t(line) - i + 1));
 	if (!stock_leftover)
 		return (NULL);
 	i++;
