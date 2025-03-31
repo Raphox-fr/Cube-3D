@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:32:57 by rafaria           #+#    #+#             */
-/*   Updated: 2025/03/31 13:20:26 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/03/31 13:26:00 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ int verify_rgb(t_struct *map, char *map_string, char *letter)
 
 
 	free_split(split_result);
+	
 	return (1); 
 	
 }
