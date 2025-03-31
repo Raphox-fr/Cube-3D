@@ -57,8 +57,9 @@ int close_window(t_ray *ray)
 int ft_loop(t_ray *ray)
 {
     ft_move(ray);
+    //rajouter memset pour clear l'image a chaque loop
     ft_raycast(ray);
-    ft_draw(ray);
+    ft_draw(ray); //rajouter mlx_put_image_to_window
     return (0);
 }
 
