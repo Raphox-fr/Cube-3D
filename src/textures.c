@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 20:08:03 by rafaria           #+#    #+#             */
-/*   Updated: 2025/03/31 11:47:13 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/03/31 15:57:03 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int find_txture(t_struct *map, char **map_table, char *directions)
         if (ft_strnstr(map_table[i], directions, ft_strlen_size_t(map_table[i])) != 0)
 		{
             if (check_found_txture(map, map_table[i], directions) == 1)
-            return (1);
+				return (1);
 		}
 		i++;
 	}
@@ -93,28 +93,51 @@ int check_found_txture(t_struct *map, char *map_string, char *directions)
     int i;
     
 	i = 0;
-	if (map_string != NULL)
+	while((*map_string == ' ' || *map_string == '	' ) && *map_string != '\0' )
+		map_string++;
+	if (ft_strlen_cub(map_string) <= 2)
+		return (-1);
+	if (*map_string == directions[0] && *(map_string + 1) == directions[1])
 	{
-        while(*map_string == ' ' || *map_string == '	')
-        	map_string++;
-		if (*map_string == directions[0] && *(map_string + 1) == directions[1])
-		{
-            map_string = map_string + 3;
-			while((*map_string == ' ' || *map_string == '	') && *map_string != '\0')
-            map_string++;
-			if (directions[0] == 'N' && directions[1] == 'O')
-            map->no_txture = ft_strdup(map_string);
-			if (directions[0] == 'S' && directions[1] == 'O')
-            map->so_txture = ft_strdup(map_string);
-			if (directions[0] == 'W' && directions[1] == 'E')
-            map->we_txture  = ft_strdup(map_string);
-			if (directions[0] == 'E' && directions[1] == 'A')
-            map->ea_txture =  ft_strdup(map_string);
-			return (1);		
-		}
+		map_string = map_string + 3;
+		while((*map_string == ' ' || *map_string == '	') && *map_string != '\0')
+			map_string++;
+		if (check_end_textures(map_string) == -1)
+			return (-1);
+			
+		if (directions[0] == 'N' && directions[1] == 'O')
+			map->no_txture = ft_strdup_pimp(map_string);
+		if (directions[0] == 'S' && directions[1] == 'O')
+			map->so_txture = ft_strdup_pimp(map_string);
+		if (directions[0] == 'W' && directions[1] == 'E')
+			map->we_txture  = ft_strdup_pimp(map_string);
+		if (directions[0] == 'E' && directions[1] == 'A')
+			map->ea_txture =  ft_strdup_pimp(map_string);
+		return (1);		
 	}
+	return (-1);
 	
 }
+
+int check_end_textures(char *str)
+{
+	int i;
+	i = 0;
+
+	while (str[i] != '\0' && str[i] != ' ' && str[i] != '\t')
+	{
+		i++;
+	}
+	while (str[i] != '\0' && (str[i] == ' ' || str[i] == '\t'))
+	{
+		i++;
+	}	
+	if (str[i] != '\0')
+		return(-1);
+	return (1); 
+}
+
+
 // char **get_type_texture_from_structure(t_struct *map, char *directions)
 // {
 	// 	if (directions[0] == 'N' && directions[0] == 'O')

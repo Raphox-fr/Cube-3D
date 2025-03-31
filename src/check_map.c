@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:05:07 by rafaria           #+#    #+#             */
-/*   Updated: 2025/03/31 11:59:17 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/03/31 15:15:25 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ int check_map(t_struct *map, char *file_path)
 		free_struct_map(map);
 		return (-1);
 	}
-
-    
 
 	printf("NO =%s\n", map->no_txture);
 	printf("SO =%s\n", map->so_txture);

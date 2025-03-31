@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:32:57 by rafaria           #+#    #+#             */
-/*   Updated: 2025/03/31 13:26:00 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/03/31 15:11:52 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,3 +176,15 @@ int count_characters(char *str)
 	// 	map->no_txture = ft_strdup(map_string);
 	// if (letter[0] == 'C')
 	// 	map->so_txture = ft_strdup(map_string);
+
+
+
+// faire un flood fill dans la map pour voir si la map est close
+// verifier si le joueur est present dans la map
+// et ensuite verifier s il y a des 0 autour de la map et si oui, s il sont entourer par des murs,
+// remplacer les espaces vides par un mur.
+
+// verifier il ya des murs
+// verifier si ya un seul joueur
+// retour a la ligne non auttorisers
+// verifier si la map est le dernier carateres du fichier

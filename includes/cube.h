@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:39:02 by rafaria           #+#    #+#             */
-/*   Updated: 2025/03/31 13:10:51 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/03/31 15:56:46 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,17 @@ int			find_every_txture_in_map(t_struct *map, char **map_table,
 				char *str);
 int			init_struct_map(t_struct *map);
 void		free_split(char **cmd);
+int			ft_strlen_cub(const char *str);
+
+int			ft_strlen_spaces_tabs(const char *str);
+char		*ft_strdup_pimp(const char *src);
 
 // Textures
 int			check_access_every_txture(t_struct *map);
 int			check_access_txture(char *path_txture);
 int			check_extension_xpm(char *file_path);
 int			check_last_part_txture_found(char *path_txture);
+int			check_end_textures(char *str);
 
 // Floor ceiling
 int			check_floor_ceiling_in_map(t_struct *map, char **map_table);
