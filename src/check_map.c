@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:05:07 by rafaria           #+#    #+#             */
-/*   Updated: 2025/03/28 20:28:09 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/03/31 11:59:17 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,18 @@ int check_map(t_struct *map, char *file_path)
 	if (find_every_txture_in_map(map, map->map_table, "str") == -1 
         || check_access_every_txture(map) == -1)
 	{
-		display_error("Invalid texture's path / missing textures / invalid extension in the map\n");
+		display_error("Invalid texture's path / missing textures / invalid extension in the map's textures\n");
 		free_struct_map(map);
 		return (-1);
 	}
+    if (check_floor_ceiling_in_map(map, map->map_table) == -1)
+	{
+		display_error("Invalid RGB color / missing floor or ceiling\n");
+		free_struct_map(map);
+		return (-1);
+	}
+
+    
 
 	printf("NO =%s\n", map->no_txture);
 	printf("SO =%s\n", map->so_txture);

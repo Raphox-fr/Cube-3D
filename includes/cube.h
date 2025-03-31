@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:39:02 by rafaria           #+#    #+#             */
-/*   Updated: 2025/03/28 20:40:37 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/03/31 13:10:51 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ typedef struct t_start
 	char	*so_txture;
 	char	*we_txture;
 	char	*ea_txture;
-	int floor_color[3];   // 255,255,255 RGB
-	int ceiling_color[3]; // 255,255,255 RGB
+	int floor[3];   // 255,255,255 RGB
+	int ceiling[3]; // 255,255,255 RGB
 
 }			t_struct;
 
@@ -83,11 +83,22 @@ int			find_txture(t_struct *map, char **map_table, char *directions);
 int			find_every_txture_in_map(t_struct *map, char **map_table,
 				char *str);
 int			init_struct_map(t_struct *map);
+void		free_split(char **cmd);
 
+// Textures
 int			check_access_every_txture(t_struct *map);
 int			check_access_txture(char *path_txture);
 int			check_extension_xpm(char *file_path);
 int			check_last_part_txture_found(char *path_txture);
+
+// Floor ceiling
+int			check_floor_ceiling_in_map(t_struct *map, char **map_table);
+int			find_floor_ceiling(t_struct *map, char **map_table,
+				char *directions);
+int			save_rgb(t_struct *map, char *map_string, char *letter);
+int			verify_rgb(t_struct *map, char *map_string, char *letter);
+int			ft_isalnum_inferior_255(char *str);
+int			count_characters(char *str);
 
 // DISPLAY
 

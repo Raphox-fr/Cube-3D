@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 17:48:03 by rafaria           #+#    #+#             */
-/*   Updated: 2025/03/28 19:33:02 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/03/31 12:39:35 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,18 @@ void display_error(char *str_error)
         ft_putchar_fd(str_error[i], 2);
         i++;
     }
+}
+void	free_split(char **cmd)
+{
+	int	i;
+
+	i = 0;
+	if (cmd == NULL)
+		return ;
+	while (cmd[i])
+	{
+		free(cmd[i]);
+		i++;
+	}
+	free(cmd);
 }

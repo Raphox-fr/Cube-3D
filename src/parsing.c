@@ -6,15 +6,12 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 11:55:02 by rafaria           #+#    #+#             */
-/*   Updated: 2025/03/28 20:15:53 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/03/31 11:27:50 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../includes/cube.h"
-
-
-
 
 int parsing(int argc, char **argv, char **envp)
 {
@@ -26,9 +23,6 @@ int parsing(int argc, char **argv, char **envp)
 		return (-1);
 	return (0);
 }
-
-
-
 
 int check_input(int argc, char **argv)
 {
