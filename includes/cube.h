@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:39:02 by rafaria           #+#    #+#             */
-/*   Updated: 2025/03/31 15:56:46 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/03/31 17:34:20 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ int			ft_strlen_cub(const char *str);
 
 int			ft_strlen_spaces_tabs(const char *str);
 char		*ft_strdup_pimp(const char *src);
+int			count_level(char **str);
 
 // Textures
 int			check_access_every_txture(t_struct *map);
@@ -104,6 +105,11 @@ int			save_rgb(t_struct *map, char *map_string, char *letter);
 int			verify_rgb(t_struct *map, char *map_string, char *letter);
 int			ft_isalnum_inferior_255(char *str);
 int			count_characters(char *str);
+
+// Check Map Layout
+
+int			check_map_layout(t_struct *map);
+int			last_is_map(t_struct *map);
 
 // DISPLAY
 

@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 20:08:03 by rafaria           #+#    #+#             */
-/*   Updated: 2025/03/31 15:57:03 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/03/31 17:12:27 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 int check_access_txture(char *path_txture)
 {
     int fd;
-
-	// if (check_last_part_txture_found(path_txture) == -1)
-	// 	return (-1);
     
     fd = open(path_txture, O_RDONLY);
     if (fd < 0)
@@ -36,13 +33,13 @@ int check_access_every_txture(t_struct *map)
 	i = 0;
 	
     if (check_access_txture(map->no_txture) == -1)
-    return (-1);
+    	return (-1);
     if (check_access_txture(map->so_txture) == -1)
-    return (-1);
+    	return (-1);
     if (check_access_txture(map->we_txture) == -1)
-    return (-1);
+    	return (-1);
     if (check_access_txture(map->ea_txture) == -1)
-    return (-1);
+    	return (-1);
     return (1);
 }
 

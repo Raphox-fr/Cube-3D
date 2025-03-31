@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:05:07 by rafaria           #+#    #+#             */
-/*   Updated: 2025/03/31 15:15:25 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/03/31 17:38:47 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,21 @@ int check_map(t_struct *map, char *file_path)
 		free_struct_map(map);
 		return (-1);
 	}
+    printf("NO =%s\n", map->no_txture);
+    printf("SO =%s\n", map->so_txture);
+    printf("WE =%s\n", map->we_txture);
+    printf("EA =%s\n", map->ea_txture);
+    printf("---------------------------------------------\n");
 
-	printf("NO =%s\n", map->no_txture);
-	printf("SO =%s\n", map->so_txture);
-	printf("WE =%s\n", map->we_txture);
-	printf("EA =%s\n", map->ea_txture);
+    if (check_map_layout(map) == -1)
+	{
+		display_error("Invalid map / not surrounded with walls / not last element \n");
+		free_struct_map(map);
+		return (-1);
+	}
+
+    
+
     free_struct_map(map); //FREE FIN DISPLAY
 	
 	return (0);

@@ -17,6 +17,7 @@ SRCS    = $(SRCDIR)/main.c \
           $(SRCDIR)/textures.c \
           $(SRCDIR)/xpm.c \
           $(SRCDIR)/tools.c \
+		  $(SRCDIR)/check_map_layout.c \
           $(SRCDIR)/floor_ceiling.c \
 		  $(GNLDIR)/get_next_line_utils.c \
 		  $(GNLDIR)/get_next_line.c \
