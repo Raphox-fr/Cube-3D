@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:39:02 by rafaria           #+#    #+#             */
-/*   Updated: 2025/03/31 17:34:20 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/03/31 19:17:09 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,83 @@
 # include <sys/wait.h>
 # include <unistd.h>
 
-# define WALL '1'
-# define AIR '0'
+# define KEY_W 13
+# define KEY_A 0
+# define KEY_S 1
+# define KEY_D 2
+# define KEY_LEFT 123
+# define KEY_RIGHT 124
+# define KEY_ESC 53
+# define KEY_UP 126
+# define KEY_DOWN 125
 
-# define UP 119
-# define DOWN 115
-# define LEFT 97
-# define RIGHT 100
-# define ESCAPE 65307
+typedef struct s_ray
+{
+    int posX;
+    int posY;
+    int dirX;
+    int dirY;
+    int planeX;
+    int planeY;
+    double time;
+    double oldTime;
+    double cameraX;
+    double rayDirX;
+    double rayDirY;
+    int mapX;
+    int mapY;
+    double sideDistX;
+    double sideDistY;
+    double deltaDistX;
+    double deltaDistY;
+    double perpWallDist;
+    int stepX;
+    int stepY;
+    int hit;
+    int side;
+    int lineHeight;
+    int drawStart;
+    int drawEnd;
+    int color;
+    int x;
+    int y;
+    int texNum;
+    double wallX;
+    int texX;
+    int texY;
+    double step;
+    double texPos;
+    int texWidth;
+    int texHeight;
+    int texColor;
+    int *texture;
+    double floorXWall;
+    double floorYWall;
+    double distWall;
+    double distPlayer;
+    double currentDist;
+    void *mlx;
+    void *win;
+    int width;
+    int height;
+    int **map;
+    int moveSpeed;//faire un define variable globale
+    int rotSpeed;//same 
+    int key[300];
+    double oldDirX;
+    double oldPlaneX;
+    double oldDirY;
+    double oldPlaneY;
+    int key_left;
+    int key_right;
+    int key_esc;
+    int key_up;
+    int key_down;
+    int key_w;
+    int key_a;
+    int key_s;
+    int key_d;
+}   t_ray;
 
 // # define PLAYER 'W'
 // # define REALUP 65362
@@ -113,6 +182,7 @@ int			last_is_map(t_struct *map);
 
 // DISPLAY
 
-// fonctions here
+int ft_launch(t_ray *ray);
+
 
 #endif
