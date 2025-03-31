@@ -11,17 +11,39 @@ int ft_launch(t_ray *ray)
     ray->win = mlx_new_window(ray->mlx, ray->width, ray->height, "Cub3D");
     if (!ray->win)
     {
+        //incomplete desrtoy texture a faire ?!
         printf("Error\nmlx_new_window\n");
-        //fonction destroy + free
-        return (1);
+        mlx_destroy_display(ray->mlx);
+        free(ray->mlx);
+        free(ray);
+        return (0);
     }
     mlx_hook(ray->win, 2, 1L << 0, ft_key_press, ray);
     mlx_hook(ray->win, 3, 1L << 1, ft_key_release, ray);
     mlx_hook(ray->win, 17, 1L << 17, close_window, ray);
     mlx_loop_hook(ray->mlx, ft_loop, ray);
     mlx_loop(ray->mlx);
-    return (0);
+    return (1);
 }
+
+void ft_key_press(int keycode, t_ray *ray)
+{
+    if (keycode == KEY_ESC)
+        close_window(ray);
+    if (keycode == KEY_W)
+        ray->key[keycode] = 1;
+    if (keycode == KEY_A)
+        ray->key[keycode] = 1;
+    if (keycode == KEY_S)
+        ray->key[keycode] = 1;
+    if (keycode == KEY_D)
+        ray->key[keycode] = 1;
+    if (keycode == KEY_LEFT)
+        ray->key[keycode] = 1;
+    if (keycode == KEY_RIGHT)
+        ray->key[keycode] = 1;
+}
+
 
 int close_window(t_ray *ray)
 {
@@ -40,8 +62,6 @@ int ft_loop(t_ray *ray)
     return (0);
 }
 
-//ray->width = (ray->width > 1920) ? 1920 : ray->width;
-//ray->height = (ray->height > 1080) ? 1080 : ray->height;
 
 int ft_draw(t_ray *ray)
 {

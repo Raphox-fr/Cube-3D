@@ -6,7 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:39:02 by rafaria           #+#    #+#             */
-/*   Updated: 2025/03/28 17:01:36 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/03/31 19:00:01 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,15 @@
 # include <sys/wait.h>
 # include <unistd.h>
 
-
+# define KEY_W 13
+# define KEY_A 0
+# define KEY_S 1
+# define KEY_D 2
+# define KEY_LEFT 123
+# define KEY_RIGHT 124
+# define KEY_ESC 53
+# define KEY_UP 126
+# define KEY_DOWN 125
 typedef struct s_ray
 {
     int posX;
@@ -86,13 +94,15 @@ typedef struct s_ray
     double oldPlaneX;
     double oldDirY;
     double oldPlaneY;
+    int key_left;
+    int key_right;
+    int key_esc;
+    int key_up;
+    int key_down;
     int key_w;
     int key_a;
     int key_s;
     int key_d;
-    int key_left;
-    int key_right;
-    int key_esc;
 }   t_ray;
 
 
