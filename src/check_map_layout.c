@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 17:28:52 by rafaria           #+#    #+#             */
-/*   Updated: 2025/03/31 18:02:23 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/03/31 18:50:51 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int last_is_map(t_struct *map)
             if (map->map_table[i][j] != '1' && map->map_table[i][j] != '0'  && map->map_table[i][j] != 'N' && map->map_table[i][j] != 'S' &&
             map->map_table[i][j] != 'E' && map->map_table[i][j] != 'W' && map->map_table[i][j] != ' ' && map->map_table[i][j] != '\0' && valid == 0)
             {
-                printf("map pas valide la\n");
                 return (-1); 
             }
             valid = 1;
