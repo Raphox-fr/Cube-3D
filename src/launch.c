@@ -30,11 +30,11 @@ void ft_key_press(int keycode, t_ray *ray)
 {
     if (keycode == KEY_ESC)
         close_window(ray);
-    if (keycode == KEY_W)
+    if (keycode == KEY_W  || keycode == KEY_UP)
         ray->key[keycode] = 1;
     if (keycode == KEY_A)
         ray->key[keycode] = 1;
-    if (keycode == KEY_S)
+    if (keycode == KEY_S || keycode == KEY_DOWN)
         ray->key[keycode] = 1;
     if (keycode == KEY_D)
         ray->key[keycode] = 1;
@@ -44,6 +44,21 @@ void ft_key_press(int keycode, t_ray *ray)
         ray->key[keycode] = 1;
 }
 
+void ft_key_release(int keycode, t_ray *ray)
+{
+    if (keycode == KEY_W || keycode == KEY_UP)
+        ray->key[keycode] = 0;
+    if (keycode == KEY_A)
+        ray->key[keycode] = 0;
+    if (keycode == KEY_S || keycode == KEY_DOWN)
+        ray->key[keycode] = 0;
+    if (keycode == KEY_D)
+        ray->key[keycode] = 0;
+    if (keycode == KEY_LEFT)
+        ray->key[keycode] = 0;
+    if (keycode == KEY_RIGHT)
+        ray->key[keycode] = 0;
+}
 
 int close_window(t_ray *ray)
 {
@@ -57,9 +72,9 @@ int close_window(t_ray *ray)
 int ft_loop(t_ray *ray)
 {
     ft_move(ray);
-    //rajouter memset pour clear l'image a chaque loop
+    //ft_memset(ray->img, 0, /*ray->width * ray->height * 4*/);     //ft_memset(void *s, int c, size_t n)
     ft_raycast(ray);
-    ft_draw(ray); //rajouter mlx_put_image_to_window
+   // mlx_put_image_to_window(ray->mlx, ray->win, ray->img, 0, 0);
     return (0);
 }
 
@@ -101,21 +116,21 @@ void    ft_move(t_ray *ray)
     }
     if (ray->key[KEY_LEFT]) 
     {
-        oldDirX = ray->dirX;
+        ray->oldDirX = ray->dirX;
         ray->dirX = ray->dirX * cos(ray->rotSpeed) - ray->dirY * sin(ray->rotSpeed);
-        ray->dirY = oldDirX * sin(ray->rotSpeed) + ray->dirY * cos(ray->rotSpeed);
-        oldPlaneX = ray->planeX;
+        ray->dirY = ray->oldDirX * sin(ray->rotSpeed) + ray->dirY * cos(ray->rotSpeed);
+        ray->oldPlaneX = ray->planeX;
         ray->planeX = ray->planeX * cos(ray->rotSpeed) - ray->planeY * sin(ray->rotSpeed);
-        ray->planeY = oldPlaneX * sin(ray->rotSpeed) + ray->planeY * cos(ray->rotSpeed);
+        ray->planeY = ray->oldPlaneX * sin(ray->rotSpeed) + ray->planeY * cos(ray->rotSpeed);
     }
     if (ray->key[KEY_RIGHT]) 
     {
-        oldDirX = ray->dirX;
+        ray->oldDirX = ray->dirX;
         ray->dirX = ray->dirX * cos(-ray->rotSpeed) - ray->dirY * sin(-ray->rotSpeed);
-        ray->dirY = oldDirX * sin(-ray->rotSpeed) + ray->dirY * cos(-ray->rotSpeed);
-        oldPlaneX = ray->planeX;
+        ray->dirY = ray->oldDirX * sin(-ray->rotSpeed) + ray->dirY * cos(-ray->rotSpeed);
+        ray->oldPlaneX = ray->planeX;
         ray->planeX = ray->planeX * cos(-ray->rotSpeed) - ray->planeY * sin(-ray->rotSpeed);
-        ray->planeY = oldPlaneX * sin(-ray->rotSpeed) + ray->planeY * cos(-ray->rotSpeed);
+        ray->planeY = ray->oldPlaneX * sin(-ray->rotSpeed) + ray->planeY * cos(-ray->rotSpeed);
     }    
 }
 
@@ -131,3 +146,8 @@ fonction raycast(voir tuto)
 
 fonction draw ! attention bits->per pixel et de haut en bas, et texture avec tableau
 */
+
+void    ft_raycast(t_ray *ray)
+{
+    
+}

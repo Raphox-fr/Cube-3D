@@ -107,6 +107,7 @@ typedef struct s_ray
     int key_a;
     int key_s;
     int key_d;
+    
 }   t_ray;
 
 // # define PLAYER 'W'
