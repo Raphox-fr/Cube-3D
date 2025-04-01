@@ -13,7 +13,7 @@ SRCS    = $(SRCDIR)/main.c \
           $(SRCDIR)/error.c \
           $(SRCDIR)/init.c \
           $(SRCDIR)/check_map.c \
-          $(SRCDIR)/flood_fill.c \
+          $(SRCDIR)/verify_map.c \
           $(SRCDIR)/textures.c \
           $(SRCDIR)/xpm.c \
           $(SRCDIR)/tools.c \

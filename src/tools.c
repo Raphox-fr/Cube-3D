@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 14:20:49 by rafaria           #+#    #+#             */
-/*   Updated: 2025/03/31 17:33:04 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/01 17:58:31 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	ft_strlen_spaces_tabs(const char *str)
 	return (count);
 }
 
-int count_level(char **str)
+int count_size_y(int x, char **map_table)
 {
 	int i;
 	int count;
@@ -84,7 +84,22 @@ int count_level(char **str)
 	count = 0;
 	i = 0;
 
-	while (str[i])
+	while (map_table[i][x])
+	{
+		i++;
+	}
+	return (i);
+}
+
+int count_size_x(int y, char **str)
+{
+	int i;
+	int count;
+	
+	count = 0;
+	i = 0;
+
+	while (str[y][i])
 	{
 		i++;
 	}

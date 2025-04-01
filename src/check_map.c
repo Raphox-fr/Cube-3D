@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:05:07 by rafaria           #+#    #+#             */
-/*   Updated: 2025/03/31 18:52:31 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/01 18:31:30 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,12 @@ int check_map(t_struct *map, char *file_path)
     printf("SO =%s\n", map->so_txture);
     printf("WE =%s\n", map->we_txture);
     printf("EA =%s\n", map->ea_txture);
+	
     printf("Check Map Layout ---------------------------------------------\n");
-
+	
+	map->first_line_after_infos = map->first_line_after_infos + 1;
+	printf("first_line_after_infos =%d\n", map->first_line_after_infos);
+	printf("String of first_line_after_infos =%s\n", map->map_table[map->first_line_after_infos]);
     if (check_map_layout(map) == -1)
 	{
         printf("---------------------------------------------\n");
@@ -48,10 +52,11 @@ int check_map(t_struct *map, char *file_path)
 		return (-1);
 	}
 
-    
-
-    free_struct_map(map); //FREE FIN DISPLAY
 	
+	
+
+	
+    free_struct_map(map); //FREE FIN DISPLAY
 	return (0);
 }
 
