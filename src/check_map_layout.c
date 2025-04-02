@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 17:28:52 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/01 18:37:20 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/02 18:29:25 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int check_map_layout(t_struct *map)
 	}
     if (check_invalid_char_after_first_line_after_infos(map) == -1)
 	{
-		printf("tab ou caracters invalid dans MAP ");
 		return (-1);
 	}
 	if (find_player(map) == -1)
