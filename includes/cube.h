@@ -6,7 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:39:02 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/02 16:53:13 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/02 17:27:33 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@
 # include <sys/types.h>
 # include <sys/wait.h>
 # include <unistd.h>
+# include <limits.h>
+# include <math.h>
 
 # define KEY_W 13
 # define KEY_A 0
@@ -186,9 +188,35 @@ int			count_characters(char *str);
 int			check_map_layout(t_struct *map);
 int			last_is_map(t_struct *map);
 
+
+
+
+
+// -----------------------
 // DISPLAY
+// launch.c
 
 int ft_launch(t_ray *ray);
+void ft_key_press(int keycode, t_ray *ray);
+void ft_key_release(int keycode, t_ray *ray);
+int close_window(t_ray *ray);
+int ft_loop(t_ray *ray);
 
+// raycasting.c
+
+
+//move.c
+void    ft_move(t_ray *ray);
+void    ft_rotate_left(t_ray *ray);
+void    ft_rotate_right(t_ray *ray);
+
+//move_bis.c
+void    ft_move_forward(t_ray *ray);
+void    ft_move_back(t_ray *ray);
+void    ft_move_left(t_ray *ray);
+void    ft_move_right(t_ray *ray);
+
+//draw.c
+int ft_draw(t_ray *ray);
 
 #endif
