@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:39:02 by rafaria           #+#    #+#             */
-/*   Updated: 2025/03/31 19:17:09 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/02 15:31:35 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_ray
     int dirY;
     int planeX;
     int planeY;
-    double time;
+    // double time;
     double oldTime;
     double cameraX;
     double rayDirX;
@@ -68,19 +68,22 @@ typedef struct s_ray
     int lineHeight;
     int drawStart;
     int drawEnd;
-    int color;
+    // int color;
     int x;
     int y;
-    int texNum;
+    int h;
+    int size_x;
+    int side;
+    // int texNum;
     double wallX;
-    int texX;
-    int texY;
+    // int texX;
+    // int texY;
     double step;
-    double texPos;
-    int texWidth;
-    int texHeight;
-    int texColor;
-    int *texture;
+    // double texPos;
+    // int texWidth;
+    // int texHeight;
+    // int texColor;
+    // int *texture;
     double floorXWall;
     double floorYWall;
     double distWall;
