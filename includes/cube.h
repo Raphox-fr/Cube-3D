@@ -6,7 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:39:02 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/02 15:31:35 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/02 16:53:13 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@
 # define KEY_ESC 53
 # define KEY_UP 126
 # define KEY_DOWN 125
+# define MOVE_SPEED 0.05
+# define ROT_SPEED 0.05
 
 typedef struct s_ray
 {
@@ -94,8 +96,8 @@ typedef struct s_ray
     int width;
     int height;
     int **map;
-    int moveSpeed;//faire un define variable globale
-    int rotSpeed;//same 
+    // int moveSpeed;//faire un define variable globale
+    // int rotSpeed;//same 
     int key[300];
     double oldDirX;
     double oldPlaneX;

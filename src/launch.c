@@ -88,56 +88,60 @@ void    ft_move(t_ray *ray)
 {
     if (ray->key[KEY_W])
     {
-        if (!ray->map[(int)(ray->posX + ray->dirX * ray->moveSpeed)][(int)ray->posY])
-            ray->posX += ray->dirX * ray->moveSpeed;
-        if (!ray->map[(int)ray->posX][(int)(ray->posY + ray->dirY * ray->moveSpeed)])
-            ray->posY += ray->dirY * ray->moveSpeed;
+        //fonction move avant
+        if (!ray->map[(int)(ray->posX + ray->dirX * MOVE_SPEED)][(int)ray->posY])
+            ray->posX += ray->dirX * MOVE_SPEED;
+        if (!ray->map[(int)ray->posX][(int)(ray->posY + ray->dirY * MOVE_SPEED)])
+            ray->posY += ray->dirY * MOVE_SPEED;
     }
     if (ray->key[KEY_S])
     {
-        if (!ray->map[(int)(ray->posX - ray->dirX * ray->moveSpeed)][(int)ray->posY])
-            ray->posX -= ray->dirX * ray->moveSpeed;
-        if (!ray->map[(int)ray->posX][(int)(ray->posY - ray->dirY * ray->moveSpeed)])
-            ray->posY -= ray->dirY * ray->moveSpeed;
+        //fonction move arriere
+        if (!ray->map[(int)(ray->posX - ray->dirX * MOVE_SPEED)][(int)ray->posY])
+            ray->posX -= ray->dirX * MOVE_SPEED;
+        if (!ray->map[(int)ray->posX][(int)(ray->posY - ray->dirY * MOVE_SPEED)])
+            ray->posY -= ray->dirY * MOVE_SPEED;
     }
     if (ray->key[KEY_A])
     {
-        if (!ray->map[(int)(ray->posX - ray->dirY * ray->moveSpeed)][(int)ray->posY])
-            ray->posX -= ray->dirY * ray->moveSpeed;
-        if (!ray->map[(int)ray->posX][(int)(ray->posY + ray->dirX * ray->moveSpeed)])
-            ray->posY += ray->dirX * ray->moveSpeed;
+        //fonction move gauche
+        if (!ray->map[(int)(ray->posX - ray->dirY * MOVE_SPEED)][(int)ray->posY])
+            ray->posX -= ray->dirY * MOVE_SPEED;
+        if (!ray->map[(int)ray->posX][(int)(ray->posY + ray->dirX * MOVE_SPEED)])
+            ray->posY += ray->dirX * MOVE_SPEED;
     }
     if (ray->key[KEY_D])
     {
-        if (!ray->map[(int)(ray->posX + ray->dirY * ray->moveSpeed)][(int)ray->posY])
-            ray->posX += ray->dirY * ray->moveSpeed;
-        if (!ray->map[(int)ray->posX][(int)(ray->posY - ray->dirX * ray->moveSpeed)])
-            ray->posY -= ray->dirX * ray->moveSpeed;
+        //fonction move droite
+        if (!ray->map[(int)(ray->posX + ray->dirY * MOVE_SPEED)][(int)ray->posY])
+            ray->posX += ray->dirY * MOVE_SPEED;
+        if (!ray->map[(int)ray->posX][(int)(ray->posY - ray->dirX * MOVE_SPEED)])
+            ray->posY -= ray->dirX * MOVE_SPEED;
     }
     if (ray->key[KEY_LEFT]) 
     {
+        //fonction rotation gauche
         ray->oldDirX = ray->dirX;
-        ray->dirX = ray->dirX * cos(ray->rotSpeed) - ray->dirY * sin(ray->rotSpeed);
-        ray->dirY = ray->oldDirX * sin(ray->rotSpeed) + ray->dirY * cos(ray->rotSpeed);
+        ray->dirX = ray->dirX * cos(ROT_SPEED) - ray->dirY * sin(ROT_SPEED);
+        ray->dirY = ray->oldDirX * sin(ROT_SPEED) + ray->dirY * cos(ROT_SPEED);
         ray->oldPlaneX = ray->planeX;
-        ray->planeX = ray->planeX * cos(ray->rotSpeed) - ray->planeY * sin(ray->rotSpeed);
-        ray->planeY = ray->oldPlaneX * sin(ray->rotSpeed) + ray->planeY * cos(ray->rotSpeed);
+        ray->planeX = ray->planeX * cos(ROT_SPEED) - ray->planeY * sin(ROT_SPEED);
+        ray->planeY = ray->oldPlaneX * sin(ROT_SPEED) + ray->planeY * cos(ROT_SPEED);
     }
     if (ray->key[KEY_RIGHT]) 
     {
+        //fonction rotation droite
         ray->oldDirX = ray->dirX;
-        ray->dirX = ray->dirX * cos(-ray->rotSpeed) - ray->dirY * sin(-ray->rotSpeed);
-        ray->dirY = ray->oldDirX * sin(-ray->rotSpeed) + ray->dirY * cos(-ray->rotSpeed);
+        ray->dirX = ray->dirX * cos(-ROT_SPEED) - ray->dirY * sin(-ROT_SPEED);
+        ray->dirY = ray->oldDirX * sin(-ROT_SPEED) + ray->dirY * cos(-ROT_SPEED);
         ray->oldPlaneX = ray->planeX;
-        ray->planeX = ray->planeX * cos(-ray->rotSpeed) - ray->planeY * sin(-ray->rotSpeed);
-        ray->planeY = ray->oldPlaneX * sin(-ray->rotSpeed) + ray->planeY * cos(-ray->rotSpeed);
+        ray->planeX = ray->planeX * cos(-ROT_SPEED) - ray->planeY * sin(-ROT_SPEED);
+        ray->planeY = ray->oldPlaneX * sin(-ROT_SPEED) + ray->planeY * cos(-ROT_SPEED);
     }    
 }
 
 void    ft_raycast(t_ray *ray)
 {
-    while (!done())
-    {
         int x;
         
         x = 0;
@@ -206,20 +210,12 @@ void    ft_raycast(t_ray *ray)
             if (ray->drawEnd >= ray->h) //h = size_y
                 ray->drawEnd = ray->h - 1;
             x++;
-        }
+            //fonction draw apres 
     }
 }
 
 /*
-fonction init struct ray
-fonction loop :  draw, move + memset + mlx_put_image_to_window
-
-define global KEY + speed 
-
-FONCTIONS   mouvement key press
-            rotation key press
-
-fonction raycast(voir tuto)
-
+fonction : init struct ray
+fonction launch : memset + mlx_put_image_to_window
 fonction draw ! attention bits->per pixel et de haut en bas, et texture avec tableau
 */
