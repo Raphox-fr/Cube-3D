@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 14:20:49 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/01 17:58:31 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/03 18:27:06 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,8 @@ int count_size_y(int x, char **map_table)
 	count = 0;
 	i = 0;
 
-	while (map_table[i][x])
+	
+	while (map_table[i] && map_table[i][x])
 	{
 		i++;
 	}

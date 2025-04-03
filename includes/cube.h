@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:39:02 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/03 12:39:00 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/03 14:27:46 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,17 +118,17 @@ typedef struct s_ray
 typedef struct t_start
 {
 	char	*file_path;
-	char	*map_brut;
 	char	**map;
 	char	**map_table;
-
+	char	**map_only;
+	
 	int		x_player;
 	int		y_player;
 	char	player_directions;
-
+	
 	int		x_zero;
 	int		y_zero;
-
+	
 	char	*no_txture;
 	char	*so_txture;
 	char	*we_txture;
@@ -137,9 +137,10 @@ typedef struct t_start
 	int ceiling[3]; // 255,255,255 RGB
 	int		first_line_after_infos;
 	int		first_line_map;
-
+	
 	// BRUT MAP
 	char	*ceiling_brut;
+	char	*map_brut;
 	char	*brut_map_only;
 
 	int		first_line_brut_map;
