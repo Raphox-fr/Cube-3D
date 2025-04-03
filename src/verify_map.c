@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 17:32:50 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/02 18:49:11 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/03 12:41:44 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,18 @@
 
 int verify_map(t_struct *map)
 {
-	char **final;
-	final = ft_split_pimp(map->file_path, '\n');
-	display_map_simple(final);
-	return (1);
+	// map->map_brut = read_file_into_string(map->file_path);
+	// printf("////////////////////////////////////////\n");
+	// printf("%s", map->map_brut);
+	// printf("CEILING BRUT %s\n", map->ceiling_brut);
 
+	if (check_newline_map(map) == -1)
+		return (-1);
+
+	return (1);
 	
-	replace_space_with_wall(map);
-	display_map(map);
+	
+	// display_map(map);
 	
 	
 	// while (find_zero(map) != -1)
@@ -69,29 +73,6 @@ int check_udlr(t_struct *map)
 	
 }
 
-void replace_space_with_wall(t_struct *map)
-{
-	int	y;
-	int	x;
-
-	find_first_line_map(map);
-	y = map->first_line_map;
-	while (map->map_table[y])
-	{
-		x = 0;
-		while (map->map_table[y][x])
-		{
-			if (map->map_table[y][x] == ' ')
-			{
-				map->map_table[y][x] = '1';
-			}
-			x++;
-		}
-		y++;
-	}
-}
-
-
 
 
 int find_zero(t_struct *map)
@@ -119,47 +100,47 @@ int find_zero(t_struct *map)
 	return (-1);
 }
 
-int display_map(t_struct *map)
-{
-	int	y;
-	int	x;
+// int display_map(t_struct *map)
+// {
+// 	int	y;
+// 	int	x;
 
-	y = map->first_line_after_infos;
-	printf("MAP =\n");
+// 	y = map->first_line_after_infos;
+// 	printf("MAP =\n");
 
-	while (map->map_table[y])
-	{
-		x = 0;
-		while (map->map_table[y][x])
-		{
-			x++;
-		}
-		printf("%s\n", map->map_table[y]);
-		y++;
-	}
-	return (-1);
-}
+// 	while (map->map_table[y])
+// 	{
+// 		x = 0;
+// 		while (map->map_table[y][x])
+// 		{
+// 			x++;
+// 		}
+// 		printf("%s\n", map->map_table[y]);
+// 		y++;
+// 	}
+// 	return (-1);
+// }
 
-int display_map_simple(char **map)
-{
-	int	y;
-	int	x;
+// int display_map_simple(char **map)
+// {
+// 	int	y;
+// 	int	x;
 
-	y = 0;
-	printf("MAP double etoile =\n");
+// 	y = 0;
+// 	printf("MAP double etoile =\n");
 
-	while (map[y])
-	{
-		x = 0;
-		while (map[y][x])
-		{
-			x++;
-		}
-		printf("%s\n", map[y]);
-		y++;
-	}
-	return (-1);
-}
+// 	while (map[y])
+// 	{
+// 		x = 0;
+// 		while (map[y][x])
+// 		{
+// 			x++;
+// 		}
+// 		printf("%s\n", map[y]);
+// 		y++;
+// 	}
+// 	return (-1);
+// }
 
 
 	

@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:32:57 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/01 18:31:30 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/03 11:48:47 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int find_floor_ceiling(t_struct *map, char **map_table, char *letter)
 		{
 			if (i >= map->first_line_after_infos)
 				map->first_line_after_infos = i;
+			if (letter[0] == 'C')
+				map->ceiling_brut = map_table[i];
             if (save_rgb(map, map_table[i], letter) == 1)
 			{
                 return (1);

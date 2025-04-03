@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 19:34:55 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/01 18:36:36 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/03 12:14:32 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,5 @@ int init_struct_map(t_struct *map)
 	map->ceiling[2] = 0;
 	map->first_line_after_infos = 0;
 	map->first_line_map = 0;
-	return (0);
+	map->brut_map_only = NULL;
 }

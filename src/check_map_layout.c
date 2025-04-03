@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 17:28:52 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/02 18:29:25 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/03 12:49:28 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int check_map_layout(t_struct *map)
 {
 	if (map->first_line_after_infos != 6)
 	{
-		printf("caracteres detecter ");
 		return (-1);
 	}
     if (check_invalid_char_after_first_line_after_infos(map) == -1)
@@ -29,9 +28,12 @@ int check_map_layout(t_struct *map)
 	printf("x_player=%d\n", map->x_player);
 	printf("y_player=%d\n", map->y_player);
 	printf("player_directions=%d\n", map->player_directions);
-
+	
 	if (verify_map(map) == -1)
+	{
 		return (-1);
+		
+	}
 	return 1;
 }
 

@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:39:02 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/02 18:48:41 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/03 12:39:00 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ typedef struct s_ray
 typedef struct t_start
 {
 	char	*file_path;
+	char	*map_brut;
 	char	**map;
 	char	**map_table;
 
@@ -136,6 +137,12 @@ typedef struct t_start
 	int ceiling[3]; // 255,255,255 RGB
 	int		first_line_after_infos;
 	int		first_line_map;
+
+	// BRUT MAP
+	char	*ceiling_brut;
+	char	*brut_map_only;
+
+	int		first_line_brut_map;
 
 }			t_struct;
 
@@ -196,7 +203,6 @@ int			find_first_line_map(t_struct *map);
 
 int			verify_map(t_struct *map);
 int			check_udlr(t_struct *map);
-void		replace_space_with_wall(t_struct *map);
 int			find_zero(t_struct *map);
 int			display_map(t_struct *map);
 int			display_map_simple(char **map);
@@ -206,6 +212,14 @@ int			ft_count_level(const char *str, char set);
 char		*ft_strempli_pimp(const char *s, char set);
 char		**ft_fill_pimp(char **tab, int countwords, const char *s, char set);
 char		**ft_split_pimp(char const *s, char c);
+
+// check newline map
+
+int			check_newline_map(t_struct *map);
+int			find_C_line(t_struct *map);
+int			check_no_newline(t_struct *map);
+
+void		replace_space_with_wall(t_struct *map);
 
 // DISPLAY
 

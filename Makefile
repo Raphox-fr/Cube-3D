@@ -19,7 +19,7 @@ SRCS    = $(SRCDIR)/main.c \
           $(SRCDIR)/tools.c \
 		  $(SRCDIR)/check_map_layout.c \
           $(SRCDIR)/floor_ceiling.c \
-          $(SRCDIR)/split_pimp.c \
+          $(SRCDIR)/check_newline.c \
 		  $(GNLDIR)/get_next_line_utils.c \
 		  $(GNLDIR)/get_next_line.c \
 

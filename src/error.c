@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 17:48:03 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/01 16:34:03 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/03 11:39:48 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void free_struct_map(t_struct *map)
 		free(map->we_txture);
 	if (map->ea_txture != NULL)
 		free(map->ea_txture);
-    if (map->file_path)
-        free(map->file_path);
+    if (map->map_brut)
+        free(map->map_brut);
 }
 
 void	ft_putchar_fd(char c, int fd)

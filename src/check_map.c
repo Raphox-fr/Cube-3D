@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:05:07 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/01 18:31:30 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/03 12:49:48 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@ int check_map(t_struct *map, char *file_path)
 	int fd;
 	char *string_map;
 
-	map->file_path = read_file_into_string(file_path);
-	map->map_table = ft_split(map->file_path, '\n');
+	map->file_path = file_path;
+	map->map_brut = read_file_into_string(file_path);
+	map->map_table = ft_split(map->map_brut, '\n');
 
 	if (find_every_txture_in_map(map, map->map_table, "str") == -1 
         || check_access_every_txture(map) == -1)
