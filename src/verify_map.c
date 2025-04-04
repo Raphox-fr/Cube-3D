@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 17:32:50 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/04 18:18:08 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/04 19:05:38 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int verify_map(t_struct *map)
 	// printf("--------\n");
 	while (find_zero(map) != -1)
 	{
-		printf("y-zero=%d\n", map->y_zero);
-		printf("x-zero=%d\n", map->x_zero);
-		printf("--------\n");
+		// printf("y-zero=%d\n", map->y_zero);
+		// printf("x-zero=%d\n", map->x_zero);
+		// printf("--------\n");
 		if (check_udlr(map) == -1)
 		{
 			free_split(map->map_only);
@@ -91,19 +91,27 @@ int check_udlr(t_struct *map)
 		return (-1);
 	
 	
-	if (map->map_only[y - 1][x] == '\0' && ft_strlen(map->map_only[y - 1]) >= ft_strlen(map->map_only[y])) // UP
-		return (-1);
+	if (ft_strlen(map->map_only[y - 1]) >= ft_strlen(map->map_only[y]) && map->map_only[y - 1][x] == '\0' ||
+		x >= ft_strlen(map->map_only[y - 1])) // UP
+	{
+		printf("UP\n");
+		return (-1); 
+	}
 	
-	if (map->map_only[y + 1][x] == '\0' && ft_strlen(map->map_only[y + 1]) >= ft_strlen(map->map_only[y])) // DOWN
-		return (-1);
+	if (ft_strlen(map->map_only[y + 1]) >= ft_strlen(map->map_only[y]) && map->map_only[y + 1][x] == '\0' ||
+		x >= ft_strlen(map->map_only[y]) )// DOWN
+		{
+			printf("DOWN\n");
+			return (-1);
 
-	if (map->map_only[y][x - 1] == '\0' && ft_strlen(map->map_only[y]) == 0) // LEFT
+		}
+
+	if (map->map_only[y][x - 1] == '\0') // LEFT
+		return (-1);
+	if (map->map_only[y][x + 1] == '\0') // LEFT
 		return (-1);
 	
-	if (map->map_only[y][x + 1] == '\0' && ft_strlen(map->map_only[y]) == 0) // RIGHT
-		return (-1);
-	
-		return (1);
+	return (1);
 
 	
 }
