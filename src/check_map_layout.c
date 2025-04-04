@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 17:28:52 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/03 12:49:28 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/04 16:05:28 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int find_player(t_struct *map)
 				map->x_player = x;
 				map->y_player = y - 7;
 				map->player_directions = map->map_table[y][x];
-				map->map_table[y][x] = 0;
+				map->map_table[y][x] = '0';
 			}
 			x++;
 		}

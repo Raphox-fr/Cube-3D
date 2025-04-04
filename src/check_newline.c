@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 11:43:44 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/03 12:56:44 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/04 16:02:13 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,6 @@ int check_newline_map(t_struct *map)
 	if (check_no_newline(map) == -1)
 		return (-1);
 	return (1);
-	
-	// printf("////////////////////////////");
-	// printf("%s \n", map->brut_map_only);
 }
 int check_no_newline(t_struct *map)
 {
@@ -42,7 +39,6 @@ int check_no_newline(t_struct *map)
 		if (map->brut_map_only[i] == '\n' && map->brut_map_only[i - 1] == '\n')
 			break;
 	}
-	
 	while (map->brut_map_only[i])
 	{
 		if (map->brut_map_only[i] != '\n')

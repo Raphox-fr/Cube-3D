@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:39:02 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/03 14:27:46 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/04 16:06:36 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,14 +121,14 @@ typedef struct t_start
 	char	**map;
 	char	**map_table;
 	char	**map_only;
-	
+
 	int		x_player;
 	int		y_player;
 	char	player_directions;
-	
+
 	int		x_zero;
 	int		y_zero;
-	
+
 	char	*no_txture;
 	char	*so_txture;
 	char	*we_txture;
@@ -137,7 +137,7 @@ typedef struct t_start
 	int ceiling[3]; // 255,255,255 RGB
 	int		first_line_after_infos;
 	int		first_line_map;
-	
+
 	// BRUT MAP
 	char	*ceiling_brut;
 	char	*map_brut;
@@ -222,6 +222,7 @@ int			check_no_newline(t_struct *map);
 
 void		replace_space_with_wall(t_struct *map);
 
+int			transform_player_to_zero(t_struct *map);
 // DISPLAY
 
 int			ft_launch(t_ray *ray);

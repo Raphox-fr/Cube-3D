@@ -25,3 +25,29 @@ MAP REMPLACEMENT
 1 = MUR
 N | S | E | W = PLAYER
 ' ' | vide = remplacer par 1
+
+
+
+Brouillon de code
+int check_udlr(t_struct *map)
+{
+	int x;
+	int y;
+	int size_x;
+	int size_y;
+
+	x = map->x_zero;
+	y = map->y_zero;
+	
+	size_x = count_size_x(y, map->map_only);
+	size_y = count_size_y(x, map->map_only) - 1;
+	printf("y %d\n", y);
+	printf("size_y = %d\n", size_y);
+	
+		
+		if (x == 0 || y == 0)
+			return (-1);
+	
+	if (y == size_y || x == size_x)
+		return (-1);
+	

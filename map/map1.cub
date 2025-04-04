@@ -5,23 +5,26 @@ SO map/textures/matrix.xpm
 
 WE map/textures/matrix.xpm
 
-EA       map/textures/matrix.xpm       
-
-
-
-
-
-
-
-
-
-
-
+EA       map/textures/matrix.xpm  
 
 F       1,78,0
 C    12,0,255
 
 
-11111111111
-1101011N1110
-11111011111
+
+1111111111111111111111
+11
+1
+1
+1
+1
+1
+1
+1
+1
+1111111111101
+111111N1
+1111111111111111
+
+
+
