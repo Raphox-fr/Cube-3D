@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_newline.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
+/*   By: raphox <raphox@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 11:43:44 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/04 16:02:13 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/06 18:18:55 by raphox           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int check_newline_map(t_struct *map)
 {
-	if (find_C_line(map) == -1)
+	if (find_last_elements(map) == -1)
 		return (-1);
 	replace_space_with_wall(map);
 	
@@ -51,7 +51,7 @@ int check_no_newline(t_struct *map)
 
 
 
-int find_C_line(t_struct *map)
+int find_last_elements(t_struct *map)
 {
     int i;
 	i = 0;
@@ -59,10 +59,11 @@ int find_C_line(t_struct *map)
 	start = "";
 
     
-    if (ft_strnstr(map->map_brut, map->ceiling_brut, ft_strlen_size_t(map->map_brut)) != 0)
+    if (ft_strnstr(map->map_brut, map->map_table[5], ft_strlen_size_t(map->map_brut)) != 0)
 	{
-		start = ft_strnstr(map->map_brut, map->ceiling_brut, ft_strlen_size_t(map->map_brut));
-		map->brut_map_only = start + ft_strlen(map->ceiling_brut);
+		start = ft_strnstr(map->map_brut, map->map_table[5], ft_strlen_size_t(map->map_brut));
+		printf("start =%s\n", start);
+		map->brut_map_only = start + ft_strlen(map->map_table[5]);
 		return (1);
 	}
 	return (-1);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
+/*   By: raphox <raphox@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 19:34:55 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/03 17:53:55 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/06 17:55:38 by raphox           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,6 @@ int init_struct_map(t_struct *map)
 	map->x_zero = 0;
 	map->y_zero = 0;
 	map->brut_map_only = NULL;
+	map->hex_floor = 0;
+	map->hex_ceiling = 0;
 }

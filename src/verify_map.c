@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verify_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
+/*   By: raphox <raphox@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 17:32:50 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/04 19:05:38 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/06 18:25:12 by raphox           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,11 @@ int check_udlr(t_struct *map)
 	
 	size_x = count_size_x(y, map->map_only);
 	size_y = count_size_y(x, map->map_only) - 1;
-	printf("y %d\n", y);
-	printf("size_y = %d\n", size_y);
+	// printf("y %d\n", y);
+	// printf("size_y = %d\n", size_y);
 	
-		
-		if (x == 0 || y == 0)
-			return (-1);
+	if (x == 0 || y == 0)
+		return (-1);
 	
 	if (y == size_y || x == size_x)
 		return (-1);
@@ -99,7 +98,7 @@ int check_udlr(t_struct *map)
 	}
 	
 	if (ft_strlen(map->map_only[y + 1]) >= ft_strlen(map->map_only[y]) && map->map_only[y + 1][x] == '\0' ||
-		x >= ft_strlen(map->map_only[y]) )// DOWN
+		x >= ft_strlen(map->map_only[y + 1]) )// DOWN
 		{
 			printf("DOWN\n");
 			return (-1);
