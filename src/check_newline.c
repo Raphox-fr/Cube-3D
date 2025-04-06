@@ -6,7 +6,7 @@
 /*   By: raphox <raphox@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 11:43:44 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/06 18:28:17 by raphox           ###   ########.fr       */
+/*   Updated: 2025/04/06 18:37:47 by raphox           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ int find_last_elements(t_struct *map)
     if (ft_strnstr(map->map_brut, map->map_table[5], ft_strlen_size_t(map->map_brut)) != 0)
 	{
 		start = ft_strnstr(map->map_brut, map->map_table[5], ft_strlen_size_t(map->map_brut));
-		// printf("start =%s\n", start);
 		map->brut_map_only = start + ft_strlen(map->map_table[5]);
 		return (1);
 	}
