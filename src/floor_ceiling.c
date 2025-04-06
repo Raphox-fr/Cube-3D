@@ -6,7 +6,7 @@
 /*   By: raphox <raphox@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:32:57 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/06 18:07:02 by raphox           ###   ########.fr       */
+/*   Updated: 2025/04/06 18:50:44 by raphox           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,12 @@ int	check_floor_ceiling_in_map(t_struct *map, char **map_table)
 	count = 0;
 	if (find_floor_ceiling(map, map_table, "F ") == 1)
 	{
-		printf("map_floor=%d\n", map->floor[0]);
-		printf("map_floor=%d\n", map->floor[1]);
-		printf("map_floor=%d\n", map->floor[2]);
 		map->hex_floor = rgb_to_hex(map->floor[0], map->floor[1],
 				map->floor[2]);
 		count++;
 	}
 	if (find_floor_ceiling(map, map_table, "C ") == 1)
 	{
-		printf("map_ceiling=%d\n", map->ceiling[0]);
-		printf("map_ceiling=%d\n", map->ceiling[1]);
-		printf("map_ceiling=%d\n", map->ceiling[2]);
 		map->hex_ceiling = rgb_to_hex(map->ceiling[0], map->ceiling[1],
 				map->ceiling[2]);
 		count++;
@@ -41,6 +35,7 @@ int	check_floor_ceiling_in_map(t_struct *map, char **map_table)
 		return (1);
 	return (-1);
 }
+
 int	rgb_to_hex(int r, int g, int b)
 {
 	int	hex_color;
@@ -87,7 +82,7 @@ int	save_rgb(t_struct *map, char *map_string, char *letter)
 		{
 			map_string = map_string + 2;
 			while ((*map_string == ' ' || *map_string == '	')
-					&& *map_string != '\0')
+				&& *map_string != '\0')
 				map_string++;
 			if (verify_rgb(map, map_string, letter) == -1)
 				return (-1);
@@ -104,37 +99,26 @@ int	verify_rgb(t_struct *map, char *map_string, char *letter)
 {
 	int		j;
 	char	**split_result;
+	int		*target;
 
 	j = 0;
 	split_result = ft_split(map_string, ',');
 	while (split_result[j])
 	{
-		printf("value=%s\n", split_result[j]);
 		if (ft_isalnum_inferior_255(split_result[j]) == -1
 			|| count_characters(map_string) == -1)
-		{
-			free_split(split_result);
-			return (-1);
-		}
+			return (free_split(split_result), -1);
 		j++;
 	}
 	if (j != 3)
-	{
-		free_split(split_result);
-		return (-1);
-	}
+		return (free_split(split_result), -1);
 	if (letter[0] == 'F')
-	{
-		map->floor[0] = ft_atoi(split_result[0]);
-		map->floor[1] = ft_atoi(split_result[1]);
-		map->floor[2] = ft_atoi(split_result[2]);
-	}
-	if (letter[0] == 'C')
-	{
-		map->ceiling[0] = ft_atoi(split_result[0]);
-		map->ceiling[1] = ft_atoi(split_result[1]);
-		map->ceiling[2] = ft_atoi(split_result[2]);
-	}
+		target = map->floor;
+	else if (letter[0] == 'C')
+		target = map->ceiling;
+	target[0] = ft_atoi(split_result[0]);
+	target[1] = ft_atoi(split_result[1]);
+	target[2] = ft_atoi(split_result[2]);
 	free_split(split_result);
 	return (1);
 }
@@ -157,6 +141,7 @@ int	ft_isalnum_inferior_255(char *str)
 	}
 	return (1);
 }
+
 int	count_characters(char *str)
 {
 	int	i;
@@ -183,7 +168,7 @@ int	count_characters(char *str)
 // faire un flood fill dans la map pour voir si la map est close
 // verifier si le joueur est present dans la map
 // et ensuite verifier s il y a des 0 autour de la map et si oui,
-	// s il sont entourer par des murs,
+// s il sont entourer par des murs,
 // remplacer les espaces vides par un mur.
 
 // verifier il ya des murs
