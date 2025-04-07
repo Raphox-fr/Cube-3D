@@ -6,7 +6,7 @@
 /*   By: raphox <raphox@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:32:57 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/07 21:28:59 by raphox           ###   ########.fr       */
+/*   Updated: 2025/04/07 21:34:37 by raphox           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,7 @@ int count_number(char *str)
 			count++;
 		i++;
 	}
-	if (count != 3)
+	if (count >=4)
 		return (-1);
 	return (count);
 }

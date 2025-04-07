@@ -5,10 +5,9 @@ SO map/textures/matrix.xpm
 WE map/textures/matrix.xpm
 
 
-
 EA       map/textures/matrix.xpm
 
-C 255,200,205      
+C 1,2,3 99
 F 122,122,123
 
 
