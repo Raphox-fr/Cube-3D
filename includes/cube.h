@@ -6,7 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:39:02 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/02 18:03:06 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/07 16:27:11 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,32 @@
 # define MOVE_SPEED 0.05
 # define ROT_SPD 0.05
 
+
 typedef struct s_ray
 {
+    void *mlx;
+    void *win;
+    
+    int key_l;
+    int key_r;
+    int key_w;
+    int key_a;
+    int key_s;
+    int key_d;
+    
+    int x;
+    int y;
+    int width;
+    int height;
+    
+    int size_x;
+    int size_y;
     int posX;
     int posY;
     int dirX;
     int dirY;
     int planeX;
     int planeY;
-    // double time;
-    double oldTime;
     double cameraX;
     double rayDirX;
     double rayDirY;
@@ -72,49 +88,16 @@ typedef struct s_ray
     int lineHeight;
     int drawStart;
     int drawEnd;
-    // int color;
-    int x;
-    int y;
     int h;
-    int size_x;
-    int side;
-    // int texNum;
     double wallX;
-    // int texX;
-    // int texY;
     double step;
-    // double texPos;
-    // int texWidth;
-    // int texHeight;
-    // int texColor;
-    // int *texture;
-    double floorXWall;
-    double floorYWall;
-    double distWall;
-    double distPlayer;
-    double currentDist;
-    void *mlx;
-    void *win;
-    int width;
-    int height;
-    int **map;
-    // int moveSpeed;//faire un define variable globale
-    // int rotSpeed;//same 
-    int key[300];
     double oldDirX;
     double oldPlaneX;
-    double oldDirY;
-    double oldPlaneY;
-    int key_left;
-    int key_right;
-    int key_esc;
-    int key_up;
-    int key_down;
-    int key_w;
-    int key_a;
-    int key_s;
-    int key_d;
-    
+    int		texx;
+	int		texy;
+    int		f_color;
+	int		c_color;
+
 }   t_ray;
 
 // # define PLAYER 'W'

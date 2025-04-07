@@ -6,7 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:15:14 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/02 18:15:41 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/07 16:30:17 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_launch(t_ray *ray)
 {
-	ft_init(&ray);
+	ft_init(&ray); //initation struct ray + direction joueur
 	ray->mlx = mlx_init();
 	if (!ray->mlx)
 		return (0);
@@ -23,8 +23,8 @@ int	ft_launch(t_ray *ray)
 	ray->win = mlx_new_window(ray->mlx, ray->width, ray->height, "Cub3D");
 	if (!ray->win)
 	{
-		//incomplete desrtoy texture a faire ?!
 		printf("Error\nmlx_new_window\n");
+		//ft_free_image(ray);
 		mlx_destroy_display(ray->mlx);
 		free(ray->mlx);
 		free(ray);
@@ -43,33 +43,33 @@ void	ft_key_press(int keycode, t_ray *ray)
 	if (keycode == KEY_ESC)
 		close_window(ray);
 	if (keycode == KEY_W || keycode == KEY_UP)
-		ray->key[keycode] = 1;
+		ray->key_w = 1;
 	if (keycode == KEY_A)
-		ray->key[keycode] = 1;
+		ray->key_a = 1;
 	if (keycode == KEY_S || keycode == KEY_DOWN)
-		ray->key[keycode] = 1;
+		ray->key_s = 1;
 	if (keycode == KEY_D)
-		ray->key[keycode] = 1;
+		ray->key_d = 1;
 	if (keycode == KEY_LEFT)
-		ray->key[keycode] = 1;
+		ray->key_l = 1;
 	if (keycode == KEY_RIGHT)
-		ray->key[keycode] = 1;
+		ray->key_r = 1;
 }
 
 void	ft_key_release(int keycode, t_ray *ray)
 {
 	if (keycode == KEY_W || keycode == KEY_UP)
-		ray->key[keycode] = 0;
+		ray->key_w = 0;
 	if (keycode == KEY_A)
-		ray->key[keycode] = 0;
+		ray->key_a = 0;
 	if (keycode == KEY_S || keycode == KEY_DOWN)
-		ray->key[keycode] = 0;
+		ray->key_s = 0;
 	if (keycode == KEY_D)
-		ray->key[keycode] = 0;
+		ray->key_d = 0;
 	if (keycode == KEY_LEFT)
-		ray->key[keycode] = 0;
+		ray->key_l = 0;
 	if (keycode == KEY_RIGHT)
-		ray->key[keycode] = 0;
+		ray->key_r = 0;
 }
 
 int	close_window(t_ray *ray)
@@ -87,6 +87,6 @@ int	ft_loop(t_ray *ray)
 	//mlx_put_image_to_window(ray->mlx, ray->win, ray->img, 0, 0);
 	return (0);
 }
-//fonction : init struct ray
+
+// fonction initi player + structure
 //fonction launch : memset + mlx_put_image_to_window
-//fonction draw ! attention bits->per pixel et de haut en bas, et texture avec tableau

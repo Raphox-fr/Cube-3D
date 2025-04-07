@@ -6,7 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:12:53 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/02 18:02:50 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/07 16:31:25 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 void	ft_move(t_ray *ray)
 {
-	if (ray->key[KEY_W])
+	if (ray->key_w)
 		ft_move_forward(ray);
-	if (ray->key[KEY_S])
+	if (ray->key_s)
 		ft_move_back(ray);
-	if (ray->key[KEY_A])
+	if (ray->key_a)
 		ft_move_left(ray);
-	if (ray->key[KEY_D])
+	if (ray->key_d)
 		ft_move_right(ray);
-	if (ray->key[KEY_LEFT])
+	if (ray->key_l)
 		ft_rotate_left(ray);
-	if (ray->key[KEY_RIGHT])
+	if (ray->key_r)
 		ft_rotate_right(ray);
 }
 

@@ -6,7 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:10:58 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/02 17:13:13 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/07 16:33:54 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,11 @@ void    ft_raycast(t_ray *ray)
                 ray->drawEnd = ray->h - 1;
             x++;
             //fonction draw apres 
+            ft_draw(ray, x);
     }
+}
+
+void ft_draw(t_ray *ray, int x)
+{
+
 }
