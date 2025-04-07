@@ -6,7 +6,7 @@
 /*   By: raphox <raphox@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:32:57 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/06 18:50:44 by raphox           ###   ########.fr       */
+/*   Updated: 2025/04/07 21:28:59 by raphox           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int	save_rgb(t_struct *map, char *map_string, char *letter)
 
 	i = 0;
 	printf("%sFOUND :\n", letter);
+	printf("%s\n", map_string);
 	if (map_string != NULL)
 	{
 		while (*map_string == ' ' || *map_string == '	')
@@ -94,6 +95,7 @@ int	save_rgb(t_struct *map, char *map_string, char *letter)
 	}
 	return (-1);
 }
+// || ft_strlen(split_result[j]) >= 4
 
 int	verify_rgb(t_struct *map, char *map_string, char *letter)
 {
@@ -106,7 +108,7 @@ int	verify_rgb(t_struct *map, char *map_string, char *letter)
 	while (split_result[j])
 	{
 		if (ft_isalnum_inferior_255(split_result[j]) == -1
-			|| count_characters(map_string) == -1)
+			|| count_characters(map_string, ',') == -1)
 			return (free_split(split_result), -1);
 		j++;
 	}
@@ -130,19 +132,21 @@ int	ft_isalnum_inferior_255(char *str)
 	i = 0;
 	if (str[i] == 0)
 		return (-1);
+	if (count_number(str) == -1)
+		return (-1);
 	while (str[i])
 	{
-		if (((str[i]) < '0' || str[i] > '9') && (str[i] != ' '
-				&& str[i] != '\t'))
+		if (((str[i]) < '0' || str[i] > '9') && (str[i] != ' '))
 			return (-1);
 		if (atoi(str) < 0 || atoi(str) > 255)
 			return (-1);
+		
 		i++;
 	}
 	return (1);
 }
+int count_number(char *str)
 
-int	count_characters(char *str)
 {
 	int	i;
 	int	count;
@@ -151,7 +155,25 @@ int	count_characters(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if ((str[i]) == ',')
+		if ((str[i]) >= '0' && str[i] <= '9')
+			count++;
+		i++;
+	}
+	if (count != 3)
+		return (-1);
+	return (count);
+}
+
+int	count_characters(char *str, char c)
+{
+	int	i;
+	int	count;
+
+	count = 0;
+	i = 0;
+	while (str[i])
+	{
+		if ((str[i]) == c)
 			count++;
 		i++;
 	}

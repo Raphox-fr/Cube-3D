@@ -6,7 +6,7 @@
 /*   By: raphox <raphox@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:39:02 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/06 18:17:49 by raphox           ###   ########.fr       */
+/*   Updated: 2025/04/07 21:28:38 by raphox           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,8 +137,8 @@ typedef struct t_start
 	int ceiling[3]; // 255,255,255 RGB
 	int		first_line_after_infos;
 	int		first_line_map;
-	int 	hex_floor;
-	int 	hex_ceiling;
+	int		hex_floor;
+	int		hex_ceiling;
 
 	// BRUT MAP
 	char	*ceiling_brut;
@@ -152,7 +152,7 @@ typedef struct t_start
 // -----------------------
 // PARSING
 
-int	rgb_to_hex(int r, int g, int b);
+int			rgb_to_hex(int r, int g, int b);
 
 int			parsing(int argc, char **argv, char **envp);
 
@@ -195,7 +195,8 @@ int			find_floor_ceiling(t_struct *map, char **map_table,
 int			save_rgb(t_struct *map, char *map_string, char *letter);
 int			verify_rgb(t_struct *map, char *map_string, char *letter);
 int			ft_isalnum_inferior_255(char *str);
-int			count_characters(char *str);
+int			count_characters(char *str, char c);
+int			count_number(char *str);
 
 // Check Map Layout
 

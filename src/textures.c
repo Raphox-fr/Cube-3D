@@ -6,7 +6,7 @@
 /*   By: raphox <raphox@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 20:08:03 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/06 18:53:18 by raphox           ###   ########.fr       */
+/*   Updated: 2025/04/07 21:21:39 by raphox           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,9 +120,9 @@ int	check_end_textures(char *str)
 	int	i;
 
 	i = 0;
-	while (str[i] != '\0' && str[i] != ' ' && str[i] != '\t')
+	while (str[i] != '\0' && str[i] != ' ')
 		i++;
-	while (str[i] != '\0' && (str[i] == ' ' || str[i] == '\t'))
+	while (str[i] != '\0' && (str[i] == ' '))
 		i++;
 	if (str[i] != '\0')
 		return (-1);

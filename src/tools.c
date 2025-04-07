@@ -6,7 +6,7 @@
 /*   By: raphox <raphox@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 14:20:49 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/06 18:54:27 by raphox           ###   ########.fr       */
+/*   Updated: 2025/04/07 21:12:23 by raphox           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*ft_strdup_pimp(const char *src)
 		return (NULL);
 	while (src[i])
 	{
-		if (src[i] != ' ' && src[i] != '\t')
+		if (src[i] != ' ')
 		{
 			dest[j] = src[i];
 			j++;
@@ -69,7 +69,7 @@ int	ft_strlen_spaces_tabs(const char *str)
 	count = 0;
 	while (str[i])
 	{
-		if (str[i] != ' ' && str[i] != '\t')
+		if (str[i] != ' ')
 			count++;
 		i++;
 	}

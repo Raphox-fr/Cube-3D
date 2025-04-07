@@ -6,7 +6,7 @@
 /*   By: raphox <raphox@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:05:07 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/06 18:41:07 by raphox           ###   ########.fr       */
+/*   Updated: 2025/04/07 20:38:39 by raphox           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,16 @@ int check_map(t_struct *map, char *file_path)
 		free_struct_map(map);
 		return (-1);
 	}
-    printf("NO =%s\n", map->no_txture);
-    printf("SO =%s\n", map->so_txture);
-    printf("WE =%s\n", map->we_txture);
-    printf("EA =%s\n", map->ea_txture);
+    // printf("NO =%s\n", map->no_txture);
+    // printf("SO =%s\n", map->so_txture);
+    // printf("WE =%s\n", map->we_txture);
+    // printf("EA =%s\n", map->ea_txture);
 	
-    printf("Check Map Layout ---------------------------------------------\n");
+    // printf("Check Map Layout ---------------------------------------------\n");
 	
 	map->first_line_after_infos = map->first_line_after_infos + 1;
-	printf("first_line_after_infos =%d\n", map->first_line_after_infos);
-	printf("String of first_line_after_infos =%s\n", map->map_table[map->first_line_after_infos]);
+	// printf("first_line_after_infos =%d\n", map->first_line_after_infos);
+	// printf("String of first_line_after_infos =%s\n", map->map_table[map->first_line_after_infos]);
     if (check_map_layout(map) == -1)
 	{
         printf("---------------------------------------------\n");
@@ -55,8 +55,12 @@ int check_map(t_struct *map, char *file_path)
 
 	
 	
-
 	
+	printf("VALID MAP | VALID MAP ---------------------------------\n");
+	printf("VALID MAP | VALID MAP ---------------------------------\n");
+	printf("VALID MAP | VALID MAP ---------------------------------\n");
+	printf("VALID MAP | VALID MAP ---------------------------------\n");
+
     free_struct_map(map); //FREE FIN DISPLAY
 	return (0);
 }
