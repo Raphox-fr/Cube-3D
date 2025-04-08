@@ -6,13 +6,13 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:10:58 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/08 19:06:05 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/08 19:56:50 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-
+//SPLIT FONCTION FT_RAYCAST
 void    ft_raycast(t_ray *ray)
 {
         int x;
@@ -26,7 +26,7 @@ void    ft_raycast(t_ray *ray)
             ray->deltaDistX = sqrt(1 + (ray->rayDirY * ray->rayDirY) / (ray->rayDirX * ray->rayDirX));
             ray->deltaDistY = sqrt(1 + (ray->rayDirX * ray->rayDirX) / (ray->rayDirY * ray->rayDirY));
             
-            //une fonction ici
+            //une fonction ici DISTAMCE()
             ray->mapX = ray->posX;
             ray->mapY = ray->posY;
             if (ray->rayDirX < 0)
@@ -50,7 +50,7 @@ void    ft_raycast(t_ray *ray)
                 ray->sideDistY = (ray->mapY + 1.0 - ray->posY) * ray->deltaDistY;
             }
             
-            //une fonction la
+            //une fonction la DDA()
             ray->hit = 0;
             while (ray->hit == 0)
             {
@@ -74,7 +74,7 @@ void    ft_raycast(t_ray *ray)
             else
                 ray->perpWallDist = (ray->mapY - ray->posY + (1 - ray->stepY) / 2) / ray->rayDirY;
             
-            //une fonction ici
+            //une fonction ici FT_HEIGHT()
             ray->lineHeight = (int)(ray->h / ray->perpWallDist);
             ray->drawStart = -ray->lineHeight / 2 + ray->h / 2;
             if (ray->drawStart < 0)
@@ -83,12 +83,8 @@ void    ft_raycast(t_ray *ray)
             if (ray->drawEnd >= ray->h) //h = size_y
                 ray->drawEnd = ray->h - 1;
             x++;
+            
             //fonction draw apres 
             ft_draw(ray, x);
     }
-}
-
-void ft_draw(t_ray *ray, int x)
-{
-
 }
