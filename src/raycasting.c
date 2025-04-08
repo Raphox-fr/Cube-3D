@@ -6,7 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:10:58 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/07 16:33:54 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/08 19:06:05 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ void    ft_raycast(t_ray *ray)
                     ray->mapY += ray->stepY;
                     ray->side = 1;
                 }
-                // if (ray->map2d[ray->mapX][ray->mapY] > 0) //rajout structure map map2d
-                //     ray->hit = 1;
+                if (ray->map[ray->mapX][ray->mapY] > 0)
+                    ray->hit = 1;
             }
             if (ray->side == 0)
                 ray->perpWallDist = (ray->mapX - ray->posX + (1 - ray->stepX) / 2) / ray->rayDirX;

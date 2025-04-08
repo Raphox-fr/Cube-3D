@@ -6,7 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:39:02 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/07 16:27:11 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/08 19:43:54 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct s_ray
 {
     void *mlx;
     void *win;
+    char *axe;
     
     int key_l;
     int key_r;
@@ -62,6 +63,7 @@ typedef struct s_ray
     int y;
     int width;
     int height;
+    char **map;
     
     int size_x;
     int size_y;
@@ -201,5 +203,9 @@ void    ft_move_right(t_ray *ray);
 
 //draw.c
 int ft_draw(t_ray *ray);
+
+//init.c
+int init_struct_ray(t_ray *ray);
+int init_player(t_ray *ray);
 
 #endif

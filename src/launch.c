@@ -6,7 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:15:14 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/07 16:30:17 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/08 19:48:16 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,19 @@
 
 int	ft_launch(t_ray *ray)
 {
-	ft_init(&ray); //initation struct ray + direction joueur
-	ray->mlx = mlx_init();
+	init_struct_ray(ray);
+	if (init_struct_ray(ray) == -1)
+		return (printf("Error\ninit_struct_ray\n"), free_exit(ray),	0);
 	if (!ray->mlx)
-		return (0);
-	mlx_get_screen_size(ray->mlx, &ray->width, &ray->height);
-	ft_xpm_to_img(ray);
-	ray->win = mlx_new_window(ray->mlx, ray->width, ray->height, "Cub3D");
+		return (printf("Error\nmlx\n"), free_exit(ray),	0);
+	ft_xpm_to_img(ray); //A FAIR **
 	if (!ray->win)
 	{
 		printf("Error\nmlx_new_window\n");
-		//ft_free_image(ray);
+		//ft_free_image(ray);  **
 		mlx_destroy_display(ray->mlx);
 		free(ray->mlx);
-		free(ray);
-		return (0);
+		return (free_exit(ray), 0);
 	}
 	mlx_hook(ray->win, 2, 1L << 0, ft_key_press, ray);
 	mlx_hook(ray->win, 3, 1L << 1, ft_key_release, ray);
