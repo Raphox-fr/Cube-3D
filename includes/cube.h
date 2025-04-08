@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raphox <raphox@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:39:02 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/07 21:28:38 by raphox           ###   ########.fr       */
+/*   Updated: 2025/04/08 11:34:49 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,9 +194,10 @@ int			find_floor_ceiling(t_struct *map, char **map_table,
 				char *directions);
 int			save_rgb(t_struct *map, char *map_string, char *letter);
 int			verify_rgb(t_struct *map, char *map_string, char *letter);
-int			ft_isalnum_inferior_255(char *str);
+int			check_value_syntax_rgb(char *str);
 int			count_characters(char *str, char c);
 int			count_number(char *str);
+int			verify_syntax_rgb(char *str);
 
 // Check Map Layout
 

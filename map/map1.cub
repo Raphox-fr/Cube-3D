@@ -4,13 +4,12 @@ SO map/textures/matrix.xpm
 
 WE map/textures/matrix.xpm
 
+EA         map/textures/matrix.xpm
 
-EA       map/textures/matrix.xpm
+C 1,224,222             
 
-C 1,2,3 99
 F 122,122,123
 
-
-11111111111111111
-100000N000000111
-1111111111111111111111111111111111
+111111
+1110N1
+111111

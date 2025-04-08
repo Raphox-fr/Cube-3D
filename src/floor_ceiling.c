@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   floor_ceiling.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raphox <raphox@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:32:57 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/07 21:34:37 by raphox           ###   ########.fr       */
+/*   Updated: 2025/04/08 11:34:53 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int	verify_rgb(t_struct *map, char *map_string, char *letter)
 	split_result = ft_split(map_string, ',');
 	while (split_result[j])
 	{
-		if (ft_isalnum_inferior_255(split_result[j]) == -1
+		if (check_value_syntax_rgb(split_result[j]) == -1
 			|| count_characters(map_string, ',') == -1)
 			return (free_split(split_result), -1);
 		j++;
@@ -125,7 +125,7 @@ int	verify_rgb(t_struct *map, char *map_string, char *letter)
 	return (1);
 }
 
-int	ft_isalnum_inferior_255(char *str)
+int	check_value_syntax_rgb(char *str)
 {
 	int	i;
 
@@ -140,10 +140,29 @@ int	ft_isalnum_inferior_255(char *str)
 			return (-1);
 		if (atoi(str) < 0 || atoi(str) > 255)
 			return (-1);
-		
+		i++;
+	}
+	if (verify_syntax_rgb(str) == -1)
+		return (-1);
+	return (1);
+}
+
+int verify_syntax_rgb(char *str)
+{
+	int i;
+	i = 0;
+	while (str[i] == ' ' && str[i] != '\0')
+		i++;
+	while (str[i] >= '0' && str[i] <= '9' && str[i] != '\0')
+		i++;
+	while (str[i] != '\0')
+	{
+		if (str[i] != ' ')
+			return (-1);
 		i++;
 	}
 	return (1);
+	
 }
 int count_number(char *str)
 
