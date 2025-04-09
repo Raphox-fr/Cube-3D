@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/05 14:39:02 by rafaria           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/04/08 11:34:49 by rafaria          ###   ########.fr       */
-=======
-/*   Updated: 2025/04/07 16:27:11 by aneumann         ###   ########.fr       */
->>>>>>> origin/alban_branch
+/*   Created: 2025/04/09 12:15:35 by rafaria           #+#    #+#             */
+/*   Updated: 2025/04/09 12:19:44 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+
 
 #ifndef CUBE_H
 # define CUBE_H
@@ -23,6 +21,8 @@
 # include "stdbool.h"
 # include <dirent.h>
 # include <fcntl.h>
+# include <limits.h>
+# include <math.h>
 # include <readline/history.h>
 # include <readline/readline.h>
 # include <signal.h>
@@ -34,8 +34,6 @@
 # include <sys/types.h>
 # include <sys/wait.h>
 # include <unistd.h>
-# include <limits.h>
-# include <math.h>
 
 # define KEY_W 13
 # define KEY_A 0
@@ -49,134 +47,63 @@
 # define MOVE_SPEED 0.05
 # define ROT_SPD 0.05
 
-
 typedef struct s_ray
 {
-<<<<<<< HEAD
-	int		posX;
-	int		posY;
-	int		dirX;
-	int		dirY;
-	int		planeX;
-	int		planeY;
-	double	time;
-	double	oldTime;
-	double	cameraX;
-	double	rayDirX;
-	double	rayDirY;
-	int		mapX;
-	int		mapY;
-	double	sideDistX;
-	double	sideDistY;
-	double	deltaDistX;
-	double	deltaDistY;
-	double	perpWallDist;
-	int		stepX;
-	int		stepY;
-	int		hit;
-	int		side;
-	int		lineHeight;
-	int		drawStart;
-	int		drawEnd;
-	int		color;
-	int		x;
-	int		y;
-	int		texNum;
-	double	wallX;
-	int		texX;
-	int		texY;
-	double	step;
-	double	texPos;
-	int		texWidth;
-	int		texHeight;
-	int		texColor;
-	int		*texture;
-	double	floorXWall;
-	double	floorYWall;
-	double	distWall;
-	double	distPlayer;
-	double	currentDist;
-	void	*mlx;
-	void	*win;
-	int		width;
-	int		height;
-	int		**map;
-	int moveSpeed; // faire un define variable globale
-	int rotSpeed;  // same
-	int		key[300];
-	double	oldDirX;
-	double	oldPlaneX;
-	double	oldDirY;
-	double	oldPlaneY;
-	int		key_left;
-	int		key_right;
-	int		key_esc;
-	int		key_up;
-	int		key_down;
-	int		key_w;
-	int		key_a;
-	int		key_s;
-	int		key_d;
-}			t_ray;
-=======
-    void *mlx;
-    void *win;
-    
-    int key_l;
-    int key_r;
-    int key_w;
-    int key_a;
-    int key_s;
-    int key_d;
-    
-    int x;
-    int y;
-    int width;
-    int height;
-    
-    int size_x;
-    int size_y;
-    int posX;
-    int posY;
-    int dirX;
-    int dirY;
-    int planeX;
-    int planeY;
-    double cameraX;
-    double rayDirX;
-    double rayDirY;
-    int mapX;
-    int mapY;
-    double sideDistX;
-    double sideDistY;
-    double deltaDistX;
-    double deltaDistY;
-    double perpWallDist;
-    int stepX;
-    int stepY;
-    int hit;
-    int side;
-    int lineHeight;
-    int drawStart;
-    int drawEnd;
-    int h;
-    double wallX;
-    double step;
-    double oldDirX;
-    double oldPlaneX;
-    int		texx;
-	int		texy;
-    int		f_color;
-	int		c_color;
+    void    *mlx;
+    void    *win;
+    char    *axe;
 
-}   t_ray;
->>>>>>> origin/alban_branch
+    int     key_l;
+    int     key_r;
+    int     key_w;
+    int     key_a;
+    int     key_s;
+    int     key_d;
 
-// # define PLAYER 'W'
-// # define REALUP 65362
-// # define REALDOWN 65364
-// # define REALLEFT 65361
-// # define REALRIGHT 65363
+    int     x;
+    int     y;
+    int     width;
+    int     height;
+    char    **map;
+
+    int     size_x;
+    int     size_y;
+    int     posX;
+    int     posY;
+    int     dirX;
+    int     dirY;
+    int     planeX;
+    int     planeY;
+    double  cameraX;
+    double  rayDirX;
+    double  rayDirY;
+    int     mapX;
+    int     mapY;
+    double  sideDistX;
+    double  sideDistY;
+    double  deltaDistX;
+    double  deltaDistY;
+    double  perpWallDist;
+    int     stepX;
+    int     stepY;
+    int     hit;
+    int     side;
+    int     lineHeight;
+    int     drawStart;
+    int     drawEnd;
+    int     h;
+    double  wallX;
+    double  step;
+    double  oldDirX;
+    double  oldPlaneX;
+    int     texx;
+    int     texy;
+    int     f_color;
+    int     c_color;
+	t_struct *map;
+}           t_ray;
+
+
 
 typedef struct t_start
 {
@@ -196,8 +123,8 @@ typedef struct t_start
 	char	*so_txture;
 	char	*we_txture;
 	char	*ea_txture;
-	int floor[3];   // 255,255,255 RGB
-	int ceiling[3]; // 255,255,255 RGB
+	int floor[3];
+	int ceiling[3];
 	int		first_line_after_infos;
 	int		first_line_map;
 	int		hex_floor;
@@ -211,6 +138,7 @@ typedef struct t_start
 	int		first_line_brut_map;
 
 }			t_struct;
+
 
 // -----------------------
 // PARSING
@@ -292,23 +220,29 @@ int			check_no_newline(t_struct *map);
 void		replace_space_with_wall(t_struct *map);
 
 int			transform_player_to_zero(t_struct *map);
+
 // DISPLAY
 // launch.c
 
 int			ft_launch(t_ray *ray);
 
-//move.c
-void    ft_move(t_ray *ray);
-void    ft_rotate_left(t_ray *ray);
-void    ft_rotate_right(t_ray *ray);
+// move.c
+void		ft_move(t_ray *ray);
+void		ft_rotate_left(t_ray *ray);
+void		ft_rotate_right(t_ray *ray);
 
-//move_bis.c
-void    ft_move_forward(t_ray *ray);
-void    ft_move_back(t_ray *ray);
-void    ft_move_left(t_ray *ray);
-void    ft_move_right(t_ray *ray);
+// move_bis.c
+void		ft_move_forward(t_ray *ray);
+void		ft_move_back(t_ray *ray);
+void		ft_move_left(t_ray *ray);
+void		ft_move_right(t_ray *ray);
 
-//draw.c
-int ft_draw(t_ray *ray);
+// draw.c
+int			ft_draw(t_ray *ray);
 
+// init.c
+int			init_struct_ray(t_ray *ray);
+int			init_player(t_ray *ray);
+void		ft_init_player_N(t_ray *ray);
+void		ft_init_player_S(t_ray *ray);
 #endif
