@@ -6,11 +6,9 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:15:35 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/09 12:37:46 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/09 12:41:18 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 #ifndef CUBE_H
 # define CUBE_H
@@ -49,61 +47,59 @@
 
 typedef struct s_ray
 {
-    void    *mlx;
-    void    *win;
-    char    *axe;
+	void	*mlx;
+	void	*win;
+	char	*axe;
 
-    int     key_l;
-    int     key_r;
-    int     key_w;
-    int     key_a;
-    int     key_s;
-    int     key_d;
+	int		key_l;
+	int		key_r;
+	int		key_w;
+	int		key_a;
+	int		key_s;
+	int		key_d;
 
-    int     x;
-    int     y;
-    int     width;
-    int     height;
-    char    **map;
+	int		x;
+	int		y;
+	int		width;
+	int		height;
+	char	**map;
 
-    int     size_x;
-    int     size_y;
-    int     posX;
-    int     posY;
-    int     dirX;
-    int     dirY;
-    int     planeX;
-    int     planeY;
-    double  cameraX;
-    double  rayDirX;
-    double  rayDirY;
-    int     mapX;
-    int     mapY;
-    double  sideDistX;
-    double  sideDistY;
-    double  deltaDistX;
-    double  deltaDistY;
-    double  perpWallDist;
-    int     stepX;
-    int     stepY;
-    int     hit;
-    int     side;
-    int     lineHeight;
-    int     drawStart;
-    int     drawEnd;
-    int     h;
-    double  wallX;
-    double  step;
-    double  oldDirX;
-    double  oldPlaneX;
-    int     texx;
-    int     texy;
-    int     f_color;
-    int     c_color;
+	int		size_x;
+	int		size_y;
+	int		posX;
+	int		posY;
+	int		dirX;
+	int		dirY;
+	int		planeX;
+	int		planeY;
+	double	cameraX;
+	double	rayDirX;
+	double	rayDirY;
+	int		mapX;
+	int		mapY;
+	double	sideDistX;
+	double	sideDistY;
+	double	deltaDistX;
+	double	deltaDistY;
+	double	perpWallDist;
+	int		stepX;
+	int		stepY;
+	int		hit;
+	int		side;
+	int		lineHeight;
+	int		drawStart;
+	int		drawEnd;
+	int		h;
+	double	wallX;
+	double	step;
+	double	oldDirX;
+	double	oldPlaneX;
+	int		texx;
+	int		texy;
+	int		f_color;
+	int		c_color;
 	// t_struct *map;
-}           t_ray;
-
-
+}			t_ray;
 
 typedef struct t_start
 {
@@ -123,8 +119,8 @@ typedef struct t_start
 	char	*so_txture;
 	char	*we_txture;
 	char	*ea_txture;
-	int floor[3];
-	int ceiling[3];
+	int		floor[3];
+	int		ceiling[3];
 	int		first_line_after_infos;
 	int		first_line_map;
 	int		hex_floor;
@@ -138,7 +134,6 @@ typedef struct t_start
 	int		first_line_brut_map;
 
 }			t_struct;
-
 
 // -----------------------
 // PARSING
