@@ -6,7 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:15:14 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/08 19:48:16 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/09 11:42:22 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ int	ft_launch(t_ray *ray)
 		return (printf("Error\ninit_struct_ray\n"), free_exit(ray),	0);
 	if (!ray->mlx)
 		return (printf("Error\nmlx\n"), free_exit(ray),	0);
-	ft_xpm_to_img(ray); //A FAIR **
+	ft_xpm_to_img(ray); //A FAIRE ***
 	if (!ray->win)
 	{
 		printf("Error\nmlx_new_window\n");
-		//ft_free_image(ray);  **
+		//ft_free_image(ray);  ***
 		mlx_destroy_display(ray->mlx);
 		free(ray->mlx);
 		return (free_exit(ray), 0);
@@ -86,5 +86,5 @@ int	ft_loop(t_ray *ray)
 	return (0);
 }
 
-// fonction initi player + structure
 //fonction launch : memset + mlx_put_image_to_window
+//ft_dram + ft_xpm_to_img

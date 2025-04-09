@@ -6,7 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:39:02 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/08 19:43:54 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/09 11:44:01 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,5 +207,6 @@ int ft_draw(t_ray *ray);
 //init.c
 int init_struct_ray(t_ray *ray);
 int init_player(t_ray *ray);
-
+void ft_init_player_N(t_ray *ray);
+void ft_init_player_S(t_ray *ray);
 #endif

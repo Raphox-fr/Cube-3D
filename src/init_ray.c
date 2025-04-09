@@ -6,7 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 19:53:33 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/08 19:53:36 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/09 11:44:25 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,9 @@ int init_struct_ray(t_ray *ray)
 int init_player(t_ray *ray)
 {
 	if (ray->axe == 'N')
-	{
-		ray->dirX = 0;
-		ray->dirY = -1;
-		ray->planeX = 0.66;
-		ray->planeY = 0;
-	}
+		ft_init_player_N(ray);
 	else if (ray->axe == 'S')
-	{
-		ray->dirX = 0;
-		ray->dirY = 1;
-		ray->planeX = -0.66;
-		ray->planeY = 0;
-	}
+		ft_init_player_S(ray);
 	else if (ray->axe == 'E')
 	{
 		ray->dirX = 1;
@@ -62,10 +52,24 @@ int init_player(t_ray *ray)
     	return (printf("Error\ninvalid orientation '%c'\n", ray->axe), -1);
 	
 	//ray->posX = ray->data->x + 0.5; 
-	//ray->posY = ray->data->y + 0.5;
-		
+	//ray->posY = ray->data->y + 0.5;	
 	// ray->size_x = ray->size_x / 2;
 	// ray->size_y = ray->size_y / 2;
 	return (0);
 }
 
+void ft_init_player_N(t_ray *ray)
+{
+	ray->dirX = 0;
+	ray->dirY = -1;
+	ray->planeX = 0.66;
+	ray->planeY = 0;
+}
+
+void ft_init_player_S(t_ray *ray)
+{
+	ray->dirX = 0;
+	ray->dirY = 1;
+	ray->planeX = -0.66;
+	ray->planeY = 0;
+}
