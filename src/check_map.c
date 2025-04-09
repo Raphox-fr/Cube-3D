@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raphox <raphox@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:05:07 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/07 20:38:39 by raphox           ###   ########.fr       */
+/*   Updated: 2025/04/09 11:14:13 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,6 @@ int check_map(t_struct *map, char *file_path)
 	
 	
 	
-	printf("VALID MAP | VALID MAP ---------------------------------\n");
-	printf("VALID MAP | VALID MAP ---------------------------------\n");
 	printf("VALID MAP | VALID MAP ---------------------------------\n");
 	printf("VALID MAP | VALID MAP ---------------------------------\n");
 
