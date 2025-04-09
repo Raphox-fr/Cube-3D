@@ -6,7 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:15:14 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/09 11:42:22 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/09 17:16:24 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	ft_launch(t_ray *ray)
 {
-	init_struct_ray(ray);
 	if (init_struct_ray(ray) == -1)
 		return (printf("Error\ninit_struct_ray\n"), free_exit(ray),	0);
 	if (!ray->mlx)
@@ -80,11 +79,11 @@ int	close_window(t_ray *ray)
 int	ft_loop(t_ray *ray)
 {
 	ft_move(ray);
-	//ft_memset(ray->img, 0, /*ray->width * ray->height * 4*/);     //ft_memset(void *s, int c, size_t n)
+	ft_memset(ray->img->addr, 0, ray->img->width * ray->img->height * sizeof(int));
 	ft_raycast(ray);
-	//mlx_put_image_to_window(ray->mlx, ray->win, ray->img, 0, 0);
+	mlx_put_image_to_window(ray->mlx, ray->win, ray->img->img, 0, 0);
 	return (0);
 }
 
 //fonction launch : memset + mlx_put_image_to_window
-//ft_dram + ft_xpm_to_img
+//ft_xpm_to_img

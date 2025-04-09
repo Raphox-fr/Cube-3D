@@ -6,7 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 19:53:33 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/09 11:44:25 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/09 17:15:23 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int init_struct_ray(t_ray *ray)
 	ray->key_r = 0;
 	if (!init_player(ray))
 		return (printf("Error\ninit_player\n"), -1);
+	ray->h = ray->height;
 	return (0);
 }
 

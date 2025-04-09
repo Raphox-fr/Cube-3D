@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:15:35 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/09 12:19:44 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/09 17:22:03 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #ifndef CUBE_H
 # define CUBE_H
-// # include "mlx/mlx.h"
+// # include "minilibx-linux/mlx.h"
 
 # include "../includes/get_next_line.h"
 # include "../libft/libft.h"
@@ -34,6 +34,11 @@
 # include <sys/types.h>
 # include <sys/wait.h>
 # include <unistd.h>
+
+#define NORTH 0
+#define SOUTH 1
+#define EAST 2
+#define WEST 3
 
 # define KEY_W 13
 # define KEY_A 0
@@ -87,7 +92,6 @@ typedef struct s_ray
     int     stepX;
     int     stepY;
     int     hit;
-    int     side;
     int     lineHeight;
     int     drawStart;
     int     drawEnd;
@@ -96,13 +100,26 @@ typedef struct s_ray
     double  step;
     double  oldDirX;
     double  oldPlaneX;
-    int     texx;
-    int     texy;
-    int     f_color;
-    int     c_color;
-	t_struct *map;
+    int     texX;
+    int     texY;
+    int     side;
+    unsigned int     f_color;
+    unsigned int     c_color;
+    t_img	*img;
+	t_img	textures[4]; // NORTH, SOUTH, EAST, WEST
+	t_struct *mapp;
 }           t_ray;
 
+typedef struct s_img
+{
+    void	*img;
+    char	*addr;
+    int		bpp;
+    int		line_length;
+    int		endian;
+    int		width;
+    int		height;
+}			t_img;
 
 
 typedef struct t_start
@@ -237,8 +254,13 @@ void		ft_move_back(t_ray *ray);
 void		ft_move_left(t_ray *ray);
 void		ft_move_right(t_ray *ray);
 
+//ft_xpm_to_img.c
+int			ft_xpm_to_img(t_ray *ray);
+void		ft_free_textures(t_ray *ray);
+ 
+
 // draw.c
-int			ft_draw(t_ray *ray);
+void ft_display(t_ray *ray, int x);
 
 // init.c
 int			init_struct_ray(t_ray *ray);
