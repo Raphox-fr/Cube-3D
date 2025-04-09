@@ -6,7 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:15:35 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/09 17:22:03 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/09 18:40:52 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 #ifndef CUBE_H
 # define CUBE_H
-// # include "minilibx-linux/mlx.h"
+
+# include "../minilibx-linux/mlx.h"
 
 # include "../includes/get_next_line.h"
 # include "../libft/libft.h"
@@ -51,6 +52,53 @@
 # define KEY_DOWN 125
 # define MOVE_SPEED 0.05
 # define ROT_SPD 0.05
+
+typedef struct s_img
+{
+    void	*img;
+    char	*addr;
+    int		bpp;
+    int		line_length;
+    int		endian;
+    int		width;
+    int		height;
+}			t_img;
+
+
+typedef struct t_start
+{
+	char	*file_path;
+	char	**map;
+	char	**map_table;
+	char	**map_only;
+
+	int		x_player;
+	int		y_player;
+	char	player_directions;
+
+	int		x_zero;
+	int		y_zero;
+
+	char	*no_txture;
+	char	*so_txture;
+	char	*we_txture;
+	char	*ea_txture;
+	int floor[3];
+	int ceiling[3];
+	int		first_line_after_infos;
+	int		first_line_map;
+	int		hex_floor;
+	int		hex_ceiling;
+
+	// BRUT MAP
+	char	*ceiling_brut;
+	char	*map_brut;
+	char	*brut_map_only;
+
+	int		first_line_brut_map;
+
+}			t_struct;
+
 
 typedef struct s_ray
 {
@@ -109,52 +157,6 @@ typedef struct s_ray
 	t_img	textures[4]; // NORTH, SOUTH, EAST, WEST
 	t_struct *mapp;
 }           t_ray;
-
-typedef struct s_img
-{
-    void	*img;
-    char	*addr;
-    int		bpp;
-    int		line_length;
-    int		endian;
-    int		width;
-    int		height;
-}			t_img;
-
-
-typedef struct t_start
-{
-	char	*file_path;
-	char	**map;
-	char	**map_table;
-	char	**map_only;
-
-	int		x_player;
-	int		y_player;
-	char	player_directions;
-
-	int		x_zero;
-	int		y_zero;
-
-	char	*no_txture;
-	char	*so_txture;
-	char	*we_txture;
-	char	*ea_txture;
-	int floor[3];
-	int ceiling[3];
-	int		first_line_after_infos;
-	int		first_line_map;
-	int		hex_floor;
-	int		hex_ceiling;
-
-	// BRUT MAP
-	char	*ceiling_brut;
-	char	*map_brut;
-	char	*brut_map_only;
-
-	int		first_line_brut_map;
-
-}			t_struct;
 
 
 // -----------------------
@@ -240,7 +242,10 @@ int			transform_player_to_zero(t_struct *map);
 
 // DISPLAY
 // launch.c
-
+int	ft_key_press(int keycode, t_ray *ray);
+int	ft_key_release(int keycode, t_ray *ray);
+int	close_window(t_ray *ray);
+int			ft_loop(t_ray *ray);
 int			ft_launch(t_ray *ray);
 
 // move.c
@@ -258,6 +263,11 @@ void		ft_move_right(t_ray *ray);
 int			ft_xpm_to_img(t_ray *ray);
 void		ft_free_textures(t_ray *ray);
  
+//raycsating.c
+void    ft_raycast(t_ray *ray);
+void    ft_distance(t_ray *ray);
+void    ft_dda(t_ray *ray);
+void    ft_height(t_ray *ray);
 
 // draw.c
 void ft_display(t_ray *ray, int x);

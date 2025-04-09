@@ -1,6 +1,10 @@
 NAME    = cube
-# CFLAGS  = -Wall -Wextra -Werror
+MLXFLAGS		=	-L. -lXext -L. -lX11
+CFLAGS  = -Wall -Wextra -Werror
 CC      = gcc
+
+MINILIBX_PATH	=	./minilibx-linux
+MINILIBX		=	$(MINILIBX_PATH)/libmlx.a
 
 SRCDIR  = ./src
 GNLDIR = ./gnl
@@ -22,6 +26,13 @@ SRCS    = $(SRCDIR)/main.c \
           $(SRCDIR)/check_newline.c \
 		  $(GNLDIR)/get_next_line_utils.c \
 		  $(GNLDIR)/get_next_line.c \
+		  $(SRCDIR)/display.c \
+		  $(SRCDIR)/raycasting.c \
+		  $(SRCDIR)/move.c \
+		  $(SRCDIR)/move_bis.c \
+		  $(SRCDIR)/launch.c \
+		  $(SRCDIR)/ft_xpm_to_img.c \
+		  $(SRCDIR)/init_ray.c \
 
 
 OBJS    = $(SRCS:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
@@ -32,8 +43,11 @@ $(LIBFT_A):
 	@$(MAKE) -C $(LIBFTDIR)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT_A) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT_A) $(MINILIBX) \
+	$(MLXFLAGS) -o $(NAME)
 
+$(MINILIBX):
+	@$(MAKE) -C $(MLXDIR)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	@mkdir -p $(dir $@)

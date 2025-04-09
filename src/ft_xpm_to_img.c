@@ -6,11 +6,11 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 13:19:52 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/09 16:55:26 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/09 18:31:27 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube.h"
+#include "../includes/cube.h"
 
 int	ft_xpm_to_img(t_ray *ray)
 {

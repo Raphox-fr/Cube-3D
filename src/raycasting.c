@@ -6,11 +6,11 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:10:58 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/09 17:06:42 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/09 18:32:45 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube.h"
+#include "../includes/cube.h"
 
 void    ft_raycast(t_ray *ray)
 {
@@ -75,7 +75,7 @@ void ft_dda(t_ray *ray)
             ray->mapY += ray->stepY;
             ray->side = 1;
         }
-        if (ray->map[ray->mapX][ray->mapY] == "1")
+        if (ray->map[ray->mapX][ray->mapY] == '1')
             ray->hit = 1;
     }
     if (ray->side == 0)

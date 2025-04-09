@@ -6,11 +6,11 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:25:06 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/02 17:57:45 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/09 18:31:17 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube.h"
+#include "../includes/cube.h"
 
 void	ft_move_forward(t_ray *ray)
 {
