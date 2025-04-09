@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:39:02 by rafaria           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/04/08 11:34:49 by rafaria          ###   ########.fr       */
+=======
+/*   Updated: 2025/04/07 16:27:11 by aneumann         ###   ########.fr       */
+>>>>>>> origin/alban_branch
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +34,8 @@
 # include <sys/types.h>
 # include <sys/wait.h>
 # include <unistd.h>
+# include <limits.h>
+# include <math.h>
 
 # define KEY_W 13
 # define KEY_A 0
@@ -40,9 +46,13 @@
 # define KEY_ESC 53
 # define KEY_UP 126
 # define KEY_DOWN 125
+# define MOVE_SPEED 0.05
+# define ROT_SPD 0.05
+
 
 typedef struct s_ray
 {
+<<<<<<< HEAD
 	int		posX;
 	int		posY;
 	int		dirX;
@@ -108,6 +118,59 @@ typedef struct s_ray
 	int		key_s;
 	int		key_d;
 }			t_ray;
+=======
+    void *mlx;
+    void *win;
+    
+    int key_l;
+    int key_r;
+    int key_w;
+    int key_a;
+    int key_s;
+    int key_d;
+    
+    int x;
+    int y;
+    int width;
+    int height;
+    
+    int size_x;
+    int size_y;
+    int posX;
+    int posY;
+    int dirX;
+    int dirY;
+    int planeX;
+    int planeY;
+    double cameraX;
+    double rayDirX;
+    double rayDirY;
+    int mapX;
+    int mapY;
+    double sideDistX;
+    double sideDistY;
+    double deltaDistX;
+    double deltaDistY;
+    double perpWallDist;
+    int stepX;
+    int stepY;
+    int hit;
+    int side;
+    int lineHeight;
+    int drawStart;
+    int drawEnd;
+    int h;
+    double wallX;
+    double step;
+    double oldDirX;
+    double oldPlaneX;
+    int		texx;
+	int		texy;
+    int		f_color;
+	int		c_color;
+
+}   t_ray;
+>>>>>>> origin/alban_branch
 
 // # define PLAYER 'W'
 // # define REALUP 65362
@@ -230,7 +293,22 @@ void		replace_space_with_wall(t_struct *map);
 
 int			transform_player_to_zero(t_struct *map);
 // DISPLAY
+// launch.c
 
 int			ft_launch(t_ray *ray);
+
+//move.c
+void    ft_move(t_ray *ray);
+void    ft_rotate_left(t_ray *ray);
+void    ft_rotate_right(t_ray *ray);
+
+//move_bis.c
+void    ft_move_forward(t_ray *ray);
+void    ft_move_back(t_ray *ray);
+void    ft_move_left(t_ray *ray);
+void    ft_move_right(t_ray *ray);
+
+//draw.c
+int ft_draw(t_ray *ray);
 
 #endif
