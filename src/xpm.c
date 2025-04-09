@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   xpm.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raphox <raphox@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 20:14:13 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/06 18:57:19 by raphox           ###   ########.fr       */
+/*   Updated: 2025/04/09 17:01:01 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ int	check_extension_xpm(char *file_path)
 		}
 		i++;
 	}
+	display_error("Invalid extension, only .xpm accepted\n");
 	return (-1);
 }

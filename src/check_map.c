@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:05:07 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/09 11:14:13 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/09 16:55:52 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,45 +25,41 @@ int check_map(t_struct *map, char *file_path)
 	if (find_every_txture_in_map(map, map->map_table, "str") == -1 
         || check_access_every_txture(map) == -1)
 	{
-		display_error("Invalid texture's path / missing textures / invalid extension in the map's textures\n");
 		free_struct_map(map);
 		return (-1);
 	}
     if (check_floor_ceiling_in_map(map, map->map_table) == -1)
 	{
-		display_error("Invalid RGB color / missing floor or ceiling\n");
 		free_struct_map(map);
 		return (-1);
 	}
-    // printf("NO =%s\n", map->no_txture);
-    // printf("SO =%s\n", map->so_txture);
-    // printf("WE =%s\n", map->we_txture);
-    // printf("EA =%s\n", map->ea_txture);
-	
-    // printf("Check Map Layout ---------------------------------------------\n");
 	
 	map->first_line_after_infos = map->first_line_after_infos + 1;
-	// printf("first_line_after_infos =%d\n", map->first_line_after_infos);
-	// printf("String of first_line_after_infos =%s\n", map->map_table[map->first_line_after_infos]);
     if (check_map_layout(map) == -1)
 	{
-        printf("---------------------------------------------\n");
-		display_error("Invalid map / not surrounded with walls / not last element \n");
 		free_struct_map(map);
 		return (-1);
 	}
-
 	
-	
-	
-	printf("VALID MAP | VALID MAP ---------------------------------\n");
-	printf("VALID MAP | VALID MAP ---------------------------------\n");
-
     free_struct_map(map); //FREE FIN DISPLAY
 	return (0);
 }
 
 
+// display_error("Invalid RGB color / missing floor or ceiling\n");
+// display_error("Invalid texture's path / missing textures / invalid extension in the map's textures\n");
+// printf("VALID MAP | VALID MAP ---------------------------------\n");
+// printf("VALID MAP | VALID MAP ---------------------------------\n");
+// printf("NO =%s\n", map->no_txture);
+// printf("SO =%s\n", map->so_txture);
+// printf("WE =%s\n", map->we_txture);
+// printf("EA =%s\n", map->ea_txture);
+// printf("first_line_after_infos =%d\n", map->first_line_after_infos);
+// printf("String of first_line_after_infos =%s\n", map->map_table[map->first_line_after_infos]);
+
+// display_error("Invalid map / not surrounded with walls / not last element \n");
+// printf("---------------------------------------------\n");
+// printf("Check Map Layout ---------------------------------------------\n");
 
 
 char *read_file_into_string(char *file_path)

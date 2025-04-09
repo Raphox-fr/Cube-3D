@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verify_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raphox <raphox@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 17:32:50 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/06 18:56:48 by raphox           ###   ########.fr       */
+/*   Updated: 2025/04/09 17:28:28 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ int	verify_map(t_struct *map)
 	map->map_only = ft_split(map->brut_map_only, '\n');
 	if (transform_player_to_zero(map) == -1)
 		return (-1);
-	display_map_simple(map->map_only);
 	while (find_zero(map) != -1)
 	{
 		if (check_udlr(map) == -1)
 		{
 			free_split(map->map_only);
+			display_error("Map not surrounded with walls\n");
 			return (-1);
 		}
 	}
@@ -78,7 +78,7 @@ int	check_udlr(t_struct *map)
 		&& map->map_only[y + 1][x] == '\0' || x >= ft_strlen(map->map_only[y
 			+ 1]))
 		return (-1);
-	if (map->map_only[y][x - 1] == '\0' )
+	if (map->map_only[y][x - 1] == '\0')
 		return (-1);
 	if (map->map_only[y][x + 1] == '\0')
 		return (-1);
@@ -130,3 +130,5 @@ int	display_map_simple(char **map)
 	}
 	return (-1);
 }
+
+// display_map_simple(map->map_only);

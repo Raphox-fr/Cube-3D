@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:32:57 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/08 11:34:53 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/09 17:30:40 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int	find_floor_ceiling(t_struct *map, char **map_table, char *letter)
 		}
 		i++;
 	}
+	display_error("Floor or ceiling is missing\n");
 	return (-1);
 }
 
@@ -73,8 +74,6 @@ int	save_rgb(t_struct *map, char *map_string, char *letter)
 	int	i;
 
 	i = 0;
-	printf("%sFOUND :\n", letter);
-	printf("%s\n", map_string);
 	if (map_string != NULL)
 	{
 		while (*map_string == ' ' || *map_string == '	')
@@ -137,13 +136,22 @@ int	check_value_syntax_rgb(char *str)
 	while (str[i])
 	{
 		if (((str[i]) < '0' || str[i] > '9') && (str[i] != ' '))
+		{
+			display_error("Invalid RGB syntax\n");
 			return (-1);
+		}
 		if (atoi(str) < 0 || atoi(str) > 255)
+		{
+			display_error("RGB value < 0 or > 255\n");
 			return (-1);
+		}
 		i++;
 	}
 	if (verify_syntax_rgb(str) == -1)
+	{
+		display_error("Invalid RGB syntax\n");
 		return (-1);
+	}
 	return (1);
 }
 

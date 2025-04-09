@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_layout.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raphox <raphox@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 17:28:52 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/06 18:39:07 by raphox           ###   ########.fr       */
+/*   Updated: 2025/04/09 17:27:15 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,16 @@
 int	check_map_layout(t_struct *map)
 {
 	if (map->first_line_after_infos != 6)
-	{
 		return (-1);
-	}
 	if (check_invalid_char_after_first_line_after_infos(map) == -1)
 	{
 		return (-1);
 	}
 	if (find_player(map) == -1)
+	{
+		display_error("Player not found\n");
 		return (-1);
-	printf("x_player=%d\n", map->x_player);
-	printf("y_player=%d\n", map->y_player);
-	printf("player_directions=%d\n", map->player_directions);
+	}
 	if (verify_map(map) == -1)
 	{
 		return (-1);
@@ -97,7 +95,6 @@ int	find_player(t_struct *map)
 
 	found = 0;
 	y = map->first_line_after_infos;
-	printf("map->first_line_after_infos = %d \n", map->first_line_after_infos);
 	while (map->map_table[y])
 	{
 		x = 0;

@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 11:43:44 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/09 12:25:05 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/09 17:29:49 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,10 @@ int	check_no_newline(t_struct *map)
 	while (map->brut_map_only[i])
 	{
 		if (map->brut_map_only[i] != '\n')
+		{
+			display_error("Invalid characters inside map\n");
 			return (-1);
+		}
 		i++;
 	}
 	return (1);

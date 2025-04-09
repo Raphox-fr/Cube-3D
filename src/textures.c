@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raphox <raphox@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 20:08:03 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/07 21:21:39 by raphox           ###   ########.fr       */
+/*   Updated: 2025/04/09 17:31:01 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	check_access_txture(char *path_txture)
 	fd = open(path_txture, O_RDONLY);
 	if (fd < 0)
 	{
+		display_error("Cannot open texture file\n");
 		return (-1);
 	}
 	close(fd);
@@ -82,6 +83,8 @@ int	find_txture(t_struct *map, char **map_table, char *directions)
 		}
 		i++;
 	}
+	display_error("Textures not found\n");
+	printf("%s\n", directions);
 	return (-1);
 }
 
@@ -125,7 +128,10 @@ int	check_end_textures(char *str)
 	while (str[i] != '\0' && (str[i] == ' '))
 		i++;
 	if (str[i] != '\0')
+	{
+		display_error("Invalid characters after textures path\n");
 		return (-1);
+	}
 	return (1);
 }
 
