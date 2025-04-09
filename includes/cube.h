@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:15:35 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/09 12:19:44 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/09 17:31:44 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ typedef struct s_ray
     int     texy;
     int     f_color;
     int     c_color;
-	t_struct *map;
 }           t_ray;
 
 
