@@ -6,7 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:15:35 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/10 17:53:59 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/10 18:18:22 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,60 +98,63 @@ typedef struct t_start
 }			t_struct;
 
 
-// typedef struct s_ray
-// {
-//     void    *mlx;
-//     void    *win;
-//     char    *axe;
+typedef struct s_ray
+{
+    void    *mlx;
+    void    *win;
+    char    axe;
 
-//     int     key_l;
-//     int     key_r;
-//     int     key_w;
-//     int     key_a;
-//     int     key_s;
-//     int     key_d;
+    int     key_l;
+    int     key_r;
+    int     key_w;
+    int     key_a;
+    int     key_s;
+    int     key_d;
 
-//     int     x;
-//     int     y;
-//     int     width;
-//     int     height;
-//     char    **map;
+    int     x;
+    int     y;
+    int     width;
+    int     height;
+    char    **map;
 
-//     int     size_x;
-//     int     size_y;
-//     int     posX;
-//     int     posY;
-//     int     dirX;
-//     int     dirY;
-//     int     planeX;
-//     int     planeY;
-//     double  cameraX;
-//     double  rayDirX;
-//     double  rayDirY;
-//     int     mapX;
-//     int     mapY;
-//     double  sideDistX;
-//     double  sideDistY;
-//     double  deltaDistX;
-//     double  deltaDistY;
-//     double  perpWallDist;
-//     int     stepX;
-//     int     stepY;
-//     int     hit;
-//     int     lineHeight;
-//     int     drawStart;
-//     int     drawEnd;
-//     int     h;
-//     double  wallX;
-//     double  step;
-//     double  oldDirX;
-//     double  oldPlaneX;
-//     int     texx;
-//     int     texy;
-//     int     f_color;
-//     int     c_color;
-// 	// t_struct *map;
-// }           t_ray;
+    int     size_x;
+    int     size_y;
+    int     posX;
+    int     posY;
+    int     dirX;
+    int     dirY;
+    int     planeX;
+    int     planeY;
+    double  cameraX;
+    double  rayDirX;
+    double  rayDirY;
+    int     mapX;
+    int     mapY;
+    double  sideDistX;
+    double  sideDistY;
+    double  deltaDistX;
+    double  deltaDistY;
+    double  perpWallDist;
+    int     stepX;
+    int     stepY;
+    int     hit;
+    int     lineHeight;
+    int     drawStart;
+    int     drawEnd;
+    int     h;
+    double  wallX;
+    double  step;
+    double  oldDirX;
+    double  oldPlaneX;
+    int     texx;
+    int     texy;
+    int     f_color;
+    int     c_color;
+	int		side;
+	t_struct *mapp;
+	t_img	textures[4];
+	t_img	*img;
+}           t_ray;
 
 
 // -----------------------
@@ -234,41 +237,41 @@ void		replace_space_with_wall(t_struct *map);
 
 int			transform_player_to_zero(t_struct *map);
 
-// // DISPLAY
-// // launch.c
-// int	ft_key_press(int keycode, t_ray *ray);
-// int	ft_key_release(int keycode, t_ray *ray);
-// int	close_window(t_ray *ray);
-// int			ft_loop(t_ray *ray);
-// int			ft_launch(t_ray *ray);
+// DISPLAY
+// launch.c
+int	ft_key_press(int keycode, t_ray *ray);
+int	ft_key_release(int keycode, t_ray *ray);
+int	close_window(t_ray *ray);
+int			ft_loop(t_ray *ray);
+int			ft_launch(t_ray *ray);
 
-// // move.c
-// void		ft_move(t_ray *ray);
-// void		ft_rotate_left(t_ray *ray);
-// void		ft_rotate_right(t_ray *ray);
+// move.c
+void		ft_move(t_ray *ray);
+void		ft_rotate_left(t_ray *ray);
+void		ft_rotate_right(t_ray *ray);
 
-// // move_bis.c
-// void		ft_move_forward(t_ray *ray);
-// void		ft_move_back(t_ray *ray);
-// void		ft_move_left(t_ray *ray);
-// void		ft_move_right(t_ray *ray);
+// move_bis.c
+void		ft_move_forward(t_ray *ray);
+void		ft_move_back(t_ray *ray);
+void		ft_move_left(t_ray *ray);
+void		ft_move_right(t_ray *ray);
 
-// //ft_xpm_to_img.c
-// int			ft_xpm_to_img(t_ray *ray);
-// void		ft_free_textures(t_ray *ray);
+//ft_xpm_to_img.c
+int			ft_xpm_to_img(t_ray *ray);
+void		ft_free_textures(t_ray *ray);
  
-// //raycsating.c
-// void    ft_raycast(t_ray *ray);
-// void    ft_distance(t_ray *ray);
-// void    ft_dda(t_ray *ray);
-// void    ft_height(t_ray *ray);
+//raycsating.c
+void    ft_raycast(t_ray *ray);
+void    ft_distance(t_ray *ray);
+void    ft_dda(t_ray *ray);
+void    ft_height(t_ray *ray);
 
-// // draw.c
-// void ft_display(t_ray *ray, int x);
+// draw.c
+void ft_display(t_ray *ray, int x);
 
-// // init.c
-// int			init_struct_ray(t_ray *ray);
-// int			init_player(t_ray *ray);
-// void		ft_init_player_N(t_ray *ray);
-// void		ft_init_player_S(t_ray *ray);
+// init.c
+int			init_struct_ray(t_ray *ray);
+int			init_player(t_ray *ray);
+void		ft_init_player_N(t_ray *ray);
+void		ft_init_player_S(t_ray *ray);
 #endif

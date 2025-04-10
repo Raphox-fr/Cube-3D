@@ -27,13 +27,13 @@ SRCS    = $(SRCDIR)/main.c \
           $(SRCDIR)/check_newline.c \
 		  $(GNLDIR)/get_next_line_utils.c \
 		  $(GNLDIR)/get_next_line.c \
-		#   $(SRCDIR)/display.c \
-		#   $(SRCDIR)/raycasting.c \
-		#   $(SRCDIR)/move.c \
-		#   $(SRCDIR)/move_bis.c \
-		#   $(SRCDIR)/launch.c \
-		#   $(SRCDIR)/ft_xpm_to_img.c \
-		#   $(SRCDIR)/init_ray.c \
+		  $(SRCDIR)/display.c \
+		  $(SRCDIR)/raycasting.c \
+		  $(SRCDIR)/move.c \
+		  $(SRCDIR)/move_bis.c \
+		  $(SRCDIR)/launch.c \
+		  $(SRCDIR)/ft_xpm_to_img.c \
+		  $(SRCDIR)/init_ray.c \
 
 OBJS    = $(SRCS:%.c=$(OBJDIR)/%.o)
 

@@ -6,7 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:15:14 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/10 15:21:05 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/10 18:12:00 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 int	ft_launch(t_ray *ray)
 {
 	if (init_struct_ray(ray) == -1)
-		return (printf("Error\ninit_struct_ray\n"), /*free_exit(ray),*/	0);
-	printf("init_struct_ray ok\n");
+		return (printf("Error\ninit_struct_ray\n"),0 ); //free_exit(ray),
+	ray->mlx = mlx_init();
 	if (!ray->mlx)
-		return (printf("Error\nmlx\n"),/*free_exit(ray),*/	0);
-	printf("mlx ok\n");
-	ft_xpm_to_img(ray); //A FAIRE ***
+		return (printf("Error\nmlx\n"),	0); //free_exit(ray),
+	mlx_get_screen_size(ray->mlx, &ray->width, &ray->height);
+	ft_xpm_to_img(ray);
+	ray->win = mlx_new_window(ray->mlx, ray->width, ray->height, "Cub3D");
 	if (!ray->win)
 	{
 		printf("Error\nmlx_new_window\n");
