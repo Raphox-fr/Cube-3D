@@ -6,13 +6,13 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 19:34:55 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/09 12:10:26 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/10 15:10:28 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cube.h"
 
-int	init_struct_map(t_struct *map)
+void	init_struct_map(t_struct *map)
 {
 	map->file_path = NULL;
 	map->map = NULL;

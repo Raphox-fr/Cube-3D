@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:05:07 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/10 14:55:08 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/10 15:14:43 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 
 int check_map(t_struct *map, char *file_path)
 {
-	int i;
-	int fd;
-	char *string_map;
-
 	map->file_path = file_path;
 	map->map_brut = read_file_into_string(file_path);
 	if (map->map_brut == NULL)
@@ -25,7 +21,7 @@ int check_map(t_struct *map, char *file_path)
 	map->map_table = ft_split(map->map_brut, '\n');
 	if (map->map_table == NULL)
 		return (display_error("Memory allocation failed\n"), -1);
-	if (find_every_txture_in_map(map, map->map_table, "str") == -1 
+	if (find_every_txture_in_map(map, map->map_table) == -1 
         || check_access_every_txture(map) == -1)
 		return (free_struct_map(map), -1);
     if (check_floor_ceiling_in_map(map, map->map_table) == -1)

@@ -6,13 +6,13 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 11:55:02 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/10 12:25:58 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/10 15:09:11 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cube.h"
 
-int	parsing(int argc, char **argv, char **envp)
+int	parsing(int argc, char **argv)
 {
 	t_struct	map;
 

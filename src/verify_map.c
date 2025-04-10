@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 17:32:50 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/10 12:18:48 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/10 15:16:59 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,15 +66,15 @@ int	check_udlr(t_struct *map)
 	x = map->x_zero;
 	y = map->y_zero;
 	size_x = count_size_x(y, map->map_only);
-	size_y = count_size_y(x, map->map_only) - 1;
+	size_y = count_size_y(map->map_only) - 1;
 	if (x == 0 || y == 0 || y == size_y || x == size_x)
 		return (-1);
-	if (ft_strlen(map->map_only[y - 1]) >= ft_strlen(map->map_only[y])
-		&& map->map_only[y - 1][x] == '\0' || x >= ft_strlen(map->map_only[y
+	if ((ft_strlen(map->map_only[y - 1]) >= ft_strlen(map->map_only[y])
+		&& map->map_only[y - 1][x] == '\0') || x >= ft_strlen(map->map_only[y
 			- 1]))
 		return (-1);
-	if (ft_strlen(map->map_only[y + 1]) >= ft_strlen(map->map_only[y])
-		&& map->map_only[y + 1][x] == '\0' || x >= ft_strlen(map->map_only[y
+	if ((ft_strlen(map->map_only[y + 1]) >= ft_strlen(map->map_only[y])
+		&& map->map_only[y + 1][x] == '\0') || x >= ft_strlen(map->map_only[y
 			+ 1]))
 		return (-1);
 	if (map->map_only[y][x - 1] == '\0')
@@ -88,7 +88,6 @@ int	transform_player_to_zero(t_struct *map)
 {
 	int	y;
 	int	x;
-	int	found;
 
 	y = 0;
 	x = 0;

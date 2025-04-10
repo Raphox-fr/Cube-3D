@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:15:35 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/10 14:41:35 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/10 15:16:43 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,7 @@ typedef struct t_start
 
 int			rgb_to_hex(int r, int g, int b);
 
-int			parsing(int argc, char **argv, char **envp);
+int			parsing(int argc, char **argv);
 
 char		*read_file(char *filename);
 int			check_name_map(char *str);
@@ -156,16 +156,15 @@ void		free_struct_map(t_struct *map);
 int			check_found_txture(t_struct *map, char *map_string,
 				char *directions);
 int			find_txture(t_struct *map, char **map_table, char *directions);
-int			find_every_txture_in_map(t_struct *map, char **map_table,
-				char *str);
-int			init_struct_map(t_struct *map);
+int			find_every_txture_in_map(t_struct *map, char **map_table);
+void	init_struct_map(t_struct *map);
 void		free_split(char **cmd);
 int			ft_strlen_cub(const char *str);
 
 int			ft_strlen_spaces_tabs(const char *str);
 char		*ft_strdup_pimp(const char *src);
 
-int			count_size_y(int x, char **map_table);
+int			count_size_y(char **map_table);
 int			count_size_x(int y, char **str);
 
 // Textures

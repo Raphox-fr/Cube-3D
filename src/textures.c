@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 20:08:03 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/10 15:00:38 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/10 15:14:24 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,10 @@ int	check_access_txture(char *path_txture)
 	return (1);
 }
 
-int	find_every_txture_in_map(t_struct *map, char **map_table, char *str)
+int	find_every_txture_in_map(t_struct *map, char **map_table)
 {
-	int	i;
 	int	count;
 
-	i = 0;
 	count = 0;
 	if ((find_txture(map, map_table, "NO") == 1)
 		&& check_extension_xpm(map->no_txture) == 1)
@@ -60,9 +58,6 @@ int	find_every_txture_in_map(t_struct *map, char **map_table, char *str)
 
 int	check_access_every_txture(t_struct *map)
 {
-	int	i;
-
-	i = 0;
 	if (check_access_txture(map->no_txture) == -1)
 		return (-1);
 	if (check_access_txture(map->so_txture) == -1)
@@ -96,9 +91,6 @@ int	find_txture(t_struct *map, char **map_table, char *directions)
 
 int	check_found_txture(t_struct *map, char *map_string, char *directions)
 {
-	int	i;
-
-	i = 0;
 	while ((*map_string == ' ' || *map_string == '	') && *map_string != '\0')
 		map_string++;
 	if (ft_strlen_cub(map_string) <= 2)
