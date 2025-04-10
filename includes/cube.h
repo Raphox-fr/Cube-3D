@@ -5,20 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/05 14:39:02 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/09 12:00:55 by aneumann         ###   ########.fr       */
+/*   Created: 2025/04/09 12:15:35 by rafaria           #+#    #+#             */
+/*   Updated: 2025/04/10 15:27:57 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
+
 #ifndef CUBE_H
 # define CUBE_H
-// # include "mlx/mlx.h"
+
+# include "../minilibx-linux/mlx.h"
 
 # include "../includes/get_next_line.h"
 # include "../libft/libft.h"
 # include "stdbool.h"
 # include <dirent.h>
 # include <fcntl.h>
+# include <limits.h>
+# include <math.h>
 # include <readline/history.h>
 # include <readline/readline.h>
 # include <signal.h>
@@ -30,8 +35,11 @@
 # include <sys/types.h>
 # include <sys/wait.h>
 # include <unistd.h>
-# include <limits.h>
-# include <math.h>
+
+#define NORTH 0
+#define SOUTH 1
+#define EAST 2
+#define WEST 3
 
 # define KEY_W 13
 # define KEY_A 0
@@ -45,74 +53,24 @@
 # define MOVE_SPEED 0.05
 # define ROT_SPD 0.05
 
-
-typedef struct s_ray
+typedef struct s_img
 {
-    void *mlx;
-    void *win;
-    char *axe;
-    
-    int key_l;
-    int key_r;
-    int key_w;
-    int key_a;
-    int key_s;
-    int key_d;
-    
-    int x;
-    int y;
-    int width;
-    int height;
-    char **map;
-    
-    int size_x;
-    int size_y;
-    int posX;
-    int posY;
-    int dirX;
-    int dirY;
-    int planeX;
-    int planeY;
-    double cameraX;
-    double rayDirX;
-    double rayDirY;
-    int mapX;
-    int mapY;
-    double sideDistX;
-    double sideDistY;
-    double deltaDistX;
-    double deltaDistY;
-    double perpWallDist;
-    int stepX;
-    int stepY;
-    int hit;
-    int side;
-    int lineHeight;
-    int drawStart;
-    int drawEnd;
-    int h;
-    double wallX;
-    double step;
-    double oldDirX;
-    double oldPlaneX;
-    int		texx;
-	int		texy;
-    int		f_color;
-	int		c_color;
+    void	*img;
+    char	*addr;
+    int		bpp;
+    int		line_length;
+    int		endian;
+    int		width;
+    int		height;
+}			t_img;
 
-}   t_ray;
-
-// # define PLAYER 'W'
-// # define REALUP 65362
-// # define REALDOWN 65364
-// # define REALLEFT 65361
-// # define REALRIGHT 65363
 
 typedef struct t_start
 {
 	char	*file_path;
 	char	**map;
 	char	**map_table;
+	char	**map_only;
 
 	int		x_player;
 	int		y_player;
@@ -125,15 +83,86 @@ typedef struct t_start
 	char	*so_txture;
 	char	*we_txture;
 	char	*ea_txture;
-	int floor[3];   // 255,255,255 RGB
-	int ceiling[3]; // 255,255,255 RGB
+	int floor[3];
+	int ceiling[3];
 	int		first_line_after_infos;
 	int		first_line_map;
+	int		hex_floor;
+	int		hex_ceiling;
+
+	// BRUT MAP
+	char	*ceiling_brut;
+	char	*map_brut;
+	char	*brut_map_only;
+
+	int		first_line_brut_map;
 
 }			t_struct;
 
+
+typedef struct s_ray
+{
+    void    *mlx;
+    void    *win;
+    char    *axe;
+
+    int     key_l;
+    int     key_r;
+    int     key_w;
+    int     key_a;
+    int     key_s;
+    int     key_d;
+
+    int     x;
+    int     y;
+    int     width;
+    int     height;
+    char    **map;
+
+    int     size_x;
+    int     size_y;
+    int     posX;
+    int     posY;
+    int     dirX;
+    int     dirY;
+    int     planeX;
+    int     planeY;
+    double  cameraX;
+    double  rayDirX;
+    double  rayDirY;
+    int     mapX;
+    int     mapY;
+    double  sideDistX;
+    double  sideDistY;
+    double  deltaDistX;
+    double  deltaDistY;
+    double  perpWallDist;
+    int     stepX;
+    int     stepY;
+    int     hit;
+    int     lineHeight;
+    int     drawStart;
+    int     drawEnd;
+    int     h;
+    double  wallX;
+    double  step;
+    double  oldDirX;
+    double  oldPlaneX;
+    int     texX;
+    int     texY;
+    int     side;
+    unsigned int     f_color;
+    unsigned int     c_color;
+    t_img	*img;
+	t_img	textures[4]; // NORTH, SOUTH, EAST, WEST
+	t_struct *mapp;
+}           t_ray;
+
+
 // -----------------------
 // PARSING
+
+int			rgb_to_hex(int r, int g, int b);
 
 int			parsing(int argc, char **argv, char **envp);
 
@@ -175,8 +204,10 @@ int			find_floor_ceiling(t_struct *map, char **map_table,
 				char *directions);
 int			save_rgb(t_struct *map, char *map_string, char *letter);
 int			verify_rgb(t_struct *map, char *map_string, char *letter);
-int			ft_isalnum_inferior_255(char *str);
-int			count_characters(char *str);
+int			check_value_syntax_rgb(char *str);
+int			count_characters(char *str, char c);
+int			count_number(char *str);
+int			verify_syntax_rgb(char *str);
 
 // Check Map Layout
 
@@ -189,41 +220,61 @@ int			find_first_line_map(t_struct *map);
 
 int			verify_map(t_struct *map);
 int			check_udlr(t_struct *map);
-void		replace_space_with_wall(t_struct *map);
 int			find_zero(t_struct *map);
 int			display_map(t_struct *map);
+int			display_map_simple(char **map);
 
+// SPLIT PIMP
+int			ft_count_level(const char *str, char set);
+char		*ft_strempli_pimp(const char *s, char set);
+char		**ft_fill_pimp(char **tab, int countwords, const char *s, char set);
+char		**ft_split_pimp(char const *s, char c);
 
+// check newline map
+
+int			check_newline_map(t_struct *map);
+int			find_last_elements(t_struct *map);
+int			check_no_newline(t_struct *map);
+
+void		replace_space_with_wall(t_struct *map);
+
+int			transform_player_to_zero(t_struct *map);
 
 // DISPLAY
 // launch.c
+int	ft_key_press(int keycode, t_ray *ray);
+int	ft_key_release(int keycode, t_ray *ray);
+int	close_window(t_ray *ray);
+int			ft_loop(t_ray *ray);
+int			ft_launch(t_ray *ray);
 
-int ft_launch(t_ray *ray);
-void ft_key_press(int keycode, t_ray *ray);
-void ft_key_release(int keycode, t_ray *ray);
-int close_window(t_ray *ray);
-int ft_loop(t_ray *ray);
+// move.c
+void		ft_move(t_ray *ray);
+void		ft_rotate_left(t_ray *ray);
+void		ft_rotate_right(t_ray *ray);
 
-// raycasting.c
+// move_bis.c
+void		ft_move_forward(t_ray *ray);
+void		ft_move_back(t_ray *ray);
+void		ft_move_left(t_ray *ray);
+void		ft_move_right(t_ray *ray);
 
+//ft_xpm_to_img.c
+int			ft_xpm_to_img(t_ray *ray);
+void		ft_free_textures(t_ray *ray);
+ 
+//raycsating.c
+void    ft_raycast(t_ray *ray);
+void    ft_distance(t_ray *ray);
+void    ft_dda(t_ray *ray);
+void    ft_height(t_ray *ray);
 
-//move.c
-void    ft_move(t_ray *ray);
-void    ft_rotate_left(t_ray *ray);
-void    ft_rotate_right(t_ray *ray);
+// draw.c
+void ft_display(t_ray *ray, int x);
 
-//move_bis.c
-void    ft_move_forward(t_ray *ray);
-void    ft_move_back(t_ray *ray);
-void    ft_move_left(t_ray *ray);
-void    ft_move_right(t_ray *ray);
-
-//draw.c
-int ft_draw(t_ray *ray);
-
-//init.c
-int init_struct_ray(t_ray *ray);
-int init_player(t_ray *ray);
-void ft_init_player_N(t_ray *ray);
-void ft_init_player_S(t_ray *ray);
+// init.c
+int			init_struct_ray(t_ray *ray);
+int			init_player(t_ray *ray);
+void		ft_init_player_N(t_ray *ray);
+void		ft_init_player_S(t_ray *ray);
 #endif

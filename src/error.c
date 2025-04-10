@@ -3,25 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
+/*   By: raphox <raphox@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 17:48:03 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/01 16:34:03 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/06 18:42:47 by raphox           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cube.h"
 
-void free_struct_map(t_struct *map)
+void	free_struct_map(t_struct *map)
 {
-	int i;
+	int	i;
+
 	i = 0;
 	if (map->map_table != NULL)
 	{
 		while (map->map_table[i])
 		{
 			free(map->map_table[i]);
-			i++;			
+			i++;
 		}
 		free(map->map_table);
 	}
@@ -33,27 +34,28 @@ void free_struct_map(t_struct *map)
 		free(map->we_txture);
 	if (map->ea_txture != NULL)
 		free(map->ea_txture);
-    if (map->file_path)
-        free(map->file_path);
+	if (map->map_brut)
+		free(map->map_brut);
 }
 
 void	ft_putchar_fd(char c, int fd)
 {
-	write (fd, &c, 1);
+	write(fd, &c, 1);
 }
 
-void display_error(char *str_error)
+void	display_error(char *str_error)
 {
-    int i;
-    i = 0;
+	int	i;
 
-    write(2, "Error\n", 6);
-    while (str_error[i])
-    {
-        ft_putchar_fd(str_error[i], 2);
-        i++;
-    }
+	i = 0;
+	write(2, "Error\n", 6);
+	while (str_error[i])
+	{
+		ft_putchar_fd(str_error[i], 2);
+		i++;
+	}
 }
+
 void	free_split(char **cmd)
 {
 	int	i;

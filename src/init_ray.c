@@ -6,11 +6,11 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 19:53:33 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/09 11:44:25 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/09 18:44:06 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube.h"
+#include "../includes/cube.h"
 
 int init_struct_ray(t_ray *ray)
 {
@@ -25,23 +25,24 @@ int init_struct_ray(t_ray *ray)
 	ray->key_r = 0;
 	if (!init_player(ray))
 		return (printf("Error\ninit_player\n"), -1);
+	ray->h = ray->height;
 	return (0);
 }
 
 int init_player(t_ray *ray)
 {
-	if (ray->axe == 'N')
+	if (ft_strcmp(ray->axe, "N") == 0)
 		ft_init_player_N(ray);
-	else if (ray->axe == 'S')
+	else if (ft_strcmp(ray->axe, "S") == 0)
 		ft_init_player_S(ray);
-	else if (ray->axe == 'E')
+	else if (ft_strcmp(ray->axe, "E") == 0)
 	{
 		ray->dirX = 1;
 		ray->dirY = 0;
 		ray->planeX = 0;
 		ray->planeY = -0.66;
 	}
-	else if (ray->axe == 'W')
+	else if (ft_strcmp(ray->axe, "W") == 0)
 	{
 		ray->dirX = -1;
 		ray->dirY = 0;
@@ -49,7 +50,7 @@ int init_player(t_ray *ray)
 		ray->planeY = 0.66;
 	}
 	else
-    	return (printf("Error\ninvalid orientation '%c'\n", ray->axe), -1);
+    	return (printf("Error\ninvalid orientation '%s'\n", ray->axe), -1);
 	
 	//ray->posX = ray->data->x + 0.5; 
 	//ray->posY = ray->data->y + 0.5;	
