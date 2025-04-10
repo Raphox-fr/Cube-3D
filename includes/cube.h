@@ -6,7 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:15:35 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/10 18:18:22 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/10 20:49:39 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ typedef struct s_img
 
 typedef struct t_start
 {
+
 	char	*file_path;
 	char	**map;
 	char	**map_table;
@@ -87,6 +88,7 @@ typedef struct t_start
 	int		first_line_map;
 	int		hex_floor;
 	int		hex_ceiling;
+    
 
 	// BRUT MAP
 	char	*ceiling_brut;
@@ -117,13 +119,13 @@ typedef struct s_ray
     int     height;
     char    **map;
 
-    int     size_x;
-    int     size_y;
-    int     posX;
-    int     posY;
-    int     dirX;
-    int     dirY;
-    int     planeX;
+    double     size_x;
+    double     size_y;
+    double     posX;
+    double     posY;
+    double     dirX;
+    double     dirY;
+    double     planeX;
     int     planeY;
     double  cameraX;
     double  rayDirX;
@@ -151,7 +153,7 @@ typedef struct s_ray
     int     f_color;
     int     c_color;
 	int		side;
-	t_struct *mapp;
+	t_struct mapp;
 	t_img	textures[4];
 	t_img	*img;
 }           t_ray;
@@ -162,7 +164,8 @@ typedef struct s_ray
 
 int			rgb_to_hex(int r, int g, int b);
 
-int			parsing(int argc, char **argv);
+t_struct	parsing(int argc, char **argv);
+
 
 char		*read_file(char *filename);
 int			check_name_map(char *str);
@@ -274,4 +277,6 @@ int			init_struct_ray(t_ray *ray);
 int			init_player(t_ray *ray);
 void		ft_init_player_N(t_ray *ray);
 void		ft_init_player_S(t_ray *ray);
+int init_img(t_ray *ray);
+
 #endif

@@ -3,25 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 11:55:02 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/10 15:09:11 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/10 18:32:22 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cube.h"
 
-int	parsing(int argc, char **argv)
+t_struct	parsing(int argc, char **argv)
 {
 	t_struct	map;
 
 	init_struct_map(&map);
 	if (check_input(argc, argv) == -1)
-		return (-1);
+		return (map);
 	if (check_map(&map, argv[1]) == -1)
-		return (-1);
-	return (0);
+		return (map);
+	
+	return (map);
 }
 
 int	check_input(int argc, char **argv)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_layout.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 17:28:52 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/10 12:42:56 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/10 18:40:51 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ int	find_player(t_struct *map)
 			{
 				found++;
 				map->x_player = x;
-				map->y_player = y - 7;
+				map->y_player = y - 6;
 				map->player_directions = map->map_table[y][x];
 				map->map_table[y][x] = '0';
 			}
@@ -125,7 +125,4 @@ int	find_player(t_struct *map)
 }
 
 // printf("map->first_line_after_infos = %d \n", map->first_line_after_infos);
-
-// printf("x_player=%d\n", map->x_player);
-// printf("y_player=%d\n", map->y_player);
 // printf("player_directions=%d\n", map->player_directions);

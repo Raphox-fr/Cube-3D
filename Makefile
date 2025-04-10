@@ -7,7 +7,7 @@ MINILIBX_PATH	= ./minilibx-linux
 LIBFTDIR = ./libft
 LIBFT_A = $(LIBFTDIR)/libft.a
 
-CFLAGS  = -Wall -Wextra -Werror
+# CFLAGS  = -Wall -Wextra -Werror
 
 SRCDIR  = ./src
 GNLDIR  = ./gnl

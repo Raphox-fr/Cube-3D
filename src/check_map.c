@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:05:07 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/10 15:14:43 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/10 18:54:20 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int check_map(t_struct *map, char *file_path)
 	map->first_line_after_infos = map->first_line_after_infos + 1;
     if (check_map_layout(map) == -1)
 		return (free_struct_map(map), -1);
-    free_struct_map(map); //FREE FIN DISPLAY
+    // free_struct_map(map); //FREE FIN DISPLAY
 	return (0);
 }
 
