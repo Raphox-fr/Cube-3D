@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   xpm.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raphox <raphox@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 20:14:13 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/06 18:57:19 by raphox           ###   ########.fr       */
+/*   Updated: 2025/04/10 15:01:06 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	check_extension_xpm(char *file_path)
 	int	i;
 
 	i = 0;
+	if (file_path == NULL)
+		return (-1);
 	while (file_path[i])
 	{
 		if (i >= 1 && file_path[i] == '.' && file_path[i + 1] == 'x'

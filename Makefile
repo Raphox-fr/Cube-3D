@@ -1,6 +1,7 @@
 NAME    = cube
-# CFLAGS  = -Wall -Wextra -Werror
 CC      = gcc
+
+# CFLAGS  = -Wall -Wextra -Werror
 
 SRCDIR  = ./src
 GNLDIR = ./gnl
