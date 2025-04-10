@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:46:45 by raphox            #+#    #+#             */
-/*   Updated: 2025/03/28 15:36:31 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/10 15:03:48 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,16 @@ char	**ft_fill(char **tab, int countwords, const char *s, char set)
 		while (s[start] == set)
 			start++;
 		tab[mot] = ft_strempli(&s[start], set);
+		if (tab[mot] == NULL)
+		{
+			while (mot >= 0)
+			{
+				free(tab[mot]);
+				mot--;
+			}
+			free(tab);
+			return (NULL);
+		}
 		start = start + ft_strlen(tab[mot]);
 		mot++;
 	}
@@ -96,6 +106,8 @@ char	**ft_split(char const *s, char c)
 	if (tab == NULL)
 		return (NULL);
 	tab = ft_fill(tab, countwords, s, c);
+	if (tab == NULL)
+		return (NULL);
 	tab[countwords] = 0;
 	return (tab);
 }

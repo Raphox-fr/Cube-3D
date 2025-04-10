@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raphox <raphox@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 20:08:03 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/07 21:21:39 by raphox           ###   ########.fr       */
+/*   Updated: 2025/04/10 15:14:24 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,28 +25,10 @@ int	check_access_txture(char *path_txture)
 	return (1);
 }
 
-int	check_access_every_txture(t_struct *map)
+int	find_every_txture_in_map(t_struct *map, char **map_table)
 {
-	int	i;
-
-	i = 0;
-	if (check_access_txture(map->no_txture) == -1)
-		return (-1);
-	if (check_access_txture(map->so_txture) == -1)
-		return (-1);
-	if (check_access_txture(map->we_txture) == -1)
-		return (-1);
-	if (check_access_txture(map->ea_txture) == -1)
-		return (-1);
-	return (1);
-}
-
-int	find_every_txture_in_map(t_struct *map, char **map_table, char *str)
-{
-	int	i;
 	int	count;
 
-	i = 0;
 	count = 0;
 	if ((find_txture(map, map_table, "NO") == 1)
 		&& check_extension_xpm(map->no_txture) == 1)
@@ -60,9 +42,31 @@ int	find_every_txture_in_map(t_struct *map, char **map_table, char *str)
 	if (find_txture(map, map_table, "EA") == 1
 		&& check_extension_xpm(map->ea_txture) == 1)
 		count++;
-	if (count == 4)
-		return (1);
-	return (-1);
+	if (map->no_txture == NULL || map->so_txture == NULL
+		|| map->we_txture == NULL || map->ea_txture == NULL)
+	{
+		display_error("Invalid textures or missing textures\n");
+		return (-1);
+	}
+	if (count != 4)
+	{
+		display_error("Invalid textures or missing textures\n");
+		return (-1);
+	}
+	return (1);
+}
+
+int	check_access_every_txture(t_struct *map)
+{
+	if (check_access_txture(map->no_txture) == -1)
+		return (-1);
+	if (check_access_txture(map->so_txture) == -1)
+		return (-1);
+	if (check_access_txture(map->we_txture) == -1)
+		return (-1);
+	if (check_access_txture(map->ea_txture) == -1)
+		return (-1);
+	return (1);
 }
 
 int	find_txture(t_struct *map, char **map_table, char *directions)
@@ -87,9 +91,6 @@ int	find_txture(t_struct *map, char **map_table, char *directions)
 
 int	check_found_txture(t_struct *map, char *map_string, char *directions)
 {
-	int	i;
-
-	i = 0;
 	while ((*map_string == ' ' || *map_string == '	') && *map_string != '\0')
 		map_string++;
 	if (ft_strlen_cub(map_string) <= 2)
@@ -103,14 +104,13 @@ int	check_found_txture(t_struct *map, char *map_string, char *directions)
 		if (check_end_textures(map_string) == -1)
 			return (-1);
 		if (directions[0] == 'N' && directions[1] == 'O')
-			map->no_txture = ft_strdup_pimp(map_string);
+			return (map->no_txture = ft_strdup_pimp(map_string), 1);
 		if (directions[0] == 'S' && directions[1] == 'O')
-			map->so_txture = ft_strdup_pimp(map_string);
+			return (map->so_txture = ft_strdup_pimp(map_string), 1);
 		if (directions[0] == 'W' && directions[1] == 'E')
-			map->we_txture = ft_strdup_pimp(map_string);
+			return (map->we_txture = ft_strdup_pimp(map_string), 1);
 		if (directions[0] == 'E' && directions[1] == 'A')
-			map->ea_txture = ft_strdup_pimp(map_string);
-		return (1);
+			return (map->ea_txture = ft_strdup_pimp(map_string), 1);
 	}
 	return (-1);
 }
@@ -151,7 +151,7 @@ int	check_end_textures(char *str)
 // 	start = 0;
 
 //     while ((path_txture[i] != ' ' && path_txture[i] != '	')
-		// && path_txture[i] != '\0')
+// && path_txture[i] != '\0')
 // 	{
 // 		i++;
 // 	}

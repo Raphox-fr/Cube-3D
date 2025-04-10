@@ -40,7 +40,7 @@ int check_udlr(t_struct *map)
 	y = map->y_zero;
 	
 	size_x = count_size_x(y, map->map_only);
-	size_y = count_size_y(x, map->map_only) - 1;
+	size_y = count_size_y(map->map_only) - 1;
 	printf("y %d\n", y);
 	printf("size_y = %d\n", size_y);
 	

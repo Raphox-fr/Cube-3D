@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 11:43:44 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/09 12:25:05 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/10 15:18:18 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	check_newline_map(t_struct *map)
 	replace_space_with_wall(map);
 	if (check_no_newline(map) == -1)
 		return (-1);
-	// map_for_display
 	return (1);
 }
 
@@ -52,10 +51,8 @@ int	check_no_newline(t_struct *map)
 
 int	find_last_elements(t_struct *map)
 {
-	int		i;
 	char	*start;
 
-	i = 0;
 	start = "";
 	if (ft_strnstr(map->map_brut, map->map_table[5],
 			ft_strlen_size_t(map->map_brut)) != 0)
@@ -82,3 +79,5 @@ void	replace_space_with_wall(t_struct *map)
 		i++;
 	}
 }
+
+	// map_for_display

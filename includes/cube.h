@@ -6,11 +6,9 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:15:35 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/10 15:37:45 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/10 17:53:59 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 #ifndef CUBE_H
 # define CUBE_H
@@ -83,8 +81,8 @@ typedef struct t_start
 	char	*so_txture;
 	char	*we_txture;
 	char	*ea_txture;
-	int floor[3];
-	int ceiling[3];
+	int		floor[3];
+	int		ceiling[3];
 	int		first_line_after_infos;
 	int		first_line_map;
 	int		hex_floor;
@@ -161,7 +159,7 @@ typedef struct t_start
 
 int			rgb_to_hex(int r, int g, int b);
 
-int			parsing(int argc, char **argv, char **envp);
+int			parsing(int argc, char **argv);
 
 char		*read_file(char *filename);
 int			check_name_map(char *str);
@@ -176,16 +174,15 @@ void		free_struct_map(t_struct *map);
 int			check_found_txture(t_struct *map, char *map_string,
 				char *directions);
 int			find_txture(t_struct *map, char **map_table, char *directions);
-int			find_every_txture_in_map(t_struct *map, char **map_table,
-				char *str);
-int			init_struct_map(t_struct *map);
+int			find_every_txture_in_map(t_struct *map, char **map_table);
+void	init_struct_map(t_struct *map);
 void		free_split(char **cmd);
 int			ft_strlen_cub(const char *str);
 
 int			ft_strlen_spaces_tabs(const char *str);
 char		*ft_strdup_pimp(const char *src);
 
-int			count_size_y(int x, char **map_table);
+int			count_size_y(char **map_table);
 int			count_size_x(int y, char **str);
 
 // Textures
