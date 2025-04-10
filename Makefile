@@ -1,16 +1,15 @@
 NAME    = cube
-MLXFLAGS		=	-L. -lXext -L. -lX11
-CFLAGS  = -Wall -Wextra -Werror
 CC      = gcc
+# CFLAGS  = -Wall -Wextra -Werror
 
-MINILIBX_PATH	=	./minilibx-linux
-MINILIBX		=	$(MINILIBX_PATH)/libmlx.a
+MLXFLAGS		= -L$(MINILIBX_PATH) -lmlx -lX11 -lXext -lm  # ✅ Ajout de -lmlx et -lm
+MINILIBX_PATH	= ./minilibx-linux
+LIBFTDIR = ./libft
+LIBFT_A = $(LIBFTDIR)/libft.a
 
 SRCDIR  = ./src
-GNLDIR = ./gnl
-LIBFTDIR = ./libft
+GNLDIR  = ./gnl
 OBJDIR  = ./obj
-LIBFT_A = $(LIBFTDIR)/libft.a
 
 SRCS    = $(SRCDIR)/main.c \
           $(SRCDIR)/parsing.c \
@@ -34,37 +33,33 @@ SRCS    = $(SRCDIR)/main.c \
 		  $(SRCDIR)/ft_xpm_to_img.c \
 		  $(SRCDIR)/init_ray.c \
 
+OBJS    = $(SRCS:%.c=$(OBJDIR)/%.o)
 
-OBJS    = $(SRCS:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
+all: $(MINILIBX_PATH)/libmlx.a $(LIBFT_A) $(NAME)  # ✅ S'assure que libmlx.a est compilée
 
-all: $(LIBFT_A) $(NAME)
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT_A) $(MLXFLAGS) -o $(NAME)  # ✅ utilise les bons flags
 
 $(LIBFT_A):
 	@$(MAKE) -C $(LIBFTDIR)
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT_A) $(MINILIBX) \
-	$(MLXFLAGS) -o $(NAME)
+$(MINILIBX_PATH)/libmlx.a:
+	@$(MAKE) -C $(MINILIBX_PATH)
 
-$(MINILIBX):
-	@$(MAKE) -C $(MLXDIR)
-
-$(OBJDIR)/%.o: $(SRCDIR)/%.c
+$(OBJDIR)/%.o: %.c
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -rf $(OBJDIR)
 	@$(MAKE) -C $(LIBFTDIR) clean
+	@$(MAKE) -C $(MINILIBX_PATH) clean  # ✅ Nettoie aussi mlx
 
 fclean: clean
 	rm -f $(NAME)
 	@$(MAKE) -C $(LIBFTDIR) fclean
+	@$(MAKE) -C $(MINILIBX_PATH) clean
 
 re: fclean all
 
 .PHONY: all clean fclean re
-
-
-
-# -Wall -Werror -Wextra -g3
