@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:32:57 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/08 11:34:53 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/10 12:27:09 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,12 @@ int	check_floor_ceiling_in_map(t_struct *map, char **map_table)
 				map->ceiling[2]);
 		count++;
 	}
-	if (count == 2)
-		return (1);
-	return (-1);
+	if (count != 2)
+	{
+		display_error("Invalid RGB color or missing floor or ceiling\n");
+		return (-1);
+	}
+	return (1);
 }
 
 int	rgb_to_hex(int r, int g, int b)
@@ -73,8 +76,6 @@ int	save_rgb(t_struct *map, char *map_string, char *letter)
 	int	i;
 
 	i = 0;
-	printf("%sFOUND :\n", letter);
-	printf("%s\n", map_string);
 	if (map_string != NULL)
 	{
 		while (*map_string == ' ' || *map_string == '	')
@@ -147,9 +148,10 @@ int	check_value_syntax_rgb(char *str)
 	return (1);
 }
 
-int verify_syntax_rgb(char *str)
+int	verify_syntax_rgb(char *str)
 {
-	int i;
+	int	i;
+
 	i = 0;
 	while (str[i] == ' ' && str[i] != '\0')
 		i++;
@@ -162,10 +164,9 @@ int verify_syntax_rgb(char *str)
 		i++;
 	}
 	return (1);
-	
 }
-int count_number(char *str)
 
+int	count_number(char *str)
 {
 	int	i;
 	int	count;
@@ -178,7 +179,7 @@ int count_number(char *str)
 			count++;
 		i++;
 	}
-	if (count >=4)
+	if (count >= 4)
 		return (-1);
 	return (count);
 }

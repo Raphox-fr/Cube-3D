@@ -6,7 +6,11 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:15:35 by rafaria           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/04/09 12:41:18 by rafaria          ###   ########.fr       */
+=======
+/*   Updated: 2025/04/10 12:03:05 by rafaria          ###   ########.fr       */
+>>>>>>> temp_fix_branch
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +55,63 @@ typedef struct s_ray
 	void	*win;
 	char	*axe;
 
+<<<<<<< HEAD
 	int		key_l;
 	int		key_r;
 	int		key_w;
 	int		key_a;
 	int		key_s;
 	int		key_d;
+=======
+    int     key_l;
+    int     key_r;
+    int     key_w;
+    int     key_a;
+    int     key_s;
+    int     key_d;
+
+    int     x;
+    int     y;
+    int     width;
+    int     height;
+    char    **map;
+
+    int     size_x;
+    int     size_y;
+    int     posX;
+    int     posY;
+    int     dirX;
+    int     dirY;
+    int     planeX;
+    int     planeY;
+    double  cameraX;
+    double  rayDirX;
+    double  rayDirY;
+    int     mapX;
+    int     mapY;
+    double  sideDistX;
+    double  sideDistY;
+    double  deltaDistX;
+    double  deltaDistY;
+    double  perpWallDist;
+    int     stepX;
+    int     stepY;
+    int     hit;
+    int     side;
+    int     lineHeight;
+    int     drawStart;
+    int     drawEnd;
+    int     h;
+    double  wallX;
+    double  step;
+    double  oldDirX;
+    double  oldPlaneX;
+    int     texx;
+    int     texy;
+    int     f_color;
+    int     c_color;
+}           t_ray;
+>>>>>>> temp_fix_branch
 
 	int		x;
 	int		y;
