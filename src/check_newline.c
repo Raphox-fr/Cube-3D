@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 11:43:44 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/09 12:25:05 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/10 12:28:00 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	check_newline_map(t_struct *map)
 	replace_space_with_wall(map);
 	if (check_no_newline(map) == -1)
 		return (-1);
-	// map_for_display
 	return (1);
 }
 
@@ -82,3 +81,5 @@ void	replace_space_with_wall(t_struct *map)
 		i++;
 	}
 }
+
+	// map_for_display

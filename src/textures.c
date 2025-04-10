@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 20:08:03 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/10 12:05:02 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/10 12:20:42 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int	check_access_txture(char *path_txture)
 	close(fd);
 	return (1);
 }
-
 
 int	find_every_txture_in_map(t_struct *map, char **map_table, char *str)
 {
@@ -45,16 +44,14 @@ int	find_every_txture_in_map(t_struct *map, char **map_table, char *str)
 	if (find_txture(map, map_table, "EA") == 1
 		&& check_extension_xpm(map->ea_txture) == 1)
 		count++;
-
 	if (count != 4)
 	{
-		display_error("Invalid textures or missing textures\n");	
+		display_error("Invalid textures or missing textures\n");
 		return (-1);
 	}
-	
 	return (1);
 }
-	
+
 int	check_access_every_txture(t_struct *map)
 {
 	int	i;
@@ -70,7 +67,6 @@ int	check_access_every_txture(t_struct *map)
 		return (-1);
 	return (1);
 }
-
 
 int	find_txture(t_struct *map, char **map_table, char *directions)
 {
@@ -110,14 +106,13 @@ int	check_found_txture(t_struct *map, char *map_string, char *directions)
 		if (check_end_textures(map_string) == -1)
 			return (-1);
 		if (directions[0] == 'N' && directions[1] == 'O')
-			map->no_txture = ft_strdup_pimp(map_string);
+			return (map->no_txture = ft_strdup_pimp(map_string), 1);
 		if (directions[0] == 'S' && directions[1] == 'O')
-			map->so_txture = ft_strdup_pimp(map_string);
+			return (map->so_txture = ft_strdup_pimp(map_string), 1);
 		if (directions[0] == 'W' && directions[1] == 'E')
-			map->we_txture = ft_strdup_pimp(map_string);
+			return (map->we_txture = ft_strdup_pimp(map_string), 1);
 		if (directions[0] == 'E' && directions[1] == 'A')
-			map->ea_txture = ft_strdup_pimp(map_string);
-		return (1);
+			return (map->ea_txture = ft_strdup_pimp(map_string), 1);
 	}
 	return (-1);
 }
@@ -158,7 +153,7 @@ int	check_end_textures(char *str)
 // 	start = 0;
 
 //     while ((path_txture[i] != ' ' && path_txture[i] != '	')
-		// && path_txture[i] != '\0')
+// && path_txture[i] != '\0')
 // 	{
 // 		i++;
 // 	}
