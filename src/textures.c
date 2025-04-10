@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raphox <raphox@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 20:08:03 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/07 21:21:39 by raphox           ###   ########.fr       */
+/*   Updated: 2025/04/10 12:05:02 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,6 @@ int	check_access_txture(char *path_txture)
 	return (1);
 }
 
-int	check_access_every_txture(t_struct *map)
-{
-	int	i;
-
-	i = 0;
-	if (check_access_txture(map->no_txture) == -1)
-		return (-1);
-	if (check_access_txture(map->so_txture) == -1)
-		return (-1);
-	if (check_access_txture(map->we_txture) == -1)
-		return (-1);
-	if (check_access_txture(map->ea_txture) == -1)
-		return (-1);
-	return (1);
-}
 
 int	find_every_txture_in_map(t_struct *map, char **map_table, char *str)
 {
@@ -60,10 +45,32 @@ int	find_every_txture_in_map(t_struct *map, char **map_table, char *str)
 	if (find_txture(map, map_table, "EA") == 1
 		&& check_extension_xpm(map->ea_txture) == 1)
 		count++;
-	if (count == 4)
-		return (1);
-	return (-1);
+
+	if (count != 4)
+	{
+		display_error("Invalid textures or missing textures\n");	
+		return (-1);
+	}
+	
+	return (1);
 }
+	
+int	check_access_every_txture(t_struct *map)
+{
+	int	i;
+
+	i = 0;
+	if (check_access_txture(map->no_txture) == -1)
+		return (-1);
+	if (check_access_txture(map->so_txture) == -1)
+		return (-1);
+	if (check_access_txture(map->we_txture) == -1)
+		return (-1);
+	if (check_access_txture(map->ea_txture) == -1)
+		return (-1);
+	return (1);
+}
+
 
 int	find_txture(t_struct *map, char **map_table, char *directions)
 {

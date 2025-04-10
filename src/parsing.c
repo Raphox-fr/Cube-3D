@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 11:55:02 by rafaria           #+#    #+#             */
-/*   Updated: 2025/03/31 11:27:50 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/10 12:12:33 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,16 @@ int check_input(int argc, char **argv)
 {
     int fd;
 	if (argc == 1)
-		return (printf("Error : No map selected, please choose a map.\n"), -1);
+		return (display_error("No map selected, please choose a map.\n"), -1);
 	if (argc >= 3)
-		return (printf("Error : Only one map is accepted\n"), -1);
+		return (display_error("Only one map is accepted\n"), -1);
 	if (check_name_map(argv[1]) == -1)
-		return (printf("Error : incorrect format, check map format (only .cub accepted)\n"), -1);
+		return (display_error("Incorrect format, check map format (only .cub accepted)\n"), -1);
 	fd = open(argv[1], O_RDONLY);
     if (fd < 0)
-		return (printf("Error : File does not exist, or check permissions.\n"), -1);
+		return (display_error("File does not exist, or check permissions.\n"), -1);
     close(fd);
-	return (1);    
+	return (1);
 }
 int	check_name_map(char *str)
 {
