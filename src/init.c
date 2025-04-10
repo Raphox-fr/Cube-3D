@@ -6,11 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 19:34:55 by rafaria           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/04/10 15:27:09 by aneumann         ###   ########.fr       */
-=======
-/*   Updated: 2025/04/10 15:10:28 by rafaria          ###   ########.fr       */
->>>>>>> raphael_branch
+/*   Updated: 2025/04/10 17:56:16 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,3 +37,5 @@ void	init_struct_map(t_struct *map)
 	map->hex_floor = 0;
 	map->hex_ceiling = 0;
 }
+
+//OUVOU
