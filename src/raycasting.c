@@ -6,7 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:10:58 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/11 17:15:43 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/11 17:30:34 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void    ft_raycast(t_ray *ray)
 {
  
         double x;
-        ray->size_x = ray->width/4;
-        ray->size_y = ray->height/4;
+        ray->size_x = ray->width;
+        ray->size_y = ray->height;
         x = 0;
         while (x < ray->size_x)
         {
