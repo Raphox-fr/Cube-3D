@@ -6,16 +6,44 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:15:14 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/10 21:24:11 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/11 13:15:36 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cube.h"
+int get_map_height(char **map)
+{
+	int i = 0;
+	while (map[i])
+		i++;
+	return (i);
+}
+
+int get_map_width(char **map)
+{
+	int max_width = 0;
+	int tmp;
+	for (int i = 0; map[i]; i++)
+	{
+		tmp = strlen(map[i]);
+		if (tmp > max_width)
+			max_width = tmp;
+	}
+	return (max_width);
+}
 
 int	ft_launch(t_ray *ray)
 {
 	if (init_struct_ray(ray) == -1)
 		return (printf("Error\ninit_struct_ray\n"),0 ); //free_exit(ray),	
+	ray->map = ray->mapp.map_only;
+	ray->size_y = get_map_height(ray->map);
+	ray->size_x = get_map_width(ray->map);
+	// ray->img = malloc(sizeof(t_img));
+	// ray->img->img = mlx_new_image(ray->mlx, ray->width, ray->height);
+	// ray->img->addr = mlx_get_data_addr(ray->img->img, &ray->img->bpp,
+	// 								   &ray->img->line_length, &ray->img->endian);
+	
 	ray->mlx = mlx_init();
 	if (!ray->mlx)
 		return (printf("Error\nmlx\n"),	0); //free_exit(ray),

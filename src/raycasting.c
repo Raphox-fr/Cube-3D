@@ -6,7 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:10:58 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/10 21:20:16 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/11 13:14:59 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 void    ft_raycast(t_ray *ray)
 {
+ 
         double x;
-        ray->size_x = ray->width / 2;
-        ray->size_y = ray->height / 2;
+        // ray->size_x = ray->width / 2;
+        // ray->size_y = ray->height / 2;
         x = 0;
         while (x < ray->size_x)
         {
@@ -40,8 +41,8 @@ void    ft_raycast(t_ray *ray)
 
 void    ft_distance(t_ray *ray)
 {
-    ray->mapX = ray->posX;
-    ray->mapY = ray->posY;
+    ray->mapX = (int)ray->posX;
+    ray->mapY = (int)ray->posY;
     if (ray->rayDirX < 0)   
     {
         ray->stepX = -1;
@@ -92,9 +93,12 @@ void ft_dda(t_ray *ray)
 
 		printf("  After move: mapX = %d, mapY = %d\n", ray->mapX, ray->mapY);
         printf("rayssize_x = %f, rayssize_y = %f\n", ray->size_x, ray->size_y);
-		if (ray->mapX >= 0 && ray->mapX < ray->size_x &&
-			ray->mapY >= 0 && ray->mapY < ray->size_y)
-            {
+		// if (ray->mapX >= 0 && ray->mapX < ray->size_x &&
+		// 	ray->mapY >= 0 && ray->mapY < ray->size_y)
+        if (ray->mapX >= 0 && ray->mapX < ray->size_x &&
+            ray->mapY >= 0 && ray->mapY < ray->size_y &&
+            ray->mapp.map_only[ray->mapY][ray->mapX] == '1')
+        {
                 printf("  Map value at [%d][%d] = %c\n", ray->mapX, ray->mapY, ray->map[ray->mapY][ray->mapX]);
                 
                 if (ray->mapp.map_only[ray->mapY][ray->mapX] == '1')
@@ -102,8 +106,6 @@ void ft_dda(t_ray *ray)
                     printf("  WALL HIT at [%d][%d]\n", ray->mapX, ray->mapY);
                     ray->hit = 1;
                 }
-                exit(1);
-
             }
 		// else
 		// {
@@ -151,6 +153,7 @@ void ft_dda(t_ray *ray)
 
 void    ft_height(t_ray *ray)
 {
+    ray->h = ray->height;
     ray->lineHeight = (int)(ray->h / ray->perpWallDist);
     ray->drawStart = -ray->lineHeight / 2 + ray->h / 2;
     if (ray->drawStart < 0)
