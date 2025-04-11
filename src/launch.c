@@ -6,7 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:15:14 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/11 14:33:08 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/11 16:40:03 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ int	ft_launch(t_ray *ray)
 	ray->img->img = mlx_new_image(ray->mlx, ray->width, ray->height);
 	ray->img->addr = mlx_get_data_addr(ray->img->img, &ray->img->bpp,
 									   &ray->img->line_length, &ray->img->endian);
-	
 	if (init_img(ray) == -1)
 		return (printf("Error\ninit_img\n"), -1);
 
@@ -111,45 +110,38 @@ int	ft_key_release(int keycode, t_ray *ray)
 int	close_window(t_ray *ray)
 {
 	mlx_destroy_window(ray->mlx, ray->win);
+	//fonction free_exit(ray);
 	exit(0);
 	return (0);
 }
 
-void	print_img_info(t_img *img)
-{
-	if (!img)
-	{
-		printf("Image pointer is NULL\n");
-		return;
-	}
-	printf("Image structure info:\n");
-	printf("  img pointer      : %p\n", img->img);
-	printf("  addr pointer     : %p\n", img->addr);
-	printf("  bits per pixel   : %d\n", img->bpp);
-	printf("  line length      : %d\n", img->line_length);
-	printf("  endian           : %d\n", img->endian);
-	printf("  width            : %d\n", img->width);
-	printf("  height           : %d\n", img->height);
-}
+// void	print_img_info(t_img *img)
+// {
+// 	if (!img)
+// 	{
+// 		printf("Image pointer is NULL\n");
+// 		return;
+// 	}
+// 	printf("Image structure info:\n");
+// 	printf("  img pointer      : %p\n", img->img);
+// 	printf("  addr pointer     : %p\n", img->addr);
+// 	printf("  bits per pixel   : %d\n", img->bpp);
+// 	printf("  line length      : %d\n", img->line_length);
+// 	printf("  endian           : %d\n", img->endian);
+// 	printf("  width            : %d\n", img->width);
+// 	printf("  height           : %d\n", img->height);
+// }
 
 int	ft_loop(t_ray *ray)
 {
 	// ft_move(ray);
-
 	ft_memset(ray->img->addr, 0, ray->img->width * ray->img->height * sizeof(int));
-
-	// 🔴 AFFICHER UN PIXEL ROUGE À (100, 100)
-	int x = 100;
-	int y = 100;
-	char *pixel = ray->img->addr + (y * ray->img->line_length + x * (ray->img->bpp / 8));
-	*(unsigned int *)pixel = 0x00FF0000;
-
+		ft_raycast(ray);
 	mlx_put_image_to_window(ray->mlx, ray->win, ray->img->img, 0, 0);
 	return (0);
 }
 
 
-// print_img_info(ray->img);
 //fonction launch : memset + mlx_put_image_to_window
 //ft_xpm_to_img
 

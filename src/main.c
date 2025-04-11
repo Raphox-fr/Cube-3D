@@ -6,7 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 12:03:33 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/11 14:18:01 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/11 14:51:42 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,3 +31,5 @@ int main(int argc, char **argv)
 // return (-1);
 // printf("mapp->x_player = %d\n", ray.mapp.x_player);
 // printf("mapp->y_player = %d\n", ray.mapp.y_player);
+
+

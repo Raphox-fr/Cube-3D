@@ -6,7 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:15:35 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/10 20:49:39 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/11 16:39:58 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,15 @@
 #define EAST 2
 #define WEST 3
 
-# define KEY_W 13
-# define KEY_A 0
-# define KEY_S 1
-# define KEY_D 2
-# define KEY_LEFT 123
-# define KEY_RIGHT 124
-# define KEY_ESC 53
-# define KEY_UP 126
-# define KEY_DOWN 125
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
+# define KEY_LEFT 65361
+# define KEY_RIGHT 65363
+# define KEY_ESC 65307
+# define KEY_UP 65362
+# define KEY_DOWN 65364
 # define MOVE_SPEED 0.05
 # define ROT_SPD 0.05
 
@@ -277,6 +277,6 @@ int			init_struct_ray(t_ray *ray);
 int			init_player(t_ray *ray);
 void		ft_init_player_N(t_ray *ray);
 void		ft_init_player_S(t_ray *ray);
-int init_img(t_ray *ray);
+int         init_img(t_ray *ray);
 
 #endif
