@@ -6,7 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:15:14 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/11 13:15:36 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/11 14:05:27 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,9 @@ int	ft_launch(t_ray *ray)
 	ray->map = ray->mapp.map_only;
 	ray->size_y = get_map_height(ray->map);
 	ray->size_x = get_map_width(ray->map);
-	// ray->img = malloc(sizeof(t_img));
-	// ray->img->img = mlx_new_image(ray->mlx, ray->width, ray->height);
-	// ray->img->addr = mlx_get_data_addr(ray->img->img, &ray->img->bpp,
-	// 								   &ray->img->line_length, &ray->img->endian);
-	
 	ray->mlx = mlx_init();
 	if (!ray->mlx)
-		return (printf("Error\nmlx\n"),	0); //free_exit(ray),
+	return (printf("Error\nmlx\n"),	0); //free_exit(ray),
 	mlx_get_screen_size(ray->mlx, &ray->width, &ray->height);
 	ft_xpm_to_img(ray);
 	ray->win = mlx_new_window(ray->mlx, ray->width, ray->height, "Cub3D");
@@ -60,6 +55,12 @@ int	ft_launch(t_ray *ray)
 		// return (free_exit(ray), 0);
 		return (0);
 	}
+	//3 lignes a re-verifier mais normalement good
+	ray->img = malloc(sizeof(t_img));
+	ray->img->img = mlx_new_image(ray->mlx, ray->width, ray->height);
+	ray->img->addr = mlx_get_data_addr(ray->img->img, &ray->img->bpp,
+									   &ray->img->line_length, &ray->img->endian);
+	
 	if (init_img(ray) == -1)
 		return (printf("Error\ninit_img\n"), -1);
 	mlx_hook(ray->win, 2, 1L << 0, &ft_key_press, ray);

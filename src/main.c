@@ -6,7 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 12:03:33 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/10 20:16:40 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/11 13:57:55 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int main(int argc, char **argv)
     t_ray ray;
     
     ray.mapp = parsing(argc, argv);
-    
 
     if (!ft_launch(&ray))
     return (printf("CA NE MARCHE PAS\n"), 1);
