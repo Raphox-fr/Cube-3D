@@ -6,32 +6,12 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:14:21 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/11 16:18:10 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/11 17:18:00 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cube.h"
 
-
-// void ft_display(t_ray *ray)
-// {
-//     int x, y;
-//     char *pixel;
-//     printf("width = %d\n", ray->img->width);
-//     printf("height = %d\n", ray->img->height);
-//     y = 0;
-//     while (y < ray->img->height)
-//     {
-//         x = 0;
-//         while (x < ray->img->width)
-//         {
-//             pixel = ray->img->addr + (y * ray->img->line_length + x * (ray->img->bpp / 8));
-//             *(unsigned int *)pixel = 0x00FF0000; // Rouge en format 0x00RRGGBB
-//             x++;
-//         }
-//         y++;
-//     }
-// }
 
 void ft_display(t_ray *ray, int x)
 {
@@ -39,8 +19,6 @@ void ft_display(t_ray *ray, int x)
     char			*pixel;
     unsigned int	color;
     int				dir;
-    printf("drawStart = %d, drawEnd = %d, lineHeight = %d\n",
-        ray->drawStart, ray->drawEnd, ray->lineHeight);
     
     ray->c_color = ray->mapp.hex_ceiling;
     ray->f_color = ray->mapp.hex_floor;
@@ -49,7 +27,6 @@ void ft_display(t_ray *ray, int x)
     y = 0;
     while (y < ray->drawStart)
     {
-        printf("helllleoeoeooeoeoe\n\n\n\n");
         pixel = ray->img->addr + (y * ray->img->line_length + x * (ray->img->bpp / 8));
         *(unsigned int *)pixel = ray->c_color;
         y++;

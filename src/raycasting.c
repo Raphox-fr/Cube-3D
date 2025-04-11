@@ -6,7 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:10:58 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/11 16:40:14 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/11 17:15:43 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void    ft_raycast(t_ray *ray)
 {
  
         double x;
-        ray->size_x = ray->width;
-        ray->size_y = ray->height;
+        ray->size_x = ray->width/4;
+        ray->size_y = ray->height/4;
         x = 0;
         while (x < ray->size_x)
         {
@@ -30,7 +30,6 @@ void    ft_raycast(t_ray *ray)
             ft_dda(ray);
             ft_height(ray); 
             ft_display(ray, x);  
-            printf("la vauleur est laaaaa %f\n", x);
             x++; 
     }
 }
@@ -109,15 +108,12 @@ void    ft_height(t_ray *ray)
 {
     ray->h = ray->size_y;
     ray->lineHeight = (int)(ray->h / ray->perpWallDist);
-    
     ray->drawStart = -ray->lineHeight / 2 + ray->h / 2;
     if (ray->drawStart < 0)
         ray->drawStart = 0;
     ray->drawEnd = ray->lineHeight / 2 + ray->h / 2;
     if (ray->drawEnd >= ray->h) //h = size_y
-        ray->drawEnd = ray->h - 1;
-    printf("lineHeight = %d, drawStart = %d, drawEnd = %d\n",
-        ray->lineHeight, ray->drawStart, ray->drawEnd); 
+        ray->drawEnd = ray->h - 1; 
 }
 
 // void ft_dda(t_ray *ray)
