@@ -6,7 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:10:58 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/11 13:14:59 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/11 14:23:15 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,4 +161,6 @@ void    ft_height(t_ray *ray)
     ray->drawEnd = ray->lineHeight / 2 + ray->h / 2;
     if (ray->drawEnd >= ray->h) //h = size_y
         ray->drawEnd = ray->h - 1;
+    printf("lineHeight = %d, drawStart = %d, drawEnd = %d\n",
+        ray->lineHeight, ray->drawStart, ray->drawEnd); 
 }

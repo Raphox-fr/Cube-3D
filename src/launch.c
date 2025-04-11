@@ -6,7 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:15:14 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/11 14:05:27 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/11 14:33:08 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int	ft_launch(t_ray *ray)
 	
 	if (init_img(ray) == -1)
 		return (printf("Error\ninit_img\n"), -1);
+
 	mlx_hook(ray->win, 2, 1L << 0, &ft_key_press, ray);
 	mlx_hook(ray->win, 3, 1L << 1, &ft_key_release, ray);
 	mlx_hook(ray->win, 17, 1L << 17, close_window, ray);
@@ -133,31 +134,38 @@ void	print_img_info(t_img *img)
 
 int	ft_loop(t_ray *ray)
 {
-	ft_move(ray);
-	if (!ray->img || !ray->img->addr)
-	{
-		printf("Error: img or img->addr is NULL\n");
-		return (-1);
-	}
-	if (ray->img->width <= 0 || ray->img->height <= 0)
-	{
-		printf("Error: invalid image size (width=%d, height=%d)\n",
-			ray->img->width, ray->img->height);
-		return (-1);
-	}
-	if (ray->img->bpp <= 0 || ray->img->bpp > 128)
-	{
-		printf("Error: invalid bpp value: %d\n", ray->img->bpp);
-		return (-1);
-	}
+	// ft_move(ray);
 
 	ft_memset(ray->img->addr, 0, ray->img->width * ray->img->height * sizeof(int));
-	//BLOQUE ICI RAYCASTING
-	ft_raycast(ray);
+
+	// 🔴 AFFICHER UN PIXEL ROUGE À (100, 100)
+	int x = 100;
+	int y = 100;
+	char *pixel = ray->img->addr + (y * ray->img->line_length + x * (ray->img->bpp / 8));
+	*(unsigned int *)pixel = 0x00FF0000;
+
 	mlx_put_image_to_window(ray->mlx, ray->win, ray->img->img, 0, 0);
 	return (0);
 }
 
+
 // print_img_info(ray->img);
 //fonction launch : memset + mlx_put_image_to_window
 //ft_xpm_to_img
+
+// if (!ray->img || !ray->img->addr)
+// {
+// 	printf("Error: img or img->addr is NULL\n");
+// 	return (-1);
+// }
+// if (ray->img->width <= 0 || ray->img->height <= 0)
+// {
+// 	printf("Error: invalid image size (width=%d, height=%d)\n",
+// 		ray->img->width, ray->img->height);
+// 	return (-1);
+// }
+// if (ray->img->bpp <= 0 || ray->img->bpp > 128)
+// {
+// 	printf("Error: invalid bpp value: %d\n", ray->img->bpp);
+// 	return (-1);
+// }
