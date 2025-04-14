@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 12:03:33 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/14 13:09:19 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/14 15:36:22 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int main(int argc, char **argv)
     ray.mapp = parsing(argc, argv);
     if (ray.mapp.error == -1)
         return (-1);
+    
     if (!ft_launch(&ray))
         return (printf("CA NE MARCHE PAS\n"), 1);
     return (0);

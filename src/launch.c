@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   launch.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:15:14 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/14 13:13:18 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/14 16:38:58 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	ft_launch(t_ray *ray)
 		return (close_window(ray), display_error("mlx\n"),	0);
 	if (init_struct_ray(ray) == -1)
 		return (close_window(ray), display_error("init_struct_ray\n"), 0 );
-	ray->map = ray->mapp.map_only;
+	ray->map = ray->mapp.map_dis;
 	ray->size_y = get_map_height(ray->map);
 	ray->size_x = get_map_width(ray->map);
 	mlx_get_screen_size(ray->mlx, &ray->width, &ray->height);

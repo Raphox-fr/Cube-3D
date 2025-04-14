@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verify_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 17:32:50 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/14 12:01:49 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/14 15:36:39 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	verify_map(t_struct *map)
 	if (check_newline_map(map) == -1)
 		return (-1);
 	map->map_only = ft_split(map->brut_map_only, '\n');
+	map->map_dis = ft_split(map->brut_map_only, '\n');	
 	if (transform_player_to_zero(map) == -1)
 		return (-1);
 	while (find_zero(map) != -1)
@@ -26,7 +27,6 @@ int	verify_map(t_struct *map)
 			return (-1);
 		}
 	}
-	// free_split(map->map_only);
 	return (1);
 }
 

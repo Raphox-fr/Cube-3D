@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:10:58 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/14 12:49:07 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/14 16:35:22 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,10 @@ void ft_dda(t_ray *ray)
 		// 	ray->mapY >= 0 && ray->mapY < ray->size_y)
         if (ray->mapX >= 0 && ray->mapX < ray->size_x &&
             ray->mapY >= 0 && ray->mapY < ray->size_y &&
-            ray->mapp.map_only[ray->mapY][ray->mapX] == '1')
+            ray->mapp.map_dis[ray->mapY][ray->mapX] == '1')
         {
                 
-                if (ray->mapp.map_only[ray->mapY][ray->mapX] == '1')
+                if (ray->mapp.map_dis[ray->mapY][ray->mapX] == '1')
                 {
                     ray->hit = 1;
                 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 17:48:03 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/14 13:05:28 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/14 15:30:55 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	free_struct_map(t_struct *map)
 {
 	free_split(map->map_table);
 	free_split(map->map_only);
+	free_split(map->map_dis);
 	if (map->no_txture != NULL)
 		free(map->no_txture);
 	if (map->so_txture != NULL)

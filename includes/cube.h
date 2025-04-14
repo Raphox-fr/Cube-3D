@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:15:35 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/14 12:52:58 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/14 16:19:54 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@
 # define KEY_ESC 65307
 # define KEY_UP 65362
 # define KEY_DOWN 65364
-# define MOVE_SPEED 0.05
-# define ROT_SPD 0.05
+# define MOVE_SPEED 0.075
+# define ROT_SPD 0.03
 
 typedef struct s_img
 {
@@ -70,6 +70,8 @@ typedef struct t_start
 	char	**map;
 	char	**map_table;
 	char	**map_only;
+	char	**map_dis;
+    
 
 	int		x_player;
 	int		y_player;
