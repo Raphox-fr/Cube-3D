@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verify_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 17:32:50 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/11 12:27:27 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/14 12:01:49 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	verify_map(t_struct *map)
 	{
 		if (check_udlr(map) == -1)
 		{
-			free_split(map->map_only);
 			return (-1);
 		}
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   launch.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:15:14 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/11 17:29:43 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/14 12:51:09 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,32 +32,38 @@ int get_map_width(char **map)
 	return (max_width);
 }
 
+void	init_all_zero(t_ray *ray)
+{
+	ray->img = NULL;
+	ray->win = NULL;
+	ray->mlx = NULL;
+	int i;
+	i = 0;
+	while (i < 4)
+	{
+		ray->textures[i].img = NULL;
+		i++;
+	}
+}
+
 int	ft_launch(t_ray *ray)
 {
+	init_all_zero(ray);
+	ray->mlx = mlx_init();
+	if (!ray->mlx)
+		return (close_window(ray), display_error("mlx\n"),	0);
 	if (init_struct_ray(ray) == -1)
-		return (printf("Error\ninit_struct_ray\n"),0 ); //free_exit(ray),	
+		return (close_window(ray), display_error("init_struct_ray\n"), 0 );
 	ray->map = ray->mapp.map_only;
 	ray->size_y = get_map_height(ray->map);
 	ray->size_x = get_map_width(ray->map);
-	ray->mlx = mlx_init();
-	if (!ray->mlx)
-	return (printf("Error\nmlx\n"),	0); //free_exit(ray),
 	mlx_get_screen_size(ray->mlx, &ray->width, &ray->height);
 	ft_xpm_to_img(ray);
 	ray->win = mlx_new_window(ray->mlx, ray->width, ray->height, "Cub3D");
 	if (!ray->win)
-	{
-		printf("Error\nmlx_new_window\n");
-		close_window(ray);
-		mlx_destroy_display(ray->mlx);
-		free(ray->mlx);
-		//ft_free_image(ray);  ***
-		// return (free_exit(ray), 0);
-		return (0);
-	}
-		if (init_img(ray) == -1)
-		return (printf("Error\ninit_img\n"), -1);
-		
+		return (close_window(ray),display_error("mlx_new_window\n"), 0);
+	if (init_img(ray) == -1)
+		return (close_window(ray), display_error("init_img\n"), -1);
 	mlx_hook(ray->win, 2, 1L << 0, &ft_key_press, ray);
 	mlx_hook(ray->win, 3, 1L << 1, &ft_key_release, ray);
 	mlx_hook(ray->win, 17, 1L << 17, close_window, ray);
@@ -78,7 +84,7 @@ int	ft_loop(t_ray *ray)
 int	ft_key_press(int keycode, t_ray *ray)
 {
 	if (keycode == KEY_ESC)
-	close_window(ray);
+		close_window(ray);
 	if (keycode == KEY_W || keycode == KEY_UP)
 		ray->key_w = 1;
 	if (keycode == KEY_A)
@@ -113,9 +119,30 @@ int	ft_key_release(int keycode, t_ray *ray)
 
 int	close_window(t_ray *ray)
 {
-	mlx_destroy_window(ray->mlx, ray->win);
-	//fonction free_exit(ray);
-	exit(0);
+	int i;
+	
+	i = 0;
+	free_struct_map(&ray->mapp);
+	while (i < 4)
+	{
+		if (ray->textures[i].img)
+			mlx_destroy_image(ray->mlx, ray->textures[i].img);
+		i++;
+	}
+	if (ray->img)
+	{
+		if (ray->img->img)
+			mlx_destroy_image(ray->mlx, ray->img->img);
+		free(ray->img);
+	}
+	if (ray->win)
+		mlx_destroy_window(ray->mlx, ray->win);
+	if (ray->mlx)
+	{
+		mlx_destroy_display(ray->mlx);
+		free(ray->mlx);
+	}
+	exit(1);
 	return (0);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:15:35 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/11 16:39:58 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/14 12:52:58 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ typedef struct t_start
 	int		first_line_map;
 	int		hex_floor;
 	int		hex_ceiling;
+    int     error;
     
 
 	// BRUT MAP

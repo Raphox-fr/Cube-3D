@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 19:34:55 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/10 17:56:16 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/14 13:02:50 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	init_struct_map(t_struct *map)
 	map->brut_map_only = NULL;
 	map->hex_floor = 0;
 	map->hex_ceiling = 0;
+	map->error = 0;
+	map->map_only = NULL;
+	map->map_brut = NULL;
 }
-
-//OUVOU

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 11:55:02 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/10 18:32:22 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/14 12:53:54 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,9 @@ t_struct	parsing(int argc, char **argv)
 
 	init_struct_map(&map);
 	if (check_input(argc, argv) == -1)
-		return (map);
+		map.error = -1;
 	if (check_map(&map, argv[1]) == -1)
-		return (map);
-	
+		map.error = -1;
 	return (map);
 }
 
