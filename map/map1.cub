@@ -1,10 +1,10 @@
-NO map/textures/matrix.xpm
+NO map/textures/no_txtures64.xpm
 
-SO map/textures/matrix.xpm
+SO map/textures/so_txtures64.xpm
 
-WE map/textures/matrix.xpm
+WE map/textures/we_txtures64.xpm
 
-EA         map/textures/matrix.xpm
+EA         map/textures/ea_txtures64.xpm
 
 C 1,224,222
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_ray.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 19:53:33 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/14 12:38:53 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/14 17:13:34 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 int init_struct_ray(t_ray *ray)
 {
 	// return (-1);
-	printf("mapp->x_player = %d\n", ray->mapp.x_player);
-	printf("mapp->y_player = %d\n", ray->mapp.y_player);
+	// printf("mapp->x_player = %d\n", ray->mapp.x_player);
+	// printf("mapp->y_player = %d\n", ray->mapp.y_player);
 	ray->posX = (double)ray->mapp.x_player+ 0.5; 
 	ray->posY = (double)ray->mapp.y_player + 0.5;
 	
-	printf("posX = %f\n", ray->posX);
-	printf("posY = %f\n", ray->posY);
+	// printf("posX = %f\n", ray->posX);
+	// printf("posY = %f\n", ray->posY);
 	ray->key_w = 0;
 	ray->key_a = 0;
 	ray->key_s = 0;
@@ -61,7 +61,7 @@ int	init_img(t_ray *ray)
 int init_player(t_ray *ray)
 {
 	ray->axe = ray->mapp.player_directions;
-	printf("axe = %c\n", ray->axe);
+	// printf("axe = %c\n", ray->axe);
 	if (ray->axe == 'N')
 		ft_init_player_N(ray);
 	else if (ray->axe == 'S')

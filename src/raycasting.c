@@ -6,7 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:10:58 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/14 16:35:22 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/14 18:37:06 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ void    ft_raycast(t_ray *ray)
             ray->cameraX = 2 * x / (double)ray->size_x - 1;
             ray->rayDirX = ray->dirX + ray->planeX * ray->cameraX;
             ray->rayDirY = ray->dirY + ray->planeY * ray->cameraX;
-            ray->deltaDistX = sqrt(1 + (ray->rayDirY * ray->rayDirY) / (ray->rayDirX * ray->rayDirX));
-            ray->deltaDistY = sqrt(1 + (ray->rayDirX * ray->rayDirX) / (ray->rayDirY * ray->rayDirY));
+            // ray->deltaDistX = sqrt(1 + (ray->rayDirY * ray->rayDirY) / (ray->rayDirX * ray->rayDirX));
+            // ray->deltaDistY = sqrt(1 + (ray->rayDirX * ray->rayDirX) / (ray->rayDirY * ray->rayDirY));
+            ray->deltaDistX = fabs(1 / ray->rayDirX);
+            ray->deltaDistY = fabs(1 / ray->rayDirY);
             ft_distance(ray);
             ft_dda(ray);
             ft_height(ray); 
@@ -77,8 +79,8 @@ void ft_dda(t_ray *ray)
 			ray->mapY += ray->stepY;
 			ray->side = 1;
 		}
-		// if (ray->mapX >= 0 && ray->mapX < ray->size_x &&
-		// 	ray->mapY >= 0 && ray->mapY < ray->size_y)
+		// // if (ray->mapX >= 0 && ray->mapX < ray->size_x &&
+		// // 	ray->mapY >= 0 && ray->mapY < ray->size_y)
         if (ray->mapX >= 0 && ray->mapX < ray->size_x &&
             ray->mapY >= 0 && ray->mapY < ray->size_y &&
             ray->mapp.map_dis[ray->mapY][ray->mapX] == '1')
@@ -91,10 +93,15 @@ void ft_dda(t_ray *ray)
             }
 		// else
 		// {
-			// printf("  OUT OF BOUNDS: mapX = %d, mapY = %d (max: %f, %f)\n", ray->mapX, ray->mapY, ray->size_x, ray->size_y);
-			// break;
+		// 	printf("  OUT OF BOUNDS: mapX = %d, mapY = %d (max: %f, %f)\n", ray->mapX, ray->mapY, ray->size_x, ray->size_y);
+		// 	break;
 		// }
 	}
+    
+	// if (ray->side == 0)
+    //     ray->perpWallDist = (ray->sideDistX - ray->rayDirX);
+    // else
+    //     ray->perpWallDist = (ray->sideDistY - ray->rayDirY);
 
 	if (ray->side == 0)
 		ray->perpWallDist = (ray->mapX - ray->posX + (1 - ray->stepX) / 2) / ray->rayDirX;
@@ -111,9 +118,9 @@ void    ft_height(t_ray *ray)
     ray->drawStart = -ray->lineHeight / 2 + ray->h / 2;
     if (ray->drawStart < 0)
         ray->drawStart = 0;
-    ray->drawEnd = ray->lineHeight / 2 + ray->h / 2;
+    ray->drawEnd = ray->lineHeight / 2 + (ray->h / 2);
     if (ray->drawEnd >= ray->h) //h = size_y
-        ray->drawEnd = ray->h - 1; 
+        ray->drawEnd = ray->h -1 ; //-1 
 }
 
 // void ft_dda(t_ray *ray)

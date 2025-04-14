@@ -6,7 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:15:35 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/14 16:19:54 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/14 18:32:53 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ typedef struct s_ray
     double     dirX;
     double     dirY;
     double     planeX;
-    int     planeY;
+    double     planeY;
     double  cameraX;
     double  rayDirX;
     double  rayDirY;
