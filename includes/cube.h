@@ -6,7 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:15:35 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/14 18:32:53 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/14 19:12:59 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,14 @@
 # define KEY_A 97
 # define KEY_S 115
 # define KEY_D 100
-# define KEY_LEFT 65361
-# define KEY_RIGHT 65363
+# define KEY_LEFT 65363
+# define KEY_RIGHT 65361
 # define KEY_ESC 65307
 # define KEY_UP 65362
 # define KEY_DOWN 65364
-# define MOVE_SPEED 0.075
-# define ROT_SPD 0.03
+# define MOVE_SPEED 0.19 //avec valgrind 1 + rot 1
+# define MARG 0.1
+# define ROT_SPD 0.098
 
 typedef struct s_img
 {

@@ -1,13 +1,13 @@
-NO map/textures/no_txtures64.xpm
+NO map/textures/no_t.xpm
 
-SO map/textures/so_txtures64.xpm
+SO map/textures/so_t.xpm
 
-WE map/textures/we_txtures64.xpm
+WE map/textures/we_t.xpm
 
-EA         map/textures/ea_txtures64.xpm
+EA         map/textures/ea_t.xpm
+
 
 C 1,224,222
-
 F       122,     122,      123
 
 

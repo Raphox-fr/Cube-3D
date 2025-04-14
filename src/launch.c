@@ -6,7 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:15:14 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/14 16:38:58 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/14 19:29:19 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,9 @@ int	ft_launch(t_ray *ray)
 
 int	ft_loop(t_ray *ray)
 {
-	ft_move(ray);
 	ft_memset(ray->img->addr, 0, ray->img->width * ray->img->height * sizeof(int));
 	ft_raycast(ray);
+	ft_move(ray);
 	mlx_put_image_to_window(ray->mlx, ray->win, ray->img->img, 0, 0);
 	return (0);
 }
