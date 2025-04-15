@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_layout.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 17:28:52 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/10 18:40:51 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/15 11:00:16 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	check_map_layout(t_struct *map)
 	}
 	if (find_player(map) == -1)
 	{
-		display_error("Player not found\n");
+		display_error("Player not found in map\n");
 		return (-1);
 	}
 	if (verify_map(map) == -1)

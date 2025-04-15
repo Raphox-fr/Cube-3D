@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 20:08:03 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/10 15:14:24 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/15 11:25:30 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,11 @@ int	find_every_txture_in_map(t_struct *map, char **map_table)
 	{
 		display_error("Invalid textures or missing textures\n");
 		return (-1);
+	}
+	if (check_access_every_txture(map) == -1)
+	{
+		display_error("Invalid textures or missing textures\n");
+		return (-1);		
 	}
 	if (count != 4)
 	{
@@ -91,16 +96,18 @@ int	find_txture(t_struct *map, char **map_table, char *directions)
 
 int	check_found_txture(t_struct *map, char *map_string, char *directions)
 {
-	while ((*map_string == ' ' || *map_string == '	') && *map_string != '\0')
+	while ((*map_string == ' ') && *map_string != '\0')
 		map_string++;
 	if (ft_strlen_cub(map_string) <= 2)
 		return (-1);
 	if (*map_string == directions[0] && *(map_string + 1) == directions[1])
 	{
 		map_string = map_string + 3;
-		while ((*map_string == ' ' || *map_string == '	')
+		while ((*map_string == ' ')
 			&& *map_string != '\0')
 			map_string++;
+		if (*map_string == '\t')
+			return (-1);
 		if (check_end_textures(map_string) == -1)
 			return (-1);
 		if (directions[0] == 'N' && directions[1] == 'O')
@@ -117,7 +124,7 @@ int	check_found_txture(t_struct *map, char *map_string, char *directions)
 
 int	check_end_textures(char *str)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (str[i] != '\0' && str[i] != ' ')
@@ -125,7 +132,9 @@ int	check_end_textures(char *str)
 	while (str[i] != '\0' && (str[i] == ' '))
 		i++;
 	if (str[i] != '\0')
+	{
 		return (-1);
+	}
 	return (1);
 }
 
