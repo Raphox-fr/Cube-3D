@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:10:58 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/16 12:10:11 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/16 12:35:02 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,8 +129,8 @@ void	ft_height(t_ray *ray)
 //     }
 //     if (ray->side == 0)
 //         ray->perpWallDist = (ray->mapX - ray->posX + (1 - ray->stepX) / 2)
-/ ray->rayDirX;
+// ray->rayDirX;
 //     else
 //         ray->perpWallDist = (ray->mapY - ray->posY + (1 - ray->stepY) / 2)
-/ ray->rayDirY;
+// ray->rayDirY;
 // }
