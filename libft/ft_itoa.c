@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 20:03:07 by raphox            #+#    #+#             */
-/*   Updated: 2023/11/23 18:25:00 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/16 12:38:34 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ char	*ft_itoa(int n)
 
 	locate = 0;
 	size = ft_get_size(n);
-	if (!(res = (char *)malloc(sizeof(char) * size + 1)))
+	res = (char *)malloc(sizeof(char) * size + 1);
+	if (res == NULL)
 		return (0);
 	if (n == -2147483648)
 	{

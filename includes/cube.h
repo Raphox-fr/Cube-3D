@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:15:35 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/16 12:58:58 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/16 13:26:42 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -213,6 +213,7 @@ int				check_map_layout(t_struct *map);
 int				check_invalid_char_after_first_line_after_infos(t_struct *map);
 int				find_player(t_struct *map);
 int				find_first_line_map(t_struct *map);
+void			find_player_extension(t_struct *map, int x, int y);
 
 // Verify_map
 
