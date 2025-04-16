@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:15:35 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/16 13:26:42 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/16 13:42:54 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@
 # define KEY_UP 65362
 # define KEY_DOWN 65364
 # define MOVE_SPEED 0.19
-# define MARG 0.1
+# define MARG 0.15
 # define ROT_SPD 0.098
 
 typedef struct s_draw
