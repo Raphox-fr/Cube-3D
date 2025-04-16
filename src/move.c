@@ -6,7 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:12:53 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/16 12:50:31 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/16 12:52:46 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ void	ft_rotate_left(t_ray *ray)
 	ray->olddirx = ray->dirx;
 	ray->dirx = ray->dirx * cos(ROT_SPD) - ray->diry * sin(ROT_SPD);
 	ray->diry = ray->olddirx * sin(ROT_SPD) + ray->diry * cos(ROT_SPD);
-	ray->oldplanex = ray->planeX;
-	ray->planeX = ray->planeX * cos(ROT_SPD) - ray->planeY * sin(ROT_SPD);
-	ray->planeY = ray->oldplanex * sin(ROT_SPD) + ray->planeY * cos(ROT_SPD);
+	ray->oldplanex = ray->planex;
+	ray->planex = ray->planex * cos(ROT_SPD) - ray->planey * sin(ROT_SPD);
+	ray->planey = ray->oldplanex * sin(ROT_SPD) + ray->planey * cos(ROT_SPD);
 }
 
 void	ft_rotate_right(t_ray *ray)
@@ -43,7 +43,7 @@ void	ft_rotate_right(t_ray *ray)
 	ray->olddirx = ray->dirx;
 	ray->dirx = ray->dirx * cos(-ROT_SPD) - ray->diry * sin(-ROT_SPD);
 	ray->diry = ray->olddirx * sin(-ROT_SPD) + ray->diry * cos(-ROT_SPD);
-	ray->oldplanex = ray->planeX;
-	ray->planeX = ray->planeX * cos(-ROT_SPD) - ray->planeY * sin(-ROT_SPD);
-	ray->planeY = ray->oldplanex * sin(-ROT_SPD) + ray->planeY * cos(-ROT_SPD);
+	ray->oldplanex = ray->planex;
+	ray->planex = ray->planex * cos(-ROT_SPD) - ray->planey * sin(-ROT_SPD);
+	ray->planey = ray->oldplanex * sin(-ROT_SPD) + ray->planey * cos(-ROT_SPD);
 }
