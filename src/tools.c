@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 14:20:49 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/16 12:19:27 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/16 14:03:56 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_strcmp(char *s1, char *s2)
 	return (s1[i] - s2[i]);
 }
 
-char	*ft_strdup_pimp(const char *src)
+char	*ft_strdup_pimp(const char *src, t_struct *map)
 {
 	int		i;
 	int		j;
@@ -46,7 +46,10 @@ char	*ft_strdup_pimp(const char *src)
 	countstr = ft_strlen_spaces_tabs(src);
 	dest = malloc((sizeof(char)) * (countstr + 1));
 	if (dest == NULL)
+	{
+		map->err_malloc = -1;
 		return (NULL);
+	}
 	while (src[i])
 	{
 		if (src[i] != ' ')

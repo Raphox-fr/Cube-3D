@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 19:34:55 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/16 12:01:15 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/16 14:04:48 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,9 @@ void	init_struct_map(t_struct *map)
 	map->map_only = NULL;
 	map->map_brut = NULL;
 	map->map_dis = NULL;
+}
+
+void	init_v2(t_struct *map)
+{
+	map->err_malloc = 0;
 }

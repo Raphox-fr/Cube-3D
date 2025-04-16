@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 20:08:03 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/16 12:19:21 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/16 14:04:17 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ int	find_every_txture_in_map(t_struct *map, char **map_table)
 		&& check_extension_xpm(map->ea_txture) == 1)
 		count++;
 	if (map->no_txture == NULL || map->so_txture == NULL
-		|| map->we_txture == NULL || map->ea_txture == NULL)
+		|| map->we_txture == NULL || map->ea_txture == NULL
+		&& map->err_malloc == 0)
 		return (display_error("Invalid textures or missing textures\n"), -1);
 	if (check_access_every_txture(map) == -1)
 		return (display_error("Invalid textures or missing textures\n"), -1);
@@ -101,13 +102,13 @@ int	check_found_txture(t_struct *map, char *map_string, char *directions)
 		if (check_end_textures(map_string) == -1)
 			return (-1);
 		if (directions[0] == 'N' && directions[1] == 'O')
-			return (map->no_txture = ft_strdup_pimp(map_string), 1);
+			return (map->no_txture = ft_strdup_pimp(map_string, map), 1);
 		if (directions[0] == 'S' && directions[1] == 'O')
-			return (map->so_txture = ft_strdup_pimp(map_string), 1);
+			return (map->so_txture = ft_strdup_pimp(map_string, map), 1);
 		if (directions[0] == 'W' && directions[1] == 'E')
-			return (map->we_txture = ft_strdup_pimp(map_string), 1);
+			return (map->we_txture = ft_strdup_pimp(map_string, map), 1);
 		if (directions[0] == 'E' && directions[1] == 'A')
-			return (map->ea_txture = ft_strdup_pimp(map_string), 1);
+			return (map->ea_txture = ft_strdup_pimp(map_string, map), 1);
 	}
 	return (-1);
 }

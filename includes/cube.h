@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:15:35 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/16 13:42:54 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/16 14:03:23 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,12 @@
 
 typedef struct s_draw
 {
-	int		x;
-	int		dir;
-	int		tex_x;
-	double	tex_pos;
-	double	step;
-}	t_draw;
+	int			x;
+	int			dir;
+	int			tex_x;
+	double		tex_pos;
+	double		step;
+}				t_draw;
 
 typedef struct s_img
 {
@@ -100,6 +100,8 @@ typedef struct t_start
 	char		*ceiling_brut;
 	char		*map_brut;
 	char		*brut_map_only;
+
+	int			err_malloc;
 
 	int			first_line_brut_map;
 
@@ -184,7 +186,8 @@ void			free_split(char **cmd);
 int				ft_strlen_cub(const char *str);
 
 int				ft_strlen_spaces_tabs(const char *str);
-char			*ft_strdup_pimp(const char *src);
+char			*ft_strdup_pimp(const char *src, t_struct *map);
+void			init_v2(t_struct *map);
 
 int				count_size_y(char **map_table);
 int				count_size_x(int y, char **str);
@@ -280,8 +283,8 @@ void			ft_display(t_ray *ray, int x);
 void			ft_draw_floor(t_ray *ray, int x);
 void			ft_draw_wall(t_ray *ray, int x, int dir);
 void			ft_draw_wall_loop(t_ray *ray, t_draw draw);
-void			ft_calc_texture_vars(t_ray *ray, int dir, \
-		int *tex_x, double *step_tex_pos);
+void			ft_calc_texture_vars(t_ray *ray, int dir, int *tex_x,
+					double *step_tex_pos);
 void			ft_draw_ceiling(t_ray *ray, int x);
 int				ft_get_texture_direction(t_ray *ray);
 
