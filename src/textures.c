@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 20:08:03 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/16 12:06:49 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/16 12:19:21 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,22 +110,6 @@ int	check_found_txture(t_struct *map, char *map_string, char *directions)
 			return (map->ea_txture = ft_strdup_pimp(map_string), 1);
 	}
 	return (-1);
-}
-
-int	check_end_textures(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0' && str[i] != ' ')
-		i++;
-	while (str[i] != '\0' && (str[i] == ' '))
-		i++;
-	if (str[i] != '\0')
-	{
-		return (-1);
-	}
-	return (1);
 }
 
 // char **get_type_texture_from_structure(t_struct *map, char *directions)

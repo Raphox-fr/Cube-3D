@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 17:28:52 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/15 11:00:16 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/16 12:12:41 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,5 +124,3 @@ int	find_player(t_struct *map)
 	return (1);
 }
 
-// printf("map->first_line_after_infos = %d \n", map->first_line_after_infos);
-// printf("player_directions=%d\n", map->player_directions);

@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:32:57 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/16 11:57:41 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/16 12:18:14 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,6 @@ int	check_floor_ceiling_in_map(t_struct *map, char **map_table)
 		return (-1);
 	}
 	return (1);
-}
-
-int	rgb_to_hex(int r, int g, int b)
-{
-	int	hex_color;
-
-	hex_color = (r << 16) | (g << 8) | b;
-	return (hex_color);
 }
 
 int	find_floor_ceiling(t_struct *map, char **map_table, char *letter)
@@ -139,60 +131,6 @@ int	check_value_syntax_rgb(char *str)
 		i++;
 	}
 	if (verify_syntax_rgb(str) == -1)
-		return (-1);
-	return (1);
-}
-
-int	verify_syntax_rgb(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] == ' ' && str[i] != '\0')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9' && str[i] != '\0')
-		i++;
-	while (str[i] != '\0')
-	{
-		if (str[i] != ' ')
-			return (-1);
-		i++;
-	}
-	return (1);
-}
-
-int	count_number(char *str)
-{
-	int	i;
-	int	count;
-
-	count = 0;
-	i = 0;
-	while (str[i])
-	{
-		if ((str[i]) >= '0' && str[i] <= '9')
-			count++;
-		i++;
-	}
-	if (count >= 4)
-		return (-1);
-	return (count);
-}
-
-int	count_characters(char *str, char c)
-{
-	int	i;
-	int	count;
-
-	count = 0;
-	i = 0;
-	while (str[i])
-	{
-		if ((str[i]) == c)
-			count++;
-		i++;
-	}
-	if (count != 2)
 		return (-1);
 	return (1);
 }

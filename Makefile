@@ -20,6 +20,7 @@ SRCS    = $(SRCDIR)/main.c \
           $(SRCDIR)/check_map.c \
           $(SRCDIR)/verify_map.c \
           $(SRCDIR)/textures.c \
+          $(SRCDIR)/tools2.c \
           $(SRCDIR)/xpm.c \
           $(SRCDIR)/tools.c \
 		  $(SRCDIR)/check_map_layout.c \
