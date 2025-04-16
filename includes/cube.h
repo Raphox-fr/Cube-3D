@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:15:35 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/16 12:29:22 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/16 12:35:31 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,6 +205,7 @@ int				check_map_layout(t_struct *map);
 int				check_invalid_char_after_first_line_after_infos(t_struct *map);
 int				find_player(t_struct *map);
 int				find_first_line_map(t_struct *map);
+void			find_player_extension(t_struct *map, int x, int y);
 
 // Verify_map
 
@@ -264,13 +265,15 @@ void			ft_dda(t_ray *ray);
 void			ft_height(t_ray *ray);
 
 // draw.c
-void		ft_display(t_ray *ray, int x);
-void	ft_draw_floor(t_ray *ray, int x);
-void	ft_draw_wall(t_ray *ray, int x, int dir);
-void	ft_draw_wall_loop(t_ray *ray, int x, int dir, int tex_x, double tex_pos, double step);
-void	ft_calc_texture_vars(t_ray *ray, int dir, int *tex_x, double *step_tex_pos);
-void	ft_draw_ceiling(t_ray *ray, int x);
-int	ft_get_texture_direction(t_ray *ray);
+void			ft_display(t_ray *ray, int x);
+void			ft_draw_floor(t_ray *ray, int x);
+void			ft_draw_wall(t_ray *ray, int x, int dir);
+void			ft_draw_wall_loop(t_ray *ray, int x, int dir, int tex_x,
+					double tex_pos, double step);
+void			ft_calc_texture_vars(t_ray *ray, int dir, int *tex_x,
+					double *step_tex_pos);
+void			ft_draw_ceiling(t_ray *ray, int x);
+int				ft_get_texture_direction(t_ray *ray);
 
 // init.c
 int				init_struct_ray(t_ray *ray);

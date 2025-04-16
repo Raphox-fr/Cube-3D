@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 20:14:13 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/16 12:19:11 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/16 12:36:31 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	check_extension_xpm(char *file_path)
 	{
 		if (i >= 1 && file_path[i] == '.' && file_path[i + 1] == 'x'
 			&& file_path[i + 2] == 'p' && file_path[i + 3] == 'm' && file_path[i
-			+ 4] == '\0')
+				+ 4] == '\0')
 		{
 			return (1);
 		}
@@ -54,4 +54,12 @@ int	check_end_textures(char *str)
 		return (-1);
 	}
 	return (1);
+}
+
+void	find_player_extension(t_struct *map, int x, int y)
+{
+	map->x_player = x;
+	map->y_player = y - 6;
+	map->player_directions = map->map_table[y][x];
+	map->map_table[y][x] = '0';
 }
