@@ -35,6 +35,7 @@ SRCS    = $(SRCDIR)/main.c \
 		  $(SRCDIR)/ft_xpm_to_img.c \
 		  $(SRCDIR)/init_ray.c \
 		  $(SRCDIR)/utils_ray.c \
+		  $(SRCDIR)/display_bis.c \
 
 OBJS    = $(SRCS:%.c=$(OBJDIR)/%.o)
 
