@@ -6,7 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:25:06 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/16 12:00:13 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/16 12:45:14 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 void	ft_move_forward(t_ray *ray)
 {
-	if (ray->mapp.map_dis[(int)(ray->posY + ray->dirY * (MOVE_SPEED + MARG))] \
-			[(int)ray->posX] != '1')
-		ray->posY += ray->dirY * MOVE_SPEED;
-	if (ray->mapp.map_dis[(int)ray->posY] \
-			[(int)(ray->posX + ray->dirX * (MOVE_SPEED + MARG))] != '1')
-		ray->posX += ray->dirX * MOVE_SPEED;
+	if (ray->mapp.map_dis[(int)(ray->posy + ray->diry * (MOVE_SPEED + MARG))] \
+			[(int)ray->posx] != '1')
+		ray->posy += ray->diry * MOVE_SPEED;
+	if (ray->mapp.map_dis[(int)ray->posy] \
+			[(int)(ray->posx + ray->dirx * (MOVE_SPEED + MARG))] != '1')
+		ray->posx += ray->dirx * MOVE_SPEED;
 }
 
 void	ft_move_back(t_ray *ray)
 {
-	if (ray->mapp.map_dis[(int)(ray->posY - ray->dirY * (MOVE_SPEED + MARG))] \
-			[(int)ray->posX] != '1')
-		ray->posY -= ray->dirY * MOVE_SPEED;
-	if (ray->mapp.map_dis[(int)ray->posY] \
-			[(int)(ray->posX - ray->dirX * (MOVE_SPEED + MARG))] != '1')
-		ray->posX -= ray->dirX * MOVE_SPEED;
+	if (ray->mapp.map_dis[(int)(ray->posy - ray->diry * (MOVE_SPEED + MARG))] \
+			[(int)ray->posx] != '1')
+		ray->posy -= ray->diry * MOVE_SPEED;
+	if (ray->mapp.map_dis[(int)ray->posy] \
+			[(int)(ray->posx - ray->dirx * (MOVE_SPEED + MARG))] != '1')
+		ray->posx -= ray->dirx * MOVE_SPEED;
 }
 
 void	ft_move_left(t_ray *ray)
@@ -37,14 +37,14 @@ void	ft_move_left(t_ray *ray)
 	double	perdirx;
 	double	perdiry;
 
-	perdirx = ray->dirY;
-	perdiry -= ray->dirX;
-	if (ray->mapp.map_dis[(int)ray->posY] \
-			[(int)(ray->posX + perdirx * (MOVE_SPEED + MARG))] != '1')
-	ray->posX += perdirx * MOVE_SPEED;
-	if (ray->mapp.map_dis[(int)(ray->posY + \
-				perdiry * (MOVE_SPEED + MARG))][(int)ray->posX] != '1')
-	ray->posY += perdiry * MOVE_SPEED;
+	perdirx = ray->diry;
+	perdiry -= ray->dirx;
+	if (ray->mapp.map_dis[(int)ray->posy] \
+			[(int)(ray->posx + perdirx * (MOVE_SPEED + MARG))] != '1')
+	ray->posx += perdirx * MOVE_SPEED;
+	if (ray->mapp.map_dis[(int)(ray->posy + \
+				perdiry * (MOVE_SPEED + MARG))][(int)ray->posx] != '1')
+	ray->posy += perdiry * MOVE_SPEED;
 }
 
 void	ft_move_right(t_ray *ray)
@@ -52,12 +52,12 @@ void	ft_move_right(t_ray *ray)
 	double	perdirx;
 	double	perdiry;
 
-	perdirx -= ray->dirY;
-	perdiry = ray->dirX;
-	if (ray->mapp.map_dis[(int)ray->posY][(int)(ray->posX + \
+	perdirx -= ray->diry;
+	perdiry = ray->dirx;
+	if (ray->mapp.map_dis[(int)ray->posy][(int)(ray->posx + \
 				perdirx * (MOVE_SPEED + MARG))] != '1')
-	ray->posX += perdirx * MOVE_SPEED;
-	if (ray->mapp.map_dis[(int)(ray->posY + perdiry * (MOVE_SPEED + MARG))] \
-			[(int)ray->posX] != '1')
-	ray->posY += perdiry * MOVE_SPEED;
+	ray->posx += perdirx * MOVE_SPEED;
+	if (ray->mapp.map_dis[(int)(ray->posy + perdiry * (MOVE_SPEED + MARG))] \
+			[(int)ray->posx] != '1')
+	ray->posy += perdiry * MOVE_SPEED;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:14:21 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/16 12:30:09 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/16 12:49:08 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_draw_ceiling(t_ray *ray, int x)
 	char	*pixel;
 
 	y = 0;
-	while (y < ray->drawStart)
+	while (y < ray->drawstart)
 	{
 		pixel = ray->img->addr + (y * ray->img->line_length + x * (ray->img->bpp
 					/ 8));
@@ -43,14 +43,14 @@ int	ft_get_texture_direction(t_ray *ray)
 {
 	if (ray->side == 1)
 	{
-		if (ray->rayDirY > 0)
+		if (ray->raydiry > 0)
 			return (SOUTH);
 		else
 			return (NORTH);
 	}
 	else
 	{
-		if (ray->rayDirX > 0)
+		if (ray->raydirx > 0)
 			return (EAST);
 		else
 			return (WEST);
@@ -63,13 +63,13 @@ void	ft_calc_texture_vars(t_ray *ray, int dir, int *tex_x,
 	double	wall_x;
 
 	if (ray->side == 0)
-		wall_x = ray->posY + ray->perpWallDist * ray->rayDirY;
+		wall_x = ray->posy + ray->perpwalldist * ray->raydiry;
 	else
-		wall_x = ray->posX + ray->perpWallDist * ray->rayDirX;
+		wall_x = ray->posx + ray->perpwalldist * ray->raydirx;
 	wall_x -= floor(wall_x);
 	*tex_x = (int)(wall_x * ray->textures[dir].width);
-	if ((ray->side == 0 && ray->rayDirX > 0) || (ray->side == 1
-			&& ray->rayDirY < 0))
+	if ((ray->side == 0 && ray->raydirx > 0) || (ray->side == 1
+			&& ray->raydiry < 0))
 		*tex_x = ray->textures[dir].width - *tex_x - 1;
-	*step_tex_pos = (double)ray->textures[dir].height / ray->lineHeight;
+	*step_tex_pos = (double)ray->textures[dir].height / ray->lineheight;
 }

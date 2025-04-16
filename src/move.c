@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:12:53 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/16 12:28:59 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/16 12:50:31 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,20 @@ void	ft_move(t_ray *ray)
 
 void	ft_rotate_left(t_ray *ray)
 {
-	ray->oldDirX = ray->dirX;
-	ray->dirX = ray->dirX * cos(ROT_SPD) - ray->dirY * sin(ROT_SPD);
-	ray->dirY = ray->oldDirX * sin(ROT_SPD) + ray->dirY * cos(ROT_SPD);
-	ray->oldPlaneX = ray->planeX;
+	ray->olddirx = ray->dirx;
+	ray->dirx = ray->dirx * cos(ROT_SPD) - ray->diry * sin(ROT_SPD);
+	ray->diry = ray->olddirx * sin(ROT_SPD) + ray->diry * cos(ROT_SPD);
+	ray->oldplanex = ray->planeX;
 	ray->planeX = ray->planeX * cos(ROT_SPD) - ray->planeY * sin(ROT_SPD);
-	ray->planeY = ray->oldPlaneX * sin(ROT_SPD) + ray->planeY * cos(ROT_SPD);
+	ray->planeY = ray->oldplanex * sin(ROT_SPD) + ray->planeY * cos(ROT_SPD);
 }
 
 void	ft_rotate_right(t_ray *ray)
 {
-	ray->oldDirX = ray->dirX;
-	ray->dirX = ray->dirX * cos(-ROT_SPD) - ray->dirY * sin(-ROT_SPD);
-	ray->dirY = ray->oldDirX * sin(-ROT_SPD) + ray->dirY * cos(-ROT_SPD);
-	ray->oldPlaneX = ray->planeX;
+	ray->olddirx = ray->dirx;
+	ray->dirx = ray->dirx * cos(-ROT_SPD) - ray->diry * sin(-ROT_SPD);
+	ray->diry = ray->olddirx * sin(-ROT_SPD) + ray->diry * cos(-ROT_SPD);
+	ray->oldplanex = ray->planeX;
 	ray->planeX = ray->planeX * cos(-ROT_SPD) - ray->planeY * sin(-ROT_SPD);
-	ray->planeY = ray->oldPlaneX * sin(-ROT_SPD) + ray->planeY * cos(-ROT_SPD);
+	ray->planeY = ray->oldplanex * sin(-ROT_SPD) + ray->planeY * cos(-ROT_SPD);
 }

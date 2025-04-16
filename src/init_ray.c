@@ -6,7 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 19:53:33 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/15 20:50:09 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/16 12:45:14 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	init_struct_ray(t_ray *ray)
 {
-	ray->posX = (double)ray->mapp.x_player + 0.5;
-	ray->posY = (double)ray->mapp.y_player + 0.5;
+	ray->posx = (double)ray->mapp.x_player + 0.5;
+	ray->posy = (double)ray->mapp.y_player + 0.5;
 	ray->key_w = 0;
 	ray->key_a = 0;
 	ray->key_s = 0;
@@ -54,15 +54,15 @@ int	init_player(t_ray *ray)
 		ft_init_player_s(ray);
 	else if (ray->axe == 'E')
 	{
-		ray->dirX = 1;
-		ray->dirY = 0;
+		ray->dirx = 1;
+		ray->diry = 0;
 		ray->planeX = 0;
 		ray->planeY = -0.66;
 	}
 	else if (ray->axe == 'W')
 	{
-		ray->dirX = -1;
-		ray->dirY = 0;
+		ray->dirx = -1;
+		ray->diry = 0;
 		ray->planeX = 0;
 		ray->planeY = 0.66;
 	}
@@ -73,16 +73,16 @@ int	init_player(t_ray *ray)
 
 void	ft_init_player_n(t_ray *ray)
 {
-	ray->dirX = 0;
-	ray->dirY = -1;
+	ray->dirx = 0;
+	ray->diry = -1;
 	ray->planeX = 0.66;
 	ray->planeY = 0;
 }
 
 void	ft_init_player_s(t_ray *ray)
 {
-	ray->dirX = 0;
-	ray->dirY = 1;
+	ray->dirx = 0;
+	ray->diry = 1;
 	ray->planeX = -0.66;
 	ray->planeY = 0;
 }

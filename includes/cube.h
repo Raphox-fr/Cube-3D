@@ -6,7 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:15:35 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/16 12:40:07 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/16 12:51:07 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,33 +125,32 @@ typedef struct s_ray
 	char		**map;
 	double		size_x;
 	double		size_y;
-	double		posX;
-	double		posY;
-	double		dirX;
-	double		dirY;
+	double		posx;
+	double		posy;
+	double		dirx;
+	double		diry;
 	double		planeX;
 	double		planeY;
-	double		cameraX;
-	double		rayDirX;
-	double		rayDirY;
+	double		camerax;
+	double		raydirx;
+	double		raydiry;
 	int			mapX;
 	int			mapY;
-	double		sideDistX;
-	double		sideDistY;
-	double		deltaDistX;
-	double		deltaDistY;
-	double		perpWallDist;
-	int			stepX;
-	int			stepY;
+	double		sidedistx;
+	double		sidedisty;
+	double		deltadistx;
+	double		deltadisty;
+	double		perpwalldist;
+	int			stepx;
+	int			stepy;
 	int			hit;
-	int			lineHeight;
-	int			drawStart;
-	int			drawEnd;
+	int			lineheight;
+	int			drawstart;
+	int			drawend;
 	int			h;
-	double		wallX;
 	double		step;
-	double		oldDirX;
-	double		oldPlaneX;
+	double		olddirx;
+	double		oldplanex;
 	int			texx;
 	int			texy;
 	int			f_color;
