@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 11:55:02 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/14 12:53:54 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/16 18:35:08 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_struct	parsing(int argc, char **argv)
 
 	init_struct_map(&map);
 	if (check_input(argc, argv) == -1)
-		map.error = -1;
+		return (map.error = -1, map);
 	if (check_map(&map, argv[1]) == -1)
 		map.error = -1;
 	return (map);

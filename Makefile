@@ -1,4 +1,4 @@
-NAME    = cube
+NAME    = cub3D
 CC      = gcc
 
 MLXFLAGS		= -L$(MINILIBX_PATH) -lmlx -lX11 -lXext -lm
