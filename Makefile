@@ -37,6 +37,7 @@ SRCS    = $(SRCDIR)/main.c \
 		  $(SRCDIR)/init_ray.c \
 		  $(SRCDIR)/utils_ray.c \
 		  $(SRCDIR)/display_bis.c \
+		  $(SRCDIR)/raycasting_bis.c \
 
 OBJS    = $(SRCS:%.c=$(OBJDIR)/%.o)
 
