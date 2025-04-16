@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:25:06 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/16 14:06:28 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/16 15:52:40 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_move_left(t_ray *ray)
 	double	perdiry;
 
 	perdirx = ray->diry;
-	perdiry -= ray->dirx;
+	perdiry = -ray->dirx;
 	if (ray->mapp.map_dis[(int)ray->posy][(int)(ray->posx + perdirx
 		* (MOVE_SPEED + MARG))] != '1')
 		ray->posx += perdirx * MOVE_SPEED;
@@ -64,7 +64,7 @@ void	ft_move_right(t_ray *ray)
 	double	perdirx;
 	double	perdiry;
 
-	perdirx -= ray->diry;
+	perdirx = -ray->diry;
 	perdiry = ray->dirx;
 	if (ray->mapp.map_dis[(int)ray->posy][(int)(ray->posx + perdirx
 		* (MOVE_SPEED + MARG))] != '1')

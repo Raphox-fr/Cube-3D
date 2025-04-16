@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 20:08:03 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/16 14:16:31 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/16 15:54:08 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ int	find_every_txture_in_map(t_struct *map, char **map_table)
 	if (find_txture(map, map_table, "EA") == 1
 		&& check_extension_xpm(map->ea_txture) == 1)
 		count++;
-	if (map->no_txture == NULL || map->so_txture == NULL
-		|| map->we_txture == NULL || map->ea_txture == NULL
-		&& map->err_malloc == 0)
+	if ((map->no_txture == NULL || map->so_txture == NULL
+			|| map->we_txture == NULL || map->ea_txture == NULL)
+		&& (map->err_malloc == 0))
 		return (display_error("Invalid textures or missing textures\n"), -1);
 	if (check_access_every_txture(map) == -1)
 		return (display_error("Invalid textures or missing textures\n"), -1);

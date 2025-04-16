@@ -3,8 +3,8 @@ NO map/textures/no_t.xpm
 SO map/textures/so_t.xpm
 EA  map/textures/ea_t.xpm
 
-C 1,224,222
-F       122,     122,      123
+C  20, 20, 20
+F 20, 20, 20
 
 1111111111111111111111111111111111111111111
 111111111011000001110000000000001
