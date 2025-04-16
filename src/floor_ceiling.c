@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:32:57 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/16 14:18:40 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/16 14:24:18 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,16 +91,15 @@ int	verify_rgb(t_struct *map, char *map_string, char *letter)
 	char	**split_result;
 	int		*target;
 
-	j = 0;
+	j = -1;
 	split_result = ft_split(map_string, ',');
 	if (split_result == NULL)
 		return (-1);
-	while (split_result[j])
+	while (split_result[++j])
 	{
 		if (check_value_syntax_rgb(split_result[j]) == -1
 			|| count_characters(map_string, ',') == -1)
 			return (free_split(split_result), -1);
-		j++;
 	}
 	if (j != 3)
 		return (free_split(split_result), -1);
