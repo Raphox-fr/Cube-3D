@@ -6,7 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:25:06 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/15 21:19:36 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/16 12:00:13 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_move_forward(t_ray *ray)
 {
-	if (ray->mapp.map_dis[(int)(ray->posY + ray->dirY * (MOVE_SPEED + MARGE))] \
+	if (ray->mapp.map_dis[(int)(ray->posY + ray->dirY * (MOVE_SPEED + MARG))] \
 			[(int)ray->posX] != '1')
 		ray->posY += ray->dirY * MOVE_SPEED;
 	if (ray->mapp.map_dis[(int)ray->posY] \
@@ -24,7 +24,7 @@ void	ft_move_forward(t_ray *ray)
 
 void	ft_move_back(t_ray *ray)
 {
-	if (ray->mapp.map_dis[(int)(ray->posY - ray->dirY * (MOVE_SPEED + MARGE))] \
+	if (ray->mapp.map_dis[(int)(ray->posY - ray->dirY * (MOVE_SPEED + MARG))] \
 			[(int)ray->posX] != '1')
 		ray->posY -= ray->dirY * MOVE_SPEED;
 	if (ray->mapp.map_dis[(int)ray->posY] \

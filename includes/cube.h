@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:15:35 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/16 12:06:27 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/16 12:29:22 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@
 # define KEY_DOWN 65364
 # define MOVE_SPEED 0.19
 # define MARG 0.1
-# define MARGE 0.2
 # define ROT_SPD 0.098
 
 typedef struct s_img
@@ -265,7 +264,13 @@ void			ft_dda(t_ray *ray);
 void			ft_height(t_ray *ray);
 
 // draw.c
-void			ft_display(t_ray *ray, int x);
+void		ft_display(t_ray *ray, int x);
+void	ft_draw_floor(t_ray *ray, int x);
+void	ft_draw_wall(t_ray *ray, int x, int dir);
+void	ft_draw_wall_loop(t_ray *ray, int x, int dir, int tex_x, double tex_pos, double step);
+void	ft_calc_texture_vars(t_ray *ray, int dir, int *tex_x, double *step_tex_pos);
+void	ft_draw_ceiling(t_ray *ray, int x);
+int	ft_get_texture_direction(t_ray *ray);
 
 // init.c
 int				init_struct_ray(t_ray *ray);

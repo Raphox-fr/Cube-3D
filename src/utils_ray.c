@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 20:54:59 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/16 12:08:33 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/16 12:29:04 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,21 +39,6 @@ int	get_map_width(char **map)
 	}
 	return (max_width);
 }
-
-// int	get_map_width(char **map)
-// {
-// 	int	max_width;
-// 	int	tmp;
-
-// 	max_width = 0;
-// 	for (int i = 0; map[i]; i++)
-// 	{
-// 		tmp = strlen(map[i]);
-// 		if (tmp > max_width)
-// 			max_width = tmp;
-// 	}
-// 	return (max_width);
-// }
 
 void	init_all_zero(t_ray *ray)
 {

@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:14:21 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/16 11:48:00 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/16 12:30:09 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,21 @@
 
 void	ft_display(t_ray *ray, int x)
 {
-	int				y;
-	char			*pixel;
-	unsigned int	color;
-	int				dir;
-	double			wallX;
-	double			step;
-	double			texPos;
-	int				texY;
+	int	dir;
 
 	ray->c_color = ray->mapp.hex_ceiling;
 	ray->f_color = ray->mapp.hex_floor;
-	// Plafond
+	ft_draw_ceiling(ray, x);
+	dir = ft_get_texture_direction(ray);
+	ft_draw_wall(ray, x, dir);
+	ft_draw_floor(ray, x);
+}
+
+void	ft_draw_ceiling(t_ray *ray, int x)
+{
+	int		y;
+	char	*pixel;
+
 	y = 0;
 	while (y < ray->drawStart)
 	{
@@ -34,140 +37,39 @@ void	ft_display(t_ray *ray, int x)
 		*(unsigned int *)pixel = ray->c_color;
 		y++;
 	}
-	// Direction de la texture
+}
+
+int	ft_get_texture_direction(t_ray *ray)
+{
 	if (ray->side == 1)
 	{
 		if (ray->rayDirY > 0)
-			dir = SOUTH;
+			return (SOUTH);
 		else
-			dir = NORTH;
+			return (NORTH);
 	}
 	else
 	{
 		if (ray->rayDirX > 0)
-			dir = EAST;
+			return (EAST);
 		else
-			dir = WEST;
-	}
-	// Calcul des infos pour la texture murale
-	if (ray->side == 0)
-		wallX = ray->posY + ray->perpWallDist * ray->rayDirY;
-	else
-		wallX = ray->posX + ray->perpWallDist * ray->rayDirX;
-	wallX -= floor(wallX);
-	int texX = (int)(wallX * ray->textures[dir].width);
-		// voir si texX ici et pas structure
-	if ((ray->side == 0 && ray->rayDirX > 0) || (ray->side == 1
-			&& ray->rayDirY < 0))
-		texX = ray->textures[dir].width - texX - 1;
-	step = 1.0 * ray->textures[dir].height / ray->lineHeight;
-	texPos = (ray->drawStart - ray->size_y / 2 + ray->lineHeight / 2) * step;
-	// Mur
-	y = ray->drawStart;
-	while (y < ray->drawEnd)
-	{
-		// int texY = (int)texPos & (ray->textures[dir].height - 1);
-		texY = (int)texPos;
-		if (texY < 0)
-			texY = 0;
-		if (texY >= ray->textures[dir].height)
-			texY = ray->textures[dir].height - 1;
-		texPos += step;
-		color = *(unsigned int *)(ray->textures[dir].addr + (texY
-					* ray->textures[dir].line_length + texX
-					* (ray->textures[dir].bpp / 8)));
-		pixel = ray->img->addr + (y * ray->img->line_length + x * (ray->img->bpp
-					/ 8));
-		*(unsigned int *)pixel = color;
-		y++;
-	}
-	// Sol
-	while (y < ray->size_y)
-	{
-		pixel = ray->img->addr + (y * ray->img->line_length + x * (ray->img->bpp
-					/ 8));
-		*(unsigned int *)pixel = ray->f_color;
-		y++;
+			return (WEST);
 	}
 }
 
-// void ft_display(t_ray *ray, int x)
-// {
-//     int             y;
-//     char            *pixel;
-//     unsigned int    color;
-//     int             dir;
-// ray->c_color = (ray->ma`p.ceiling[0] << 16 | ray->mapp.ceiling[1] << 8 | ray->mapp.ceiling[2]);
-// ray->f_color = (ray->mapp.floor[0] << 16 | ray->mapp.floor[1] << 8 | ray->mapp.floor[2]);
-// //je chope bien les bonnes couleurs c'est ok
-// // printf("c_color = %d\n", ray->c_color);
-// // printf("f_color = %d\n", ray->f_color);
-//     // Vérifie que c_color et f_color sont initialisées
-//     if (!ray->c_color || !ray->f_color)
-//     {
-//         printf("Erreur : couleurs sol/plafond non initialisées.\n");
-//         exit(1);
-//     }
+void	ft_calc_texture_vars(t_ray *ray, int dir, int *tex_x,
+		double *step_tex_pos)
+{
+	double	wall_x;
 
-//     // Plafond
-//     y = 0;
-//     while (y < ray->drawStart)
-//     {
-//         pixel = ray->img->addr + (y * ray->img->line_length + x
-		// * (ray->img->bpp / 8));
-//         *(unsigned int *)pixel = ray->c_color;
-//         y++;
-//     }
-
-//     // Direction de la texture
-//     if (ray->side == 1)
-//         dir = (ray->rayDirY > 0) ? SOUTH : NORTH;
-//     else
-//         dir = (ray->rayDirX > 0) ? EAST : WEST;
-
-//     // Calcul de wallX
-//     double wallX = (ray->side == 0)
-//         ? ray->posY + ray->perpWallDist * ray->rayDirY
-//         : ray->posX + ray->perpWallDist * ray->rayDirX;
-//     wallX -= floor(wallX);
-
-//     int texX = (int)(wallX * ray->textures[dir].width);
-//     if ((ray->side == 0 && ray->rayDirX > 0) || (ray->side == 1
-		// && ray->rayDirY < 0))
-        // texX = ray->textures[dir].width - texX - 1;
-
-//     double step = 1.0 * ray->textures[dir].height / ray->lineHeight;
-//     double texPos = (ray->drawStart - ray->size_y / 2 + ray->lineHeight / 2)
-	// * step;
-
-//     // Mur
-//     y = ray->drawStart;
-//     while (y < ray->drawEnd)
-//     {
-//         int texY = (int)texPos;
-//         if (texY < 0)
-//             texY = 0;
-//         if (texY >= ray->textures[dir].height)
-//             texY = ray->textures[dir].height - 1;
-//         texPos += step;
-
-//         color = *(unsigned int *)(ray->textures[dir].addr
-//             + (texY * ray->textures[dir].line_length
-//             + texX * (ray->textures[dir].bpp / 8)));
-
-//         pixel = ray->img->addr + (y * ray->img->line_length + x
-		// * (ray->img->bpp / 8));
-//         *(unsigned int *)pixel = color;
-//         y++;
-//     }
-
-//     // Sol
-//     while (y < ray->size_y)
-//     {
-//         pixel = ray->img->addr + (y * ray->img->line_length + x
-		// * (ray->img->bpp / 8));
-//         *(unsigned int *)pixel = ray->f_color;
-//         y++;
-//     }
-// 	printf("\nhello world\n ");
-// // }
+	if (ray->side == 0)
+		wall_x = ray->posY + ray->perpWallDist * ray->rayDirY;
+	else
+		wall_x = ray->posX + ray->perpWallDist * ray->rayDirX;
+	wall_x -= floor(wall_x);
+	*tex_x = (int)(wall_x * ray->textures[dir].width);
+	if ((ray->side == 0 && ray->rayDirX > 0) || (ray->side == 1
+			&& ray->rayDirY < 0))
+		*tex_x = ray->textures[dir].width - *tex_x - 1;
+	*step_tex_pos = (double)ray->textures[dir].height / ray->lineHeight;
+}
