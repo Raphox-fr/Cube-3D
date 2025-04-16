@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 17:32:50 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/16 12:08:44 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/16 14:20:02 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,11 @@ int	verify_map(t_struct *map)
 	if (check_newline_map(map) == -1)
 		return (-1);
 	map->map_only = ft_split(map->brut_map_only, '\n');
+	if (map->map_only == NULL)
+		return (-1);
 	map->map_dis = ft_split(map->brut_map_only, '\n');
+	if (map->map_dis == NULL)
+		return (-1);
 	if (transform_player_to_zero(map) == -1)
 		return (-1);
 	while (find_zero(map) != -1)
