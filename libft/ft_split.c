@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:46:45 by raphox            #+#    #+#             */
-/*   Updated: 2025/04/10 15:03:48 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/16 11:52:37 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 #include <string.h>
 #include <strings.h>
 #include <unistd.h>
-
-
 
 int	ft_countwords(const char *str, char set)
 {

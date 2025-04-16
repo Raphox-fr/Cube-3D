@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 11:32:57 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/10 15:18:06 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/16 11:57:41 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ int	find_floor_ceiling(t_struct *map, char **map_table, char *letter)
 
 int	save_rgb(t_struct *map, char *map_string, char *letter)
 {
-
 	if (map_string != NULL)
 	{
 		while (*map_string == ' ' || *map_string == '	')

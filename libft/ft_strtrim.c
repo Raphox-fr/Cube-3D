@@ -6,13 +6,11 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 14:32:12 by rafaria           #+#    #+#             */
-/*   Updated: 2025/03/28 15:36:42 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/16 11:52:51 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-
 
 int	ft_char_in_set(char c, char const *set)
 {

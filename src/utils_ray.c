@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_ray.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 20:54:59 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/15 21:19:02 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/16 12:08:33 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	get_map_width(char **map)
 // {
 // 	int	max_width;
 // 	int	tmp;
-	
+
 // 	max_width = 0;
 // 	for (int i = 0; map[i]; i++)
 // 	{

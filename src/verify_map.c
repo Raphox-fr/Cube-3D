@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verify_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 17:32:50 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/14 15:36:39 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/16 12:08:44 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	verify_map(t_struct *map)
 	if (check_newline_map(map) == -1)
 		return (-1);
 	map->map_only = ft_split(map->brut_map_only, '\n');
-	map->map_dis = ft_split(map->brut_map_only, '\n');	
+	map->map_dis = ft_split(map->brut_map_only, '\n');
 	if (transform_player_to_zero(map) == -1)
 		return (-1);
 	while (find_zero(map) != -1)
@@ -69,12 +69,12 @@ int	check_udlr(t_struct *map)
 	if (x == 0 || y == 0 || y == size_y || x == size_x)
 		return (-1);
 	if ((ft_strlen(map->map_only[y - 1]) >= ft_strlen(map->map_only[y])
-		&& map->map_only[y - 1][x] == '\0') || x >= ft_strlen(map->map_only[y
-			- 1]))
+			&& map->map_only[y - 1][x] == '\0')
+		|| x >= ft_strlen(map->map_only[y - 1]))
 		return (-1);
 	if ((ft_strlen(map->map_only[y + 1]) >= ft_strlen(map->map_only[y])
-		&& map->map_only[y + 1][x] == '\0') || x >= ft_strlen(map->map_only[y
-			+ 1]))
+			&& map->map_only[y + 1][x] == '\0')
+		|| x >= ft_strlen(map->map_only[y + 1]))
 		return (-1);
 	if (map->map_only[y][x - 1] == '\0')
 		return (-1);

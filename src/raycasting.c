@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:10:58 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/16 11:48:30 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/16 12:10:11 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	ft_distance(t_ray *ray)
 		ray->sideDistY = (ray->mapY + 1.0 - ray->posY) * ray->deltaDistY;
 	}
 }
+
 void	ft_dda(t_ray *ray)
 {
 	ray->hit = 0;
@@ -76,28 +77,14 @@ void	ft_dda(t_ray *ray)
 			ray->mapY += ray->stepY;
 			ray->side = 1;
 		}
-		// // if (ray->mapX >= 0 && ray->mapX < ray->size_x &&
-		// // 	ray->mapY >= 0 && ray->mapY < ray->size_y)
 		if (ray->mapX >= 0 && ray->mapX < ray->size_x && ray->mapY >= 0
 			&& ray->mapY < ray->size_y
 			&& ray->mapp.map_dis[ray->mapY][ray->mapX] == '1')
 		{
 			if (ray->mapp.map_dis[ray->mapY][ray->mapX] == '1')
-			{
 				ray->hit = 1;
-			}
 		}
-		// else
-		// {
-		// 	printf("  OUT OF BOUNDS: mapX = %d, mapY = %d (max: %f, %f)\n",
-				ray->mapX, ray->mapY, ray->size_x, ray->size_y);
-				// 	break ;
-				// }
 	}
-	// if (ray->side == 0)
-	//     ray->perpWallDist = (ray->sideDistX - ray->rayDirX);
-	// else
-	//     ray->perpWallDist = (ray->sideDistY - ray->rayDirY);
 	if (ray->side == 0)
 		ray->perpWallDist = (ray->mapX - ray->posX + (1 - ray->stepX) / 2)
 			/ ray->rayDirX;
@@ -114,8 +101,8 @@ void	ft_height(t_ray *ray)
 	if (ray->drawStart < 0)
 		ray->drawStart = 0;
 	ray->drawEnd = ray->lineHeight / 2 + (ray->h / 2);
-	if (ray->drawEnd >= ray->h)    // h = size_y
-		ray->drawEnd = ray->h - 1; //-1
+	if (ray->drawEnd >= ray->h)
+		ray->drawEnd = ray->h - 1;
 }
 
 // void ft_dda(t_ray *ray)

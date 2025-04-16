@@ -6,7 +6,7 @@
 /*   By: rafaria <rafaria@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 20:08:03 by rafaria           #+#    #+#             */
-/*   Updated: 2025/04/15 11:25:30 by rafaria          ###   ########.fr       */
+/*   Updated: 2025/04/16 12:06:49 by rafaria          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,20 +44,11 @@ int	find_every_txture_in_map(t_struct *map, char **map_table)
 		count++;
 	if (map->no_txture == NULL || map->so_txture == NULL
 		|| map->we_txture == NULL || map->ea_txture == NULL)
-	{
-		display_error("Invalid textures or missing textures\n");
-		return (-1);
-	}
+		return (display_error("Invalid textures or missing textures\n"), -1);
 	if (check_access_every_txture(map) == -1)
-	{
-		display_error("Invalid textures or missing textures\n");
-		return (-1);		
-	}
+		return (display_error("Invalid textures or missing textures\n"), -1);
 	if (count != 4)
-	{
-		display_error("Invalid textures or missing textures\n");
-		return (-1);
-	}
+		return (display_error("Invalid textures or missing textures\n"), -1);
 	return (1);
 }
 
@@ -103,8 +94,7 @@ int	check_found_txture(t_struct *map, char *map_string, char *directions)
 	if (*map_string == directions[0] && *(map_string + 1) == directions[1])
 	{
 		map_string = map_string + 3;
-		while ((*map_string == ' ')
-			&& *map_string != '\0')
+		while ((*map_string == ' ') && *map_string != '\0')
 			map_string++;
 		if (*map_string == '\t')
 			return (-1);
@@ -124,7 +114,7 @@ int	check_found_txture(t_struct *map, char *map_string, char *directions)
 
 int	check_end_textures(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i] != '\0' && str[i] != ' ')
