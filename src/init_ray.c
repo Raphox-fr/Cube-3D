@@ -6,7 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 19:53:33 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/16 12:52:46 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/18 12:37:09 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,14 @@ int	init_player(t_ray *ray)
 		ray->dirx = 1;
 		ray->diry = 0;
 		ray->planex = 0;
-		ray->planey = -0.66;
+		ray->planey = 0.66;
 	}
 	else if (ray->axe == 'W')
 	{
 		ray->dirx = -1;
 		ray->diry = 0;
 		ray->planex = 0;
-		ray->planey = 0.66;
+		ray->planey = -0.66;
 	}
 	else
 		return (printf("Error\ninvalid orientation '%c'\n", ray->axe), -1);
