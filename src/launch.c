@@ -6,7 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:15:14 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/15 21:06:51 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/30 12:19:45 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_launch(t_ray *ray)
 	ray->size_x = get_map_width(ray->map);
 	mlx_get_screen_size(ray->mlx, &ray->width, &ray->height);
 	ft_xpm_to_img(ray);
-	ray->win = mlx_new_window(ray->mlx, ray->width, ray->height, "Cub3D");
+	ray->win = mlx_new_window(ray->mlx, ray->width/2, ray->height/2, "Cub3D");//ici pour diviser la fenetre et ameliorer le playable
 	if (!ray->win)
 		return (close_window(ray), display_error("mlx_new_window\n"), 0);
 	if (init_img(ray) == -1)

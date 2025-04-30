@@ -6,7 +6,7 @@
 /*   By: aneumann <aneumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 19:53:33 by aneumann          #+#    #+#             */
-/*   Updated: 2025/04/18 12:37:09 by aneumann         ###   ########.fr       */
+/*   Updated: 2025/04/30 12:19:38 by aneumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ int	init_img(t_ray *ray)
 			&ray->img->bpp, &ray->img->line_length, &ray->img->endian);
 	if (!ray->img->addr)
 		return (display_error("mlx_get_data_addr\n"), -1);
-	ray->img->width = ray->width;
-	ray->img->height = ray->height;
+	ray->img->width = ray->width/2; //ici pour diviser la fenetre et ameliorer le playable
+	ray->img->height = ray->height/2; //ici pour diviser la fenetre et ameliorer le playable
 	return (0);
 }
 

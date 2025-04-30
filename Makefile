@@ -58,7 +58,7 @@ $(OBJDIR)/%.o: %.c
 clean:
 	rm -rf $(OBJDIR)
 	@$(MAKE) -C $(LIBFTDIR) clean
-	@$(MAKE) -C $(MINILIBX_PATH) clean  # ✅ Nettoie aussi mlx
+	@$(MAKE) -C $(MINILIBX_PATH) clean
 
 fclean: clean
 	rm -f $(NAME)
